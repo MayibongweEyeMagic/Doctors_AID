@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:text="Register as"
+            android:textSize="25sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/to_reg_patient"
+            android:text="Patient"
+            android:background="@android:color/holo_green_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp">
+
+        <Button
+            android:id="@+id/to_reg_doctor"
+            android:text="Doctor"
+            android:background="@android:color/holo_green_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
