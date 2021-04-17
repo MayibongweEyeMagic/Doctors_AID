@@ -46,6 +46,16 @@ public class DirectionDialog   extends AppCompatDialogFragment {
                 Intent intent = new Intent(v.getContext(), Registration_Patient.class);
                 startActivity(intent);
             }
+
+        });
+
+        doctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(v.getContext(), Registration_Doctor.class);
+                startActivity(intent);
+            }
         });
 
 

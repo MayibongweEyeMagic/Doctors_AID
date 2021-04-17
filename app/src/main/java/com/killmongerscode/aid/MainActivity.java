@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         clicks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 openDialog();
             }
         });
