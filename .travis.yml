@@ -3,7 +3,13 @@ jdk:
   - oraclejdk9
   - openjdk9
 
-dist: trusty
+dist: xenial
+
+env:
+  global:
+  - ANDROID_API_LEVEL=28
+  - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+  - ANDROID_ABI=armeabi-v7a
 
 components:
   - tools
@@ -16,8 +22,8 @@ components:
   - android-22
   - sys-img-armeabi-v7a-android-22
 before_install:
-  - yes | sdkmanager "build-tools-25.0.0"
-  - yes | sdkmanager "platforms;android-28.0.0"
+  - yes | sdkmanager "platforms;android-27"
+  - yes | sdkmanager "platforms;android-28"
 
 before_script:
   - echo no | android create avd --force -n test -t android-22 --abi -armeabi-v7a
