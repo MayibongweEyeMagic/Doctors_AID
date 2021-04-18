@@ -16,8 +16,8 @@ components:
   - android-22
   - sys-img-armeabi-v7a-android-22
 before_install:
-  - yes | sdkmanager "platforms;android-27"
-  - yes | sdkmanager "platforms;android-28"
+  - yes | sdkmanager "platforms;android-27.0.0"
+  - yes | sdkmanager "platforms;android-28.0.0"
 
 before_script:
   - echo no | android create avd --force -n test -t android-22 --abi -armeabi-v7a
