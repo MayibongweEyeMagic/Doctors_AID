@@ -25,6 +25,4 @@ before_install:
   - yes | sdkmanager "platforms;android-27"
   - chmod +x gradlew
 
-script:
-  - ./gradlew build jacocoTestReport
-  - echo no 
+script: ./gradlew build
