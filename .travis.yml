@@ -1,37 +1,30 @@
-arch: amd64
 language: java
-jdk: 
-  - oraclejdk8
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+  
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    
+language: java
+install: ant deps
 
 dist: xenial
+language: java
+addons:
+  apt:
+    packages:
+      - ant
 
-env:
-  global:
-  - ANDROID_API_LEVEL=28
-  - ANDROID_BUILD_TOOLS_VERSION=28.0.3
-  - ANDROID_ABI=armeabi-v7a
-
-components:
-  - tools
-  - tools
-  - plartform-tools
-  - extra-google-google_play_services
-  - extra-google-m2repository
-  - extra-android-m2repository
-  - build-tools-25.0.0
-  - android-22
-  - sys-img-armeabi-v7a-android-22
-before_install:
-  - yes | sdkmanager "platforms;android-27"
-  - yes | sdkmanager "platforms;android-28"
-
-before_script:
-  - echo no | android create avd --force -n test -t android-22 --abi -armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+jdk:
+  - oraclejdk8
+  - oraclejdk9
+  - openjdk8
 
 script:
-  - ./gradlew assembleDebug
-  - echo "Travis branch is $TRAVIS_BRANCH"
-  - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+  - jdk_switcher use oraclejdk8
+  - # do stuff with Java 8
+  - jdk_switcher use openjdk8
+  - # do stuff with open
