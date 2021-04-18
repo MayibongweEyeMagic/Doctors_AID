@@ -1,5 +1,9 @@
 language: java
-jdk: openjdk8
+jdk: 
+  - oraclejdk8
+  - openjdk8
+
+dist: trusty
 
 components:
   - tools
@@ -25,5 +29,3 @@ script:
   - ./gradlew assembleDebug
   - echo "Travis branch is $TRAVIS_BRANCH"
   - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
-
-dist: trusty
