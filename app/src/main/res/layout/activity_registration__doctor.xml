@@ -6,119 +6,135 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Registration_Patient">
+    tools:context=".Registration_Doctor">
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/first_name_patient"
+            android:id="@+id/first_name_doctor"
             android:hint="First name"
-            android:paddingLeft="8dp"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
-            android:id="@+id/last_name_patient"
+            android:id="@+id/last_name_doctor"
             android:hint="Last Name"
-            android:paddingLeft="8dp"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/qualification"
+            android:hint="Qualification"
+            android:textColor="@android:color/darker_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
-            android:id="@+id/date_of_birth"
-            android:hint="Date of Birth"
-            android:paddingLeft="8dp"
+            android:id="@+id/qual_obtained_where"
+            android:hint="Where was the qualification obtained"
             android:inputType="date"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
-        <EditText
-            android:id="@+id/location"
-            android:hint="Home Address"
-            android:paddingLeft="8dp"
-            android:inputType="textPostalAddress"
+        <AutoCompleteTextView
+            android:id="@+id/specialization"
+            android:hint="Specialization"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="288dp"
+            android:layout_marginTop="9dp">
+
+            <ImageView
+                android:id="@+id/drop_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/outline_arrow_drop_down_black_24dp" />
+
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
-            android:id="@+id/patient_email_address"
+            android:id="@+id/doctor_email_address"
             android:hint="Email Address"
-            android:paddingLeft="8dp"
             android:inputType="textEmailAddress"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
-            android:id="@+id/patient_password"
+            android:id="@+id/doctor_password"
             android:hint="Password"
-            android:paddingLeft="8dp"
             android:inputType="textPassword"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="309dp"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
-            android:id="@+id/patient_pass_confirm"
+            android:id="@+id/doctor_pass_confirm"
             android:hint="Confirm Password"
-            android:paddingLeft="8dp"
             android:inputType="textPassword"
             android:textColor="@android:color/darker_gray"
-            android:textCursorDrawable="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
