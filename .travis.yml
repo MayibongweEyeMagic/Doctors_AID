@@ -1,7 +1,7 @@
+arch: amd64
 language: java
 jdk: 
-  - oraclejdk9
-  - openjdk9
+  - oraclejdk8
 
 dist: xenial
 
