@@ -1,31 +1,28 @@
-language: java
-jdk: 
-  - oraclejdk9
-  - openjdk9
+language: android
+jdk: oraclejdk8
 
-dist: trusty
+env:
+  global:
+    - ANDROID_TARGET=android-22
+    - ANDROID_ABI=armeabi-v7a
 
-components:
-  - tools
-  - tools
-  - plartform-tools
-  - extra-google-google_play_services
-  - extra-google-m2repository
-  - extra-android-m2repository
-  - build-tools-25.0.0
-  - android-22
-  - sys-img-armeabi-v7a-android-22
+android:
+  components:
+    - tools #
+    - tools
+    - platform-tools
+    - build-tools-28.0.3
+    - android-26
+    - add-on
+    - extra
+    - $ANDROID_TARGET
+    - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
+
+licenses:
+  - 'android-sdk-license-.+'
+
 before_install:
-  - yes | sdkmanager "build-tools-25.0.0"
-  - yes | sdkmanager "platforms;android-28.0.0"
+  - yes | sdkmanager "platforms;android-27"
+  - chmod +x gradlew
 
-before_script:
-  - echo no | android create avd --force -n test -t android-22 --abi -armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-
-script:
-  - ./gradlew assembleDebug
-  - echo "Travis branch is $TRAVIS_BRANCH"
-  - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+script: ./gradlew build
