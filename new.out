@@ -1,0 +1,55 @@
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_d2090040 |
++--------------------+
+| BOOKINGS           |
+| DOCTOR             |
+| PATIENT            |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> DESC DOCTOR;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| DOCTOR_FNAME | varchar(30)  | NO   |     | NULL    |       |
+| DOCTOR_LNAME | varchar(30)  | NO   |     | NULL    |       |
+| DOCTOR_SPEC  | varchar(20)  | NO   |     | NULL    |       |
+| DOCTOR_QLF   | varchar(30)  | NO   |     | NULL    |       |
+| DOCTOR_PHONE | varchar(12)  | NO   |     | NULL    |       |
+| DOCTOR_EMAIL | varchar(320) | NO   | PRI | NULL    |       |
+| DOCTOR_PASS  | varchar(20)  | NO   | UNI | NULL    |       |
+| PASS_SALT    | varchar(30)  | NO   | UNI | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> DESC PATIENT;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| PATIENT_FNAME   | varchar(30)  | NO   |     | NULL    |       |
+| PATIENT_LNAME   | varchar(30)  | NO   |     | NULL    |       |
+| PATIENT_ADDRESS | text         | NO   |     | NULL    |       |
+| PATIENT_PHONE   | varchar(12)  | NO   |     | NULL    |       |
+| PATIENT_DOB     | date         | NO   |     | NULL    |       |
+| PATIENT_EMAIL   | varchar(320) | NO   | PRI | NULL    |       |
+| PATIENT_PASS    | varchar(20)  | NO   | UNI | NULL    |       |
+| PASS_SALT       | varchar(30)  | NO   | UNI | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> DESC BOOKINGS;
++---------------+--------------+------+-----+-------------------+----------------+
+| Field         | Type         | Null | Key | Default           | Extra          |
++---------------+--------------+------+-----+-------------------+----------------+
+| BOOKING_NO    | int(10)      | NO   | PRI | NULL              | auto_increment |
+| PATIENT_EMAIL | varchar(320) | YES  | MUL | NULL              |                |
+| DOCTOR_EMAIL  | varchar(320) | YES  | MUL | NULL              |                |
+| CREATED_AT    | timestamp    | NO   |     | CURRENT_TIMESTAMP |                |
+| STATUS        | varchar(15)  | YES  |     | PENDING           |                |
+| REASON        | text         | YES  |     | NULL              |                |
+| OUTCOME       | text         | YES  |     | NULL              |                |
++---------------+--------------+------+-----+-------------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> NOTEE;
