@@ -131,7 +131,7 @@
         android:layout_marginRight="10dp">
 
         <Button
-            android:id="@+id/log_in_doctor"
+            android:id="@+id/patient_create_account"
             android:text="Create Account"
             android:textSize="18dp"
             android:textAllCaps="false"
