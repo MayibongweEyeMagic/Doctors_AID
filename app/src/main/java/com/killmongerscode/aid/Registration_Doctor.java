@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ public class Registration_Doctor extends AppCompatActivity {
     private AutoCompleteTextView special;
     private ImageView views;
 
+    private EditText number;
+
     Button registration;
 
 
@@ -48,6 +51,8 @@ public class Registration_Doctor extends AppCompatActivity {
         ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.select_dialog_item, predefined);
         special.setThreshold(1);
         special.setAdapter(adapter);
+
+        number = (EditText) findViewById(R.id.phone_number);
 
         views.setOnClickListener(new View.OnClickListener() {
             @Override

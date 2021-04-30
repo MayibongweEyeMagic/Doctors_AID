@@ -28,13 +28,14 @@ public class Registration_Patient extends AppCompatActivity {
     EditText name, surname, email, password, homeadress, dob, confirmpassword;
     Button registra;
 
+    private EditText number;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__patient);
 
-        // fudumeza amazi
         registra = (Button)findViewById(R.id.patient_create_account);
 
         name = (EditText)findViewById(R.id.first_name_patient);
@@ -43,6 +44,7 @@ public class Registration_Patient extends AppCompatActivity {
         password = (EditText)findViewById(R.id.patient_password);
         homeadress = (EditText)findViewById(R.id.location);
         dob = (EditText)findViewById(R.id.date_of_birth);
+        number = (EditText) findViewById(R.id.phone_no);
 
 
 
