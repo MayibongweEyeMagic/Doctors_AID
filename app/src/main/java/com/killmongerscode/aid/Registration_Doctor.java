@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,13 +30,19 @@ import okhttp3.Response;
 
 public class Registration_Doctor extends AppCompatActivity {
 
+    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM;
+    EditText name,surname,qualification,unversity,email,password,comfirmpass,phonenum;
+    Button registration_button;
+
+    Random random = new Random();
+
     String[] predefined ={"General", "Optometrist", "Cardiologist", "Pediatrician", "Dentist"};
     private AutoCompleteTextView special;
     private ImageView views;
 
     private EditText number;
 
-    Button registration;
+
 
 
     @Override
@@ -43,7 +50,28 @@ public class Registration_Doctor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__doctor);
 
-        registration = (Button)findViewById(R.id.button);
+        int temp = random.nextInt(500);
+        String temp1 = Integer.toString(temp);
+
+        registration_button = (Button)findViewById(R.id.patient_create_account);
+        name = (EditText) findViewById(R.id.first_name_doctor);
+        surname = (EditText)findViewById(R.id.last_name_doctor);
+        qualification = (EditText)findViewById(R.id.qualification);
+        unversity = (EditText)findViewById(R.id.qual_obtained_where);
+        email = (EditText)findViewById(R.id.doctor_email_address);
+        password = (EditText)findViewById(R.id.doctor_password);
+        comfirmpass = (EditText)findViewById(R.id.doctor_pass_confirm);
+        phonenum = (EditText)findViewById(R.id.phone_number);
+
+        NAME = name.getText().toString();
+        SURNAME = surname.getText().toString();
+        QUALIFICATION = qualification.getText().toString();
+        UNIVERSITY = unversity.getText().toString();
+        EMAIL = email.getText().toString();
+        PASSWORD = password.getText().toString();
+        COMFIRMPASS = comfirmpass.getText().toString();
+        PHONENUM = phonenum.getText().toString();
+
 
         special = (AutoCompleteTextView) findViewById(R.id.specialization);
         views = (ImageView) findViewById(R.id.drop_down);
@@ -54,6 +82,8 @@ public class Registration_Doctor extends AppCompatActivity {
 
         number = (EditText) findViewById(R.id.phone_number);
 
+        String SPECIALIZATION = special.getText().toString();
+
         views.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,29 +91,30 @@ public class Registration_Doctor extends AppCompatActivity {
             }
         });
 
-//        OkHttpClient client = new OkHttpClient();
+
 
         OkHttpClient client = new OkHttpClient();
 
 
-        registration.setOnClickListener(new View.OnClickListener() {
+        registration_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
                 RequestBody body = new FormBody.Builder()
-                        .add("firstname","mayibongwe")
-                        .add("lastname","bafoly")
-                        .add("specialization", "dentist")
-                        .add("qualification","doctor")
-                        .add("phone","wits")
-                        .add("email","mayibongwe.bafoly.mb@gmail.com")
-                        .add("password","bitchass")
-                        .add("salt","1234")
+                        .add("firstname",NAME)
+                        .add("lastname",SURNAME)
+                        .add("specialization", SPECIALIZATION)
+                        .add("qualification",QUALIFICATION)
+                        .add("phone",PHONENUM)
+                        .add("email",EMAIL)
+                        .add("password",PASSWORD)
+                        .add("grad_at",UNIVERSITY)
+                        .add("salt",temp1)
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("https://lamp.ms.wits.ac.za/home/s2090040/insert.php")
+                        .url("https://lamp.ms.wits.ac.za/home/s2090040/regDoctor.php")
                         .post(body)
                         .build();
                 client.newCall(request).enqueue(new Callback() {
@@ -138,7 +169,7 @@ public class Registration_Doctor extends AppCompatActivity {
 
     }
 
-    // okhttp requests
+
 
 
 
