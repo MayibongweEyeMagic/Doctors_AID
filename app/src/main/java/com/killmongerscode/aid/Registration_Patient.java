@@ -40,7 +40,7 @@ public class Registration_Patient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__patient);
 
-        registration_button = (Button)findViewById(R.id.patient_create_account);
+        registration_button = (Button)findViewById(R.id.button3);
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
 
@@ -54,14 +54,6 @@ public class Registration_Patient extends AppCompatActivity {
         number = (EditText) findViewById(R.id.phone_no);
 
 
-        FNAME = name.getText().toString();
-        LNAME = surname.getText().toString();
-        EMAILADRESS = email.getText().toString();
-        PASSWORD = password.getText().toString();
-        CONFIRMPASSWORD = confirmpassword.getText().toString();
-        HOMEADDRESS = homeadress.getText().toString();
-        dateofbirth = dob.getText().toString();
-        PHONENUM = number.getText().toString();
 
 
 
@@ -76,6 +68,18 @@ public class Registration_Patient extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                FNAME = name.getText().toString();
+                LNAME = surname.getText().toString();
+                EMAILADRESS = email.getText().toString();
+                PASSWORD = password.getText().toString();
+                CONFIRMPASSWORD = confirmpassword.getText().toString();
+                HOMEADDRESS = homeadress.getText().toString();
+                dateofbirth = dob.getText().toString();
+                PHONENUM = number.getText().toString();
+
+
+
                 RequestBody body = new FormBody.Builder()
                         .add("fullname",FNAME)
                         .add("lastname",LNAME)
@@ -84,7 +88,7 @@ public class Registration_Patient extends AppCompatActivity {
                         .add("dob",dateofbirth)
                         .add("email",EMAILADRESS)
                         .add("password",PASSWORD)
-                        .add("salt",temp1)
+                        .add("salt","790LKJH"+temp1)
                         .build();
 
                 Request request = new Request.Builder()
