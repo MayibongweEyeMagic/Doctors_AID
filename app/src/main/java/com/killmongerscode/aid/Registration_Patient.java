@@ -44,14 +44,14 @@ public class Registration_Patient extends AppCompatActivity {
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
 
-        name = (EditText)findViewById(R.id.first_name_patient);
-        surname = (EditText)findViewById(R.id.last_name_patient);
-        email = (EditText)findViewById(R.id.patient_email_address);
-        password = (EditText)findViewById(R.id.patient_password);
-        confirmpassword = (EditText)findViewById(R.id.patient_pass_confirm);
-        homeadress = (EditText)findViewById(R.id.location);
-        dob = (EditText)findViewById(R.id.date_of_birth);
-        number = (EditText) findViewById(R.id.phone_no);
+        name = findViewById(R.id.first_name_patient);
+        surname = findViewById(R.id.last_name_patient);
+        email =findViewById(R.id.patient_email_address);
+        password = findViewById(R.id.patient_password);
+        confirmpassword = findViewById(R.id.patient_pass_confirm);
+        homeadress =findViewById(R.id.location);
+        dob = findViewById(R.id.date_of_birth);
+        number =findViewById(R.id.phone_no);
 
 
 
