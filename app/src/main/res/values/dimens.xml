@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name= "height_24">24dp</dimen>
+    <dimen name= "height_45">45dp</dimen>
+    <dimen name= "height_5">5dp</dimen>
+
+    <dimen name="elevation_10">10dp</dimen>
+    <dimen name="elavation_6">6dp</dimen>
+    <dimen name="elavation_16">16dp</dimen>
+
+    <dimen name= "margin_32">32dp</dimen>
+
+</resources>
