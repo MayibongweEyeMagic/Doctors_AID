@@ -31,7 +31,7 @@ import okhttp3.Response;
 public class Registration_Doctor extends AppCompatActivity {
 
     String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM;
-    EditText name,surname,qualification,unversity,email,password,comfirmpass,phonenum;
+    private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone;
     Button registration_button;
 
     Random random = new Random();
@@ -53,15 +53,15 @@ public class Registration_Doctor extends AppCompatActivity {
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
 
-        registration_button = (Button)findViewById(R.id.patient_create_account);
-        name = (EditText) findViewById(R.id.first_name_doctor);
-        surname = (EditText)findViewById(R.id.last_name_doctor);
-        qualification = (EditText)findViewById(R.id.qualification);
-        unversity = (EditText)findViewById(R.id.qual_obtained_where);
-        email = (EditText)findViewById(R.id.doctor_email_address);
-        password = (EditText)findViewById(R.id.doctor_password);
-        comfirmpass = (EditText)findViewById(R.id.doctor_pass_confirm);
-        phonenum = (EditText)findViewById(R.id.phone_number);
+        registration_button = findViewById(R.id.doctor_create_account);
+        name =  findViewById(R.id.first_name_doctor);
+        surname = findViewById(R.id.last_name_doctor);
+        qualification = findViewById(R.id.qualification);
+        unversity = findViewById(R.id.qual_obtained_where);
+        email = findViewById(R.id.doctor_email_address);
+        password = findViewById(R.id.doctor_password);
+        comfirmpass = findViewById(R.id.doctor_pass_confirm);
+        phone = findViewById(R.id.phone_number);
 
         NAME = name.getText().toString();
         SURNAME = surname.getText().toString();
@@ -70,7 +70,7 @@ public class Registration_Doctor extends AppCompatActivity {
         EMAIL = email.getText().toString();
         PASSWORD = password.getText().toString();
         COMFIRMPASS = comfirmpass.getText().toString();
-        PHONENUM = phonenum.getText().toString();
+        PHONENUM = phone.getText().toString();
 
 
         special = (AutoCompleteTextView) findViewById(R.id.specialization);

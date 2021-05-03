@@ -18,6 +18,9 @@ public class DirectionDialog   extends AppCompatDialogFragment {
     private Context context;
     private Button patient;
     private Button doctor;
+
+
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

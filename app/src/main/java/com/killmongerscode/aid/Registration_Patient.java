@@ -40,28 +40,20 @@ public class Registration_Patient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__patient);
 
-        registration_button = (Button)findViewById(R.id.patient_create_account);
+        registration_button = (Button)findViewById(R.id.button3);
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
 
-        name = (EditText)findViewById(R.id.first_name_patient);
-        surname = (EditText)findViewById(R.id.last_name_patient);
-        email = (EditText)findViewById(R.id.patient_email_address);
-        password = (EditText)findViewById(R.id.patient_password);
-        confirmpassword = (EditText)findViewById(R.id.patient_pass_confirm);
-        homeadress = (EditText)findViewById(R.id.location);
-        dob = (EditText)findViewById(R.id.date_of_birth);
-        number = (EditText) findViewById(R.id.phone_no);
+        name = findViewById(R.id.first_name_patient);
+        surname = findViewById(R.id.last_name_patient);
+        email =findViewById(R.id.patient_email_address);
+        password = findViewById(R.id.patient_password);
+        confirmpassword = findViewById(R.id.patient_pass_confirm);
+        homeadress =findViewById(R.id.location);
+        dob = findViewById(R.id.date_of_birth);
+        number =findViewById(R.id.phone_no);
 
 
-        FNAME = name.getText().toString();
-        LNAME = surname.getText().toString();
-        EMAILADRESS = email.getText().toString();
-        PASSWORD = password.getText().toString();
-        CONFIRMPASSWORD = confirmpassword.getText().toString();
-        HOMEADDRESS = homeadress.getText().toString();
-        dateofbirth = dob.getText().toString();
-        PHONENUM = number.getText().toString();
 
 
 
@@ -76,6 +68,18 @@ public class Registration_Patient extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                FNAME = name.getText().toString();
+                LNAME = surname.getText().toString();
+                EMAILADRESS = email.getText().toString();
+                PASSWORD = password.getText().toString();
+                CONFIRMPASSWORD = confirmpassword.getText().toString();
+                HOMEADDRESS = homeadress.getText().toString();
+                dateofbirth = dob.getText().toString();
+                PHONENUM = number.getText().toString();
+
+
+
                 RequestBody body = new FormBody.Builder()
                         .add("fullname",FNAME)
                         .add("lastname",LNAME)
@@ -84,7 +88,7 @@ public class Registration_Patient extends AppCompatActivity {
                         .add("dob",dateofbirth)
                         .add("email",EMAILADRESS)
                         .add("password",PASSWORD)
-                        .add("salt",temp1)
+                        .add("salt","790LKJH"+temp1)
                         .build();
 
                 Request request = new Request.Builder()

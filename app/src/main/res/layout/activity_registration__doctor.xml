@@ -58,7 +58,7 @@
         <EditText
             android:id="@+id/phone_number"
             android:hint="Phone number"
-            android:inputType="number"
+            android:inputType="phone"
             android:textColor="@android:color/darker_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -162,7 +162,7 @@
         android:layout_marginRight="10dp">
 
         <Button
-            android:id="@+id/patient_create_account"
+            android:id="@+id/doctor_create_account"
             android:text="Create Account"
             android:textSize="18dp"
             android:textAllCaps="false"
