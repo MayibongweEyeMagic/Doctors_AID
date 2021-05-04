@@ -17,10 +17,10 @@
             android:id="@+id/user"
             android:layout_width="309dp"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="email"
             android:inputType="textEmailAddress"
             android:paddingLeft="5dp"
-            android:textColor="@android:color/darker_gray"/>
+            android:textColor="@android:color/darker_gray" />
 
     </RelativeLayout>
 
@@ -106,12 +106,6 @@
 
 
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 
 
 </LinearLayout>
