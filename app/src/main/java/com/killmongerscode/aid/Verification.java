@@ -1,10 +1,16 @@
 package com.killmongerscode.aid;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class Verification {
 
@@ -122,6 +128,11 @@ public class Verification {
         String thing = temp[4];
         return thing;
     }
+
+
+
+
+
 
 
 

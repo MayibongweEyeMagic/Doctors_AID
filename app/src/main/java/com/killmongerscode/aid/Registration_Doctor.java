@@ -2,6 +2,8 @@ package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,15 +65,6 @@ public class Registration_Doctor extends AppCompatActivity {
         comfirmpass = findViewById(R.id.doctor_pass_confirm);
         phone = findViewById(R.id.phone_number);
 
-        NAME = name.getText().toString();
-        SURNAME = surname.getText().toString();
-        QUALIFICATION = qualification.getText().toString();
-        UNIVERSITY = unversity.getText().toString();
-        EMAIL = email.getText().toString();
-        PASSWORD = password.getText().toString();
-        COMFIRMPASS = comfirmpass.getText().toString();
-        PHONENUM = phone.getText().toString();
-
 
         special = (AutoCompleteTextView) findViewById(R.id.specialization);
         views = (ImageView) findViewById(R.id.drop_down);
@@ -101,6 +94,17 @@ public class Registration_Doctor extends AppCompatActivity {
             public void onClick(View view) {
 
 
+                NAME = name.getText().toString();
+                SURNAME = surname.getText().toString();
+                QUALIFICATION = qualification.getText().toString();
+                UNIVERSITY = unversity.getText().toString();
+                EMAIL = email.getText().toString();
+                PASSWORD = password.getText().toString();
+                COMFIRMPASS = comfirmpass.getText().toString();
+                PHONENUM = phone.getText().toString();
+
+
+
                 RequestBody body = new FormBody.Builder()
                         .add("firstname",NAME)
                         .add("lastname",SURNAME)
@@ -110,7 +114,6 @@ public class Registration_Doctor extends AppCompatActivity {
                         .add("email",EMAIL)
                         .add("password",PASSWORD)
                         .add("grad_at",UNIVERSITY)
-                        .add("salt",temp1)
                         .build();
 
                 Request request = new Request.Builder()
@@ -135,8 +138,9 @@ public class Registration_Doctor extends AppCompatActivity {
                         Registration_Doctor.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(Registration_Doctor.this,
-                                        responseData, Toast.LENGTH_LONG).show();
+
+                                registration_function(responseData);
+
                             }
                         });
 
@@ -153,24 +157,28 @@ public class Registration_Doctor extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
+    public void registration_function(String response) {
 
 
+        if (response.equals("Successfully Registered")) {
+
+            Toast.makeText(Registration_Doctor.this,
+                    response, Toast.LENGTH_LONG).show();
+
+
+            Intent intent = new Intent(Registration_Doctor.this, MainActivity.class);
+            startActivity(intent);
+
+
+        } else {
+            Toast.makeText(Registration_Doctor.this,
+                    "SOMETHING WENT WRONG PLEASE TRY AGAIN LATER", Toast.LENGTH_LONG).show();
+
+        }
+
+    }
 
 
 

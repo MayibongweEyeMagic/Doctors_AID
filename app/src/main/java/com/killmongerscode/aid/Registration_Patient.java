@@ -2,6 +2,7 @@ package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Random;
 
 import okhttp3.Call;
@@ -40,7 +42,7 @@ public class Registration_Patient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__patient);
 
-        registration_button = (Button)findViewById(R.id.button3);
+        registration_button = (Button)findViewById(R.id.patient_create_account);
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
 
@@ -52,9 +54,6 @@ public class Registration_Patient extends AppCompatActivity {
         homeadress =findViewById(R.id.location);
         dob = findViewById(R.id.date_of_birth);
         number =findViewById(R.id.phone_no);
-
-
-
 
 
 
@@ -88,7 +87,6 @@ public class Registration_Patient extends AppCompatActivity {
                         .add("dob",dateofbirth)
                         .add("email",EMAILADRESS)
                         .add("password",PASSWORD)
-                        .add("salt","790LKJH"+temp1)
                         .build();
 
                 Request request = new Request.Builder()
@@ -114,8 +112,9 @@ public class Registration_Patient extends AppCompatActivity {
                         Registration_Patient.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(Registration_Patient.this,
-                                        responseData, Toast.LENGTH_LONG).show();
+                                registration_function(responseData);
+
+
                             }
                         });
 
@@ -138,8 +137,53 @@ public class Registration_Patient extends AppCompatActivity {
 
     }
 
+    public void registration_cherker(){
 
-    // okhttp post request
+        ArrayList<String>temp = new ArrayList<>();
+        temp.add(FNAME);
+        temp.add(LNAME);
+        temp.add(EMAILADRESS);
+        temp.add(PASSWORD);
+        temp.add(CONFIRMPASSWORD);
+        temp.add(HOMEADDRESS);
+        temp.add(PHONENUM);
+        temp.add(dateofbirth);
+
+        if(temp.contains("")){
+
+            Toast.makeText(Registration_Patient.this,
+                    "SOME FIELDS MIGHT BE EMPTY", Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+    public void registration_function(String response){
+
+
+
+        if(response.equals("Successfully Registered")){
+
+            Toast.makeText(Registration_Patient.this,
+                    response, Toast.LENGTH_LONG).show();
+
+
+            Intent intent = new Intent(Registration_Patient.this,MainActivity.class);
+            startActivity(intent);
+
+            
+        }
+
+        else{
+            Toast.makeText(Registration_Patient.this,
+                    "SOMETHING WENT WRONG PLEASE TRY AGAIN LATER", Toast.LENGTH_LONG).show();
+
+        }
+
+
+    }
+
+
+
 
 
 
