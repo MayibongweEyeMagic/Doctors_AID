@@ -17,6 +17,7 @@
         android:textStyle="bold" />
 
     <GridLayout
+        android:id="@+id/Patient_homepage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title_view"
