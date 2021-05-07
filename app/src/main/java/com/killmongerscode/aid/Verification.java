@@ -158,6 +158,37 @@ public class Verification {
         return thing;
     }
 
+    public ArrayList getDoctorEmails(String json) throws JSONException{
+
+            ArrayList<String> emails = new ArrayList<>();
+
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); ++i) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                String email = jsonObject.getString("DOCTOR_EMAIL");
+
+                emails.add(email);
+            }
+            return emails;
+    }
+
+    public ArrayList getPatientEmails(String json) throws JSONException{
+
+        ArrayList<String> emails = new ArrayList<>();
+
+        JSONArray jsonArray = new JSONArray(json);
+        for (int i = 0; i < jsonArray.length(); ++i) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+            String email = jsonObject.getString("PATIENT_EMAIL");
+
+            emails.add(email);
+        }
+        return emails;
+    }
+
+
 
 
 
