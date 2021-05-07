@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AiD">
-        <activity android:name=".Booking_System"></activity>
+        <activity android:name=".PatientDetail"></activity>
+        <activity android:name=".Booking_System" />
         <activity android:name=".Patient_Homepage" />
         <activity android:name=".Doctor_Homepage" />
         <activity android:name=".Registration_Doctor" />
