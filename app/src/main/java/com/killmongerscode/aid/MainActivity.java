@@ -191,10 +191,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        else if(thing.isEmpty()){
+            Toast.makeText(MainActivity.this,
+                    "Please enter login details!", Toast.LENGTH_LONG).show();
+        }
         else {
 
             Toast.makeText(MainActivity.this,
-                    "SOMETHING WENT WRONG !", Toast.LENGTH_LONG).show();
+                    "Please enter correct login details!", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -222,11 +226,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
         }
+        else if(thing.isEmpty()){
+            Toast.makeText(MainActivity.this,
+                    "Please enter login details!", Toast.LENGTH_LONG).show();
 
+        }
         else {
 
             Toast.makeText(MainActivity.this,
-                    "SOMETHING WENT WRONG !", Toast.LENGTH_LONG).show();
+                    "Please enter correct login details!", Toast.LENGTH_LONG).show();
         }
 
     }
