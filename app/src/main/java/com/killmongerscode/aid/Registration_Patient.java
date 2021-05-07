@@ -137,7 +137,7 @@ public class Registration_Patient extends AppCompatActivity {
 
     }
 
-    public void registration_cherker(){
+  /*  public void registration_cherker(){
 
         ArrayList<String>temp = new ArrayList<>();
         temp.add(FNAME);
@@ -156,38 +156,50 @@ public class Registration_Patient extends AppCompatActivity {
         }
 
 
-    }
+    }*/
     public void registration_function(String response){
 
 
+        if (CONFIRMPASSWORD.equals(PASSWORD)){
+            if(response.equals("Successfully Registered")){
 
-        if(response.equals("Successfully Registered")){
-
-            Toast.makeText(Registration_Patient.this,
-                    response, Toast.LENGTH_LONG).show();
+                Toast.makeText(Registration_Patient.this,
+                        response, Toast.LENGTH_LONG).show();
 
 
-            Intent intent = new Intent(Registration_Patient.this,MainActivity.class);
-            startActivity(intent);
+                Intent intent = new Intent(Registration_Patient.this,MainActivity.class);
+                startActivity(intent);
 
-            
+
+            }
+
+            else if (response.equals("Can't register one of the fields are empty")){
+                Toast.makeText(Registration_Patient.this,
+                        "One of the fields is empty", Toast.LENGTH_LONG).show();
+            }
+            else if (response.equals("Invalid email")){
+
+                Toast.makeText(Registration_Patient.this,
+                        "Invalid email", Toast.LENGTH_LONG).show();
+
+            }
+            else if(response.equals("Email already exists")){
+                Toast.makeText(Registration_Patient.this,
+                        "Email already exist", Toast.LENGTH_LONG).show();
+            }
+
+            else {
+                Toast.makeText(Registration_Patient.this,
+                        "Failed to register", Toast.LENGTH_LONG).show();
+
+            }
+
         }
-
-        else{
+        else {
             Toast.makeText(Registration_Patient.this,
-                    "SOMETHING WENT WRONG PLEASE TRY AGAIN LATER", Toast.LENGTH_LONG).show();
+                    "Password does not match", Toast.LENGTH_LONG).show();
 
         }
-
-
     }
-
-
-
-
-
-
-
-
 
 }

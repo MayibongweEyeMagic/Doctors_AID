@@ -32,7 +32,7 @@ import okhttp3.Response;
 
 public class Registration_Doctor extends AppCompatActivity {
 
-    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM;
+    public String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION;
     private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone;
     Button registration_button;
 
@@ -75,7 +75,6 @@ public class Registration_Doctor extends AppCompatActivity {
 
         number = (EditText) findViewById(R.id.phone_number);
 
-        String SPECIALIZATION = special.getText().toString();
 
         views.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +101,7 @@ public class Registration_Doctor extends AppCompatActivity {
                 PASSWORD = password.getText().toString();
                 COMFIRMPASS = comfirmpass.getText().toString();
                 PHONENUM = phone.getText().toString();
+                SPECIALIZATION = special.getText().toString();
 
 
 
@@ -161,20 +161,42 @@ public class Registration_Doctor extends AppCompatActivity {
 
     public void registration_function(String response) {
 
+        if (COMFIRMPASS.equals(PASSWORD)){
+            if (response.equals("Successfully Registered")) {
 
-        if (response.equals("Successfully Registered")) {
+                Toast.makeText(Registration_Doctor.this,
+                        response, Toast.LENGTH_LONG).show();
 
+
+                Intent intent = new Intent(Registration_Doctor.this, MainActivity.class);
+                startActivity(intent);
+
+
+            }
+            else if (response.equals("Some of the fields are empty")){
+                Toast.makeText(Registration_Doctor.this,
+                        "One of the fields is empty", Toast.LENGTH_LONG).show();
+            }
+
+            else if(response.equals("Invalid email")){
+                Toast.makeText(Registration_Doctor.this,
+                        "Invalid email", Toast.LENGTH_LONG).show();
+            }
+            else if (response.equals("Email already exist")){
+                Toast.makeText(Registration_Doctor.this,
+                        "Email already exist", Toast.LENGTH_LONG).show();
+
+            }
+            else {
+                Toast.makeText(Registration_Doctor.this,
+                        "Failed to register", Toast.LENGTH_LONG).show();
+
+            }
+
+        }
+        else {
             Toast.makeText(Registration_Doctor.this,
-                    response, Toast.LENGTH_LONG).show();
-
-
-            Intent intent = new Intent(Registration_Doctor.this, MainActivity.class);
-            startActivity(intent);
-
-
-        } else {
-            Toast.makeText(Registration_Doctor.this,
-                    "SOMETHING WENT WRONG PLEASE TRY AGAIN LATER", Toast.LENGTH_LONG).show();
+                    "Password doesn't match", Toast.LENGTH_LONG).show();
 
         }
 
