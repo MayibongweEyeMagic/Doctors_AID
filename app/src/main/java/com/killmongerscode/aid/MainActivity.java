@@ -21,8 +21,10 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.pass);
 
         patient_login = (Button)findViewById(R.id.log_in_patient);
-        doctor_login = (Button)findViewById(R.id.patient_create_account);
+        //doctor_login = (Button)findViewById(R.id.patient_create_account);
 
         clicks = (TextView) findViewById(R.id.register_path);
 
@@ -64,8 +66,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                USERNAME =username.getText().toString();
+                PASSWORD =password.getText().toString();
+
+                RequestBody body = new FormBody.Builder()
+                        .add("email", USERNAME)
+                        .add("password",PASSWORD)
+                        .build();
+
                 Request request = new Request.Builder()
-                        .url("https://lamp.ms.wits.ac.za/home/s2090040/loginPatient.php")
+
+                        .url("https://lamp.ms.wits.ac.za/home/s2090040/dProfile.php")
+                        .post(body)
                         .build();
 
                     client.newCall(request).enqueue(new Callback() {
@@ -105,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        doctor_login.setOnClickListener(new View.OnClickListener() {
+        /*doctor_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -151,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+*/
 
 
     }
@@ -171,7 +183,40 @@ public class MainActivity extends AppCompatActivity {
 
     public void loginPatient(String response) throws JSONException {
 
-        ArrayList<String>holder = new ArrayList<>();
+        if (response.equals("Fields are empty")){
+            Toast.makeText(MainActivity.this,
+                    "One or both fields are empty", Toast.LENGTH_LONG).show();
+        }
+        else if(response.equals("Invalid email")){
+            Toast.makeText(MainActivity.this,
+                    "Invalid Email", Toast.LENGTH_LONG).show();
+        }
+        else if(response.equals("Doctor")){
+            Toast.makeText(MainActivity.this,
+                    "Welcome", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(MainActivity.this, Doctor_Homepage.class);
+            startActivity(intent);
+        }
+        else if(response.equals("Patient")){
+            Toast.makeText(MainActivity.this,
+                    "Welcome", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
+            startActivity(intent);
+        }
+
+        else if(response.equals("Password is incorrect")){
+            Toast.makeText(MainActivity.this,
+                    "Password is incorrect", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(MainActivity.this,
+                    "Account does not exist please click below to reigster", Toast.LENGTH_LONG).show();
+        }
+
+
+      /*  ArrayList<String>holder = new ArrayList<>();
 
         USERNAME = username.getText().toString();
         PASSWORD = password.getText().toString();
@@ -195,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(MainActivity.this,
                     "SOMETHING WENT WRONG !", Toast.LENGTH_LONG).show();
-        }
+        }*/
 
     }
 
@@ -203,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void loginDoctor(String response) throws JSONException {
+   /* public void loginDoctor(String response) throws JSONException {
 
         ArrayList<String>holder = new ArrayList<>();
 
@@ -229,6 +274,6 @@ public class MainActivity extends AppCompatActivity {
                     "SOMETHING WENT WRONG !", Toast.LENGTH_LONG).show();
         }
 
-    }
+    }*/
 
 }

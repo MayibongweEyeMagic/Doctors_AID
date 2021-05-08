@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
@@ -31,12 +32,25 @@ public class Patient_Homepage extends AppCompatActivity {
     private void setSingleEvent(GridLayout Patient_homepage) {
         for (int i = 0; i < Patient_homepage.getChildCount();i++)
         {
-
-            CardView cardView = (CardView)Patient_homepage.getChildAt(i);
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {}
-            });
+            if(i == 2){
+                CardView cardView = (CardView)Patient_homepage.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Patient_Homepage.this,list_of_patients.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+            else if(i == 3){
+                CardView cardView = (CardView)Patient_homepage.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Patient_Homepage.this,Booking_System.class);
+                        startActivity(intent);
+                    }
+                });
+            }
         }
-    }
-}
+}}
