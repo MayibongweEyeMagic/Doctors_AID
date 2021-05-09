@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     "WELCOME", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
+            intent.putExtra("email", USERNAME);
             startActivity(intent);
 
             username.getText().clear();
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     "WELCOME", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(MainActivity.this, Doctor_Homepage.class);
+            intent.putExtra("email", USERNAME);
             startActivity(intent);
 
             username.getText().clear();
