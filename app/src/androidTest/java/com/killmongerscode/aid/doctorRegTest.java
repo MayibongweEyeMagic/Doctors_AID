@@ -61,6 +61,7 @@ public class doctorRegTest {
         doc.setQualification(QUALIFICATION);
         assertEquals(doc.getQualification(), QUALIFICATION);
     }
+    @Test
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
