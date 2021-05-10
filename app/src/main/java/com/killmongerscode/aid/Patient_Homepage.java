@@ -92,6 +92,17 @@ public class Patient_Homepage extends AppCompatActivity {
     private void setSingleEvent(GridLayout Patient_homepage) {
         for (int i = 0; i < Patient_homepage.getChildCount();i++)
         {
+            if(i == 0){
+                CardView cardView = (CardView)Patient_homepage.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Patient_Homepage.this,PatientProfile.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+
             if(i == 2){
                 CardView cardView = (CardView)Patient_homepage.getChildAt(i);
                 cardView.setOnClickListener(new View.OnClickListener() {

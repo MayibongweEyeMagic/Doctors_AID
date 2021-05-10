@@ -36,7 +36,7 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:paddingLeft="5dp"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 
@@ -51,9 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColor="@android:color/darker_gray"
             android:inputType="textPassword"
-            />
+            android:textColor="@color/black" />
     </RelativeLayout>
 
     <RelativeLayout

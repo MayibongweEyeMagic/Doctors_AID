@@ -95,7 +95,19 @@ public class Doctor_Homepage extends AppCompatActivity {
     private void setSingleEvent(GridLayout doctor_home) {
         for (int i = 0; i < doctor_home.getChildCount();i++)
         {
-            if(i == 2){
+
+            if(i == 0){
+                CardView cardView = (CardView)doctor_home.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Doctor_Homepage.this,DoctorProfile.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            else if(i == 1){
             CardView cardView = (CardView)doctor_home.getChildAt(i);
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,7 +117,18 @@ public class Doctor_Homepage extends AppCompatActivity {
                 }
             });
             }
-            else if(i == 4){
+
+            else if(i == 2){
+                CardView cardView = (CardView)doctor_home.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Doctor_Homepage.this,DoctorChats.class);
+                    }
+                });
+            }
+
+            else if(i == 3){
             CardView cardView = (CardView)doctor_home.getChildAt(i);
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +138,26 @@ public class Doctor_Homepage extends AppCompatActivity {
                 }
             });
         }
+            else if(i == 4){
+                CardView cardView = (CardView)doctor_home.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Doctor_Homepage.this,DoctorAccess.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+            else if(i == 5){
+                CardView cardView = (CardView)doctor_home.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Doctor_Homepage.this, DoctorAccess.class);
+                        startActivity(intent);
+                    }
+                });
+            }
         }
     }
 
