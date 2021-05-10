@@ -32,7 +32,7 @@ import okhttp3.Response;
 
 public class Registration_Doctor extends AppCompatActivity {
 
-    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM;
+    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION;
     private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone;
     Button registration_button;
 
@@ -75,8 +75,6 @@ public class Registration_Doctor extends AppCompatActivity {
 
         number = (EditText) findViewById(R.id.phone_number);
 
-        String SPECIALIZATION = special.getText().toString();
-
         views.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +100,7 @@ public class Registration_Doctor extends AppCompatActivity {
                 PASSWORD = password.getText().toString();
                 COMFIRMPASS = comfirmpass.getText().toString();
                 PHONENUM = phone.getText().toString();
+                SPECIALIZATION = special.getText().toString();
 
 
 
