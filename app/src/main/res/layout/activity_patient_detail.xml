@@ -62,7 +62,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textAlignment="gravity"
-        android:id="@+id/previousvisitdate"
+        android:id="@+id/previous_visit_date"
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"/>
 

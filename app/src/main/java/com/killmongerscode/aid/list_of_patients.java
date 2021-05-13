@@ -1,45 +1,45 @@
 package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class list_of_patients extends AppCompatActivity {
-
-    ListView listview;
-
-    String List[]= {"Phindulo Makhado","Sibabalo Luqhide","Mayibongwe Bafoly","Test4","Test5","Test6","Test7","Test8","Test9","Test10","Test11","Test12"};
+    private ArrayList<Patient> usersList;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listofpatient);
+        setContentView(R.layout.activity_list_of_patients);
+        recyclerView = findViewById(R.id.Lists);
+        usersList = new ArrayList<>();
 
-        Intent intent = getIntent();
+        setPatientInfo();
+        setAdpter();
+    }
 
-        listview = (ListView)findViewById(R.id.listofpatients);
+    private void setAdpter() {
+        list_adapter adapter = new list_adapter(usersList);
+        RecyclerView.LayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(LayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+    }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,List);
-        listview.setAdapter(arrayAdapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                String select = listview.getItemAtPosition(position).toString();
-
-                Intent intent = new Intent(list_of_patients.this,PatientDetail.class);
-                intent.putExtra("select",select);
-                startActivity(intent);
-
-            }
-        });
-
-
+    private void setPatientInfo() {
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo"));
     }
 }

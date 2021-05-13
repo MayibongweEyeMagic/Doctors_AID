@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Profile"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_gravity="center"
             />
@@ -63,14 +63,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:text="NAME : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/name"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -90,14 +94,19 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Surname"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="SURNAME : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/surname"
+                android:gravity="center_vertical" />
 
             <ImageView
                 android:layout_weight="1"
@@ -118,14 +127,19 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="@string/cellphone"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="CELLPHONE NO. : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/phone_number"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -146,14 +160,19 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Email"
-                android:inputType="textPersonName" />
+                android:text="Email_Address : "
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/patient_email_address"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -174,14 +193,19 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Location"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="LOCATION : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/Location"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -201,14 +225,19 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Previous visit date"
-                android:inputType="textPersonName" />
+                android:text="Previous Visit Date : "
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/previousvisitdate"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"

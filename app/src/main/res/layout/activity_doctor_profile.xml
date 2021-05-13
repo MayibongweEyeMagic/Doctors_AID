@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Profile"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_gravity="center"
             />
@@ -70,8 +70,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="NAME : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_name"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -97,8 +102,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Surname"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="SURNAME : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_surname"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -125,8 +135,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="@string/cellphone"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="CELLPHONE NO. : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_cell"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -153,8 +168,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Email"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="EMAIL ADDRESS : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_email_address"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -181,8 +201,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Location"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="LOCATION : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_location"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -208,8 +233,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Qualification"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:text="QUALIFICATION : "
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_qualification"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
