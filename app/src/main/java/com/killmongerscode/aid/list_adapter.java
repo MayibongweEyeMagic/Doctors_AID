@@ -13,17 +13,25 @@ import java.util.ArrayList;
 public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder>{
 
     private ArrayList<Patient> usersList;
+    private RecyclerViewClickListner Listner;
 
-    public list_adapter(ArrayList<Patient>usersList){
+    public list_adapter(ArrayList<Patient>usersList, RecyclerViewClickListner Listner){
         this.usersList = usersList;
+        this.Listner = Listner;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView Nametxt;
 
         public MyViewHolder(final View view){
             super(view);
             Nametxt = view.findViewById(R.id.textView5);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Listner.onClick(view, getAdapterPosition());
         }
     }
 
@@ -45,5 +53,9 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
     @Override
     public int getItemCount() {
         return usersList.size();
+    }
+
+    public interface RecyclerViewClickListner{
+        void onClick(View v, int position);
     }
 }

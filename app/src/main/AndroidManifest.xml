@@ -17,7 +17,6 @@
         <activity android:name=".DoctorAccess" />
         <activity android:name=".DoctorChats" />
         <activity android:name=".DoctorProfile" />
-        <activity android:name=".PatientDetail" />
         <activity android:name=".Booking_System" />
         <activity android:name=".Patient_Homepage" />
         <activity android:name=".Doctor_Homepage" />
@@ -30,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PatientDetail"/>
     </application>
 
 </manifest>

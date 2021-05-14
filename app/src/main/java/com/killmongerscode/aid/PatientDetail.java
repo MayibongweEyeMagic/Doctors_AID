@@ -25,9 +25,14 @@ public class PatientDetail extends AppCompatActivity {
         pvd=(TextView)findViewById(R.id.previousvisitdate);
         rfpv=(TextView)findViewById(R.id.reason);
 
-        Intent intent = getIntent();
-        Patientname.setText(intent.getStringExtra("select"));
-        String person= Patientname.getText().toString();
+        String Patient_name = "Patient name not set";
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+           Patient_name = extras.getString("Patient");
+        }
+
+        Patientname.setText(Patient_name);
 
 
     }
