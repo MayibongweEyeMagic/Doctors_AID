@@ -116,6 +116,27 @@ public class Verification {
         return thing;
     }
 
+    public  String get_patient_phone(){
+
+        String [] temp = patBio.split(":");
+        String thing = temp[3];
+        return thing;
+    }
+
+    public  String get_patient_dob(){
+
+        String [] temp = patBio.split(":");
+        String thing = temp[4];
+        return thing;
+    }
+
+    public  String get_patient_location(){
+
+        String [] temp = patBio.split(":");
+        String thing = temp[2];
+        return thing;
+    }
+
     public ArrayList getDoctorEmails(String json) throws JSONException{
 
             ArrayList<String> emails = new ArrayList<>();

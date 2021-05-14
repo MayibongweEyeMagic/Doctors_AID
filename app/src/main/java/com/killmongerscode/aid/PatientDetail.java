@@ -22,7 +22,7 @@ public class PatientDetail extends AppCompatActivity {
         surname=(TextView)findViewById(R.id.surname);
         textnumber=(TextView)findViewById(R.id.cellphone);
         location=(TextView)findViewById(R.id.location);
-        pvd=(TextView)findViewById(R.id.previousvisitdate);
+        //pvd=(TextView)findViewById(R.id.previousvisitdate);
         rfpv=(TextView)findViewById(R.id.reason);
 
         String Patient_name = "Patient name not set";

@@ -31,6 +31,8 @@ public class Patient_Homepage extends AppCompatActivity {
     private TextView welcome;
     Verification verification = new Verification();
 
+    String name, surname, dob, phoneNo, emailAddress, location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +41,15 @@ public class Patient_Homepage extends AppCompatActivity {
         Patient_homepage = (GridLayout)findViewById(R.id.Patient_homepage);
         welcome = findViewById(R.id.title_view);
 
-        setSingleEvent(Patient_homepage);
-
         Bundle bundle = getIntent().getExtras();
-        String EMAIL = bundle.getString("email");
+        emailAddress = bundle.getString("email");
+
+        setSingleEvent(Patient_homepage);
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
-                .add("email",EMAIL)
+                .add("email",emailAddress)
                 .build();
 
         Request request = new Request.Builder()
@@ -98,6 +100,12 @@ public class Patient_Homepage extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Patient_Homepage.this,PatientProfile.class);
+                        intent.putExtra("name", name);
+                        intent.putExtra("surname", surname);
+                        intent.putExtra("dateOfbirth", dob);
+                        intent.putExtra("cellNo", phoneNo);
+                        intent.putExtra("emailAdd", emailAddress);
+                        intent.putExtra("homeAddress", location);
                         startActivity(intent);
                     }
                 });
@@ -129,10 +137,16 @@ public class Patient_Homepage extends AppCompatActivity {
 }
     public void get_method(String response) throws JSONException {
 
-        String temp = verification.JSONFUCTION(response);
-        String temp1 = verification.get_patient_name();
-        String temp2 = verification.get_patient_surname();
-        welcome.setText("Hi "+ temp1+ "!");
+        verification.JSONFUCTION(response);
+        name = verification.get_patient_name();
+        surname= verification.get_patient_surname();
+        dob = verification.get_patient_dob();
+        phoneNo = verification.get_patient_phone();
+        location =verification.get_patient_location();
+
+        welcome.setText("Hi "+ name+ "!");
     }
+
+
 
 }
