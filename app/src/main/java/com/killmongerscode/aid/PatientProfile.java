@@ -21,7 +21,7 @@ public class PatientProfile extends AppCompatActivity {
         cellNumber =findViewById(R.id.phone_number);
         emailsAddress =findViewById(R.id.patient_email_address);
         homeAddress =findViewById(R.id.Location);
-        title =findViewById(R.id.toolbar_title);
+        title =findViewById(R.id.toolbar_title_doctor);
 
         Bundle bundle =getIntent().getExtras();
         setFields(bundle);

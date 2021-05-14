@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 public class DoctorProfile extends AppCompatActivity {
 
-    Verification verification = new Verification();
+   // Verification verification = new Verification();
     TextView name, surname , cellphone , email, specialization, qualification,title;
 
     String message, get_name, get_surname,get_cellphone, get_specialization, get_qualification;
@@ -24,7 +24,7 @@ public class DoctorProfile extends AppCompatActivity {
         email = findViewById(R.id.doctor_email_address);
         specialization = findViewById(R.id.doctor_spectialization);
         qualification = findViewById(R.id.doctor_qualification);
-        //title = findViewById(R.id.toolbar_title);
+        title = findViewById(R.id.toolbar_title_doctor);
 
 
 
@@ -51,7 +51,7 @@ public class DoctorProfile extends AppCompatActivity {
         specialization.setText("Specialization: "+get_specialization);
         email.setText("Email Address: " + message);
         qualification.setText("Qualification: " + get_qualification);
-      //  title.setText(name + " " + surname);
+        title.setText(get_name + " " + get_surname);
     }
 
 }
