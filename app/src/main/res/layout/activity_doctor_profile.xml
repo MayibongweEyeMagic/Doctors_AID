@@ -71,7 +71,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:text="NAME : "
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"
@@ -103,7 +102,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:text="SURNAME : "
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"
@@ -136,7 +134,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:text="CELLPHONE NO. : "
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"
@@ -169,7 +166,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:text="EMAIL ADDRESS : "
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"
@@ -202,11 +198,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:text="LOCATION : "
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"
-                android:id="@+id/doctor_location"
+                android:id="@+id/doctor_spectialization"
                 android:gravity="center_vertical"/>
 
             <ImageView
@@ -214,6 +209,7 @@
                 android:layout_width="70dp"
                 android:layout_height="50dp"
                 />
+
 
         </LinearLayout>
 
@@ -234,7 +230,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:textSize="15sp"
-                android:text="QUALIFICATION : "
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"

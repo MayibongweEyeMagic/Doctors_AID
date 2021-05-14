@@ -26,6 +26,8 @@ public class Doctor_Homepage extends AppCompatActivity {
 
     GridLayout doctor_home;
     TextView welcome;
+    String get_name , get_surname, get_phonenumber, get_specialization, get_qualification;
+
 
     String message;
     Verification verification = new Verification();
@@ -41,12 +43,12 @@ public class Doctor_Homepage extends AppCompatActivity {
         setSingleEvent(doctor_home);
 
         Bundle bundle = getIntent().getExtras();
-        String EMAIL = bundle.getString("email");
+         message = bundle.getString("email");
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
-                .add("email",EMAIL)
+                .add("email",message)
                 .build();
 
         Request request = new Request.Builder()
@@ -102,6 +104,12 @@ public class Doctor_Homepage extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Doctor_Homepage.this,DoctorProfile.class);
+                        intent.putExtra("email", message);
+                        intent.putExtra("name", get_name);
+                        intent.putExtra("surname", get_surname);
+                        intent.putExtra("qualification", get_qualification);
+                        intent.putExtra("cellNo", get_phonenumber);
+                        intent.putExtra("specialization", get_specialization);
                         startActivity(intent);
                     }
                 });
@@ -163,10 +171,14 @@ public class Doctor_Homepage extends AppCompatActivity {
 
     public void get_method(String response) throws JSONException {
 
-        String temp = verification.JSONFUCTION_DOCTOR(response);
-        String temp1 = verification.get_doctor_name();
-        String temp2 = verification.get_doctor_surname();
-         welcome.setText("Hi "+ temp1+ "!");
+        verification.JSONFUCTION_DOCTOR(response);
+
+        get_name = verification.get_doctor_name();
+        get_surname = verification.get_doctor_surname();
+        get_phonenumber = verification.get_doctor_phone();
+        get_specialization = verification.get_doctor_spectialization();
+        get_qualification = verification.get_doctor_qualification();
+         welcome.setText("Hi "+ get_name+ "!");
     }
 
 
