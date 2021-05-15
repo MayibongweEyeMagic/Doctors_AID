@@ -93,11 +93,39 @@ public class Verification {
             return thing;
         }
 
+    public  String get_doctor_qualification(){
+
+        String [] temp= bio.split(":");
+        String thing = temp[4];
+        return thing;
+    }
+
+    public  String get_doctor_spectialization(){
+
+        String [] temp= bio.split(":");
+        String thing = temp[2];
+        return thing;
+    }
+
+    public  String get_doctor_phone(){
+
+        String [] temp= bio.split(":");
+        String thing = temp[3];
+        return thing;
+    }
+
 
         public  String get_doctor_surname(){
 
         String [] temp = bio.split(":");
         String thing = temp[1];
+        return thing;
+    }
+
+    public  String get_doctor_gad_at(){
+
+        String [] temp= bio.split(":");
+        String thing = temp[5];
         return thing;
     }
 
@@ -113,6 +141,27 @@ public class Verification {
 
         String [] temp = patBio.split(":");
         String thing = temp[1];
+        return thing;
+    }
+
+    public  String get_patient_phone(){
+
+        String [] temp = patBio.split(":");
+        String thing = temp[3];
+        return thing;
+    }
+
+    public  String get_patient_dob(){
+
+        String [] temp = patBio.split(":");
+        String thing = temp[4];
+        return thing;
+    }
+
+    public  String get_patient_location(){
+
+        String [] temp = patBio.split(":");
+        String thing = temp[2];
         return thing;
     }
 

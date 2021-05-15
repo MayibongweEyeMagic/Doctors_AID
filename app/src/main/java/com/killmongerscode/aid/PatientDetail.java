@@ -22,12 +22,17 @@ public class PatientDetail extends AppCompatActivity {
         surname=(TextView)findViewById(R.id.surname);
         textnumber=(TextView)findViewById(R.id.cellphone);
         location=(TextView)findViewById(R.id.location);
-        pvd=(TextView)findViewById(R.id.previousvisitdate);
+        //pvd=(TextView)findViewById(R.id.previousvisitdate);
         rfpv=(TextView)findViewById(R.id.reason);
 
-        Intent intent = getIntent();
-        Patientname.setText(intent.getStringExtra("select"));
-        String person= Patientname.getText().toString();
+        String Patient_name = "Patient name not set";
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+           Patient_name = extras.getString("Patient");
+        }
+
+        Patientname.setText(Patient_name);
 
 
     }

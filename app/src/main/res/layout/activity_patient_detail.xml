@@ -5,10 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:backgroundTint="@color/teal_200"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".PatientDetail">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/elevation_10">
+
+        <ImageView
+            android:id="@+id/detail_back"
+            android:layout_width="24dp"
+            android:layout_height="@dimen/height_24"
+            android:src="@drawable/ic_back"
+            android:padding="@dimen/elavation_6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient's Information"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -62,7 +84,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textAlignment="gravity"
-        android:id="@+id/previousvisitdate"
+        android:id="@+id/previous_visit_date"
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"/>
 
@@ -77,5 +99,17 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/medicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Medicine Last Prescribed To Patient :"
+        android:textAlignment="gravity"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

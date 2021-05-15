@@ -64,7 +64,6 @@
             tools:ignore="MissingConstraints">
 
             <EditText
-                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -92,7 +91,6 @@
             tools:ignore="MissingConstraints">
 
             <EditText
-                android:id="@+id/surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -121,7 +119,6 @@
             tools:ignore="MissingConstraints">
 
             <EditText
-                android:id="@+id/cellphone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -150,7 +147,6 @@
             tools:ignore="MissingConstraints">
 
             <EditText
-                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -179,7 +175,6 @@
             tools:ignore="MissingConstraints">
 
             <EditText
-                android:id="@+id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -207,7 +202,6 @@
             tools:ignore="MissingConstraints">
 
             <EditText
-                android:id="@+id/lastvisit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

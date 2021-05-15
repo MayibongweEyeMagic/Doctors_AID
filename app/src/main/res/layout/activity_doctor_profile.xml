@@ -20,11 +20,11 @@
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp">
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/toolbar_title_doctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Profile"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_gravity="center"
             />
@@ -49,7 +49,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="470dp"
-        android:background="@drawable/rounded_relativelayout"
+        android:background="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
@@ -64,14 +64,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_name"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -91,14 +95,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Surname"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_surname"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -119,14 +127,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="@string/cellphone"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_cell"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -147,14 +159,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Email"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_email_address"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -175,20 +191,25 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Location"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_spectialization"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
                 />
+
 
         </LinearLayout>
 
@@ -202,14 +223,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Qualification"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/doctor_qualification"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
