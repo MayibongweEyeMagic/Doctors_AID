@@ -116,13 +116,13 @@ public class Doctor_Homepage extends AppCompatActivity {
             }
 
             else if(i == 1){
-            CardView cardView = (CardView)doctor_home.getChildAt(i);
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Doctor_Homepage.this,list_of_patients.class);
-                    startActivity(intent);
-                }
+                    CardView cardView = (CardView)doctor_home.getChildAt(i);
+                    cardView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Doctor_Homepage.this,list_of_patients.class);
+                            startActivity(intent);
+                        }
             });
             }
 
