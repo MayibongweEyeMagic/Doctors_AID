@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AiD">
-        <activity android:name=".Booking_Patient"></activity>
+        <activity android:name=".Appointment_detail"></activity>
+        <activity android:name=".pending_bookings" />
+        <activity android:name=".Patient_appointments" />
+        <activity android:name=".Doctor_appointments" />
         <activity android:name=".list_of_patients" />
         <activity android:name=".PatientProfile" />
         <activity android:name=".DoctorAccess" />
