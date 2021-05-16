@@ -126,7 +126,7 @@ public class Patient_Homepage extends AppCompatActivity {
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Patient_Homepage.this,Booking_System.class);
+                        Intent intent = new Intent(Patient_Homepage.this,Booking_Patient.class);
                         startActivity(intent);
                     }
                 });

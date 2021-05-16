@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AiD">
-        <activity android:name=".list_of_patients"></activity>
+        <activity android:name=".Booking_Patient"></activity>
+        <activity android:name=".list_of_patients" />
         <activity android:name=".PatientProfile" />
         <activity android:name=".DoctorAccess" />
         <activity android:name=".DoctorChats" />
@@ -29,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PatientDetail"/>
+        <activity android:name=".PatientDetail" />
     </application>
 
 </manifest>
