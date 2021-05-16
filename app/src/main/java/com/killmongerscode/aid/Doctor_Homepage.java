@@ -141,7 +141,7 @@ public class Doctor_Homepage extends AppCompatActivity {
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Doctor_Homepage.this,Booking_System.class);
+                    Intent intent = new Intent(Doctor_Homepage.this,pending_bookings.class);
                     startActivity(intent);
                 }
             });
@@ -151,7 +151,7 @@ public class Doctor_Homepage extends AppCompatActivity {
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Doctor_Homepage.this,DoctorAccess.class);
+                        Intent intent = new Intent(Doctor_Homepage.this,Doctor_appointments.class);
                         startActivity(intent);
                     }
                 });
