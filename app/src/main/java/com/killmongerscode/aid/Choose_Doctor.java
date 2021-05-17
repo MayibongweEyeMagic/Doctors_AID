@@ -10,28 +10,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder>{
+public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHolder> {
 
     private ArrayList<Patient> usersList;
     private RecyclerViewClickListner Listner;
 
-    public list_adapter(ArrayList<Patient>usersList, RecyclerViewClickListner Listner){
+    public Choose_Doctor(ArrayList<Patient>usersList, RecyclerViewClickListner Listner){
         this.usersList = usersList;
         this.Listner = Listner;
     }
 
     @NonNull
     @Override
-    public list_adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_of_patients, parent, false);
-        return new MyViewHolder(patientview);
+    public Choose_Doctor.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.choose_doc, parent, false);
+        return new Choose_Doctor.MyViewHolder(patientview);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull list_adapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Choose_Doctor.MyViewHolder holder, int position) {
         String name = usersList.get(position).getPatient_name();
-        holder.Nametxt.setText(name);
-
+        String surname = usersList.get(position).getPatient_name();
+        String email = usersList.get(position).getPatient_name();
+        holder.Name.setText(name);
+        holder.Surname.setText(surname);
+        holder.Email.setText(email);
 
     }
 
@@ -45,11 +48,13 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Nametxt;
+        private TextView Name, Surname, Email;
 
         public MyViewHolder(final View view){
             super(view);
-            Nametxt = view.findViewById(R.id.textView5);
+            Name = view.findViewById(R.id.Name_searched);
+            Surname =view.findViewById(R.id.Surname_searched);
+            Email =view.findViewById(R.id.Email_of_name_searched);
             view.setOnClickListener(this);
         }
 

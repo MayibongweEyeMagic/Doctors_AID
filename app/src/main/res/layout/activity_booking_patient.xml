@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Booking_Patient">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/elevation_10">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="@dimen/height_24"
+            android:src="@drawable/ic_back"
+            android:padding="@dimen/elavation_6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book An Appointment"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin_32"
+        android:layout_marginRight="@dimen/margin_32"
+        android:layout_marginBottom="307dp"
+        android:orientation="vertical"
+        android:padding="@dimen/height_5">
+
+
+        <AutoCompleteTextView
+            android:id="@+id/doctor_spec"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:drawableRight="@drawable/ic_doctor"
+            android:fontFamily="casual"
+            android:hint="Select specialization"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/teal_700"
+            android:textSize="@dimen/elavation_16" />
+
+        <EditText
+            android:id="@+id/doctors"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:drawableRight="@drawable/ic_doctor"
+            android:fontFamily="casual"
+            android:visibility="gone"
+            android:hint="Select a Doctor"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/teal_700"
+            android:textSize="@dimen/elavation_16" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:drawableRight="@drawable/calendar"
+            android:fontFamily="casual"
+            android:hint="Select Date"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/teal_700"
+            android:textSize="@dimen/elavation_16" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_show2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:layout_marginTop="@dimen/elevation_10"
+            android:backgroundTint="@color/purple_700"
+            android:fontFamily="casual"
+            android:text="Request For Booking Confirmation"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</RelativeLayout>
