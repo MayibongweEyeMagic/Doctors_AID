@@ -10,7 +10,7 @@ public class Doctor {
     private String qualification;
 
 
-    public Doctor(String name, String surname, String email){
+    public Doctor(){
         this.name = name;
         this.surname = surname;
         this.tel = tel;
