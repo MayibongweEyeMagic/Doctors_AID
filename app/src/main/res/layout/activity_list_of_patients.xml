@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".list_of_patients">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/medicine4"
+        android:scaleType="centerCrop"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/background"
+    android:background="@drawable/medical1"
     tools:context=".MainActivity">
 
     <ImageView
@@ -36,7 +36,9 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:paddingLeft="5dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textColorHint="@color/black"/>
 
     </RelativeLayout>
 
@@ -52,7 +54,9 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textColorHint="@color/black"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -85,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Click"
-                android:textColor="@android:color/holo_blue_light"
+                android:textColor="@color/green"
                 android:textSize="17sp"/>
         </RelativeLayout>
 
@@ -97,6 +101,7 @@
             <TextView
                 android:textSize="17sp"
                 android:text="here to register"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

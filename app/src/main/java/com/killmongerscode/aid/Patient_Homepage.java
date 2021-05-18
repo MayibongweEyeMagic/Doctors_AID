@@ -131,6 +131,17 @@ public class Patient_Homepage extends AppCompatActivity {
                     }
                 });
             }
+
+            else if(i == 4){
+                CardView cardView = (CardView)Patient_homepage.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Patient_Homepage.this,Patient_appointments.class);
+                        startActivity(intent);
+                    }
+                });
+            }
         }
 
 
