@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".pending_bookings">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/medical1"
+        android:scaleType="centerCrop"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pending_bookings"
         android:layout_width="match_parent"

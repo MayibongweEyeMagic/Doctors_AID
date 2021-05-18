@@ -4,43 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/medical1"
     tools:context=".PatientProfile">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#22BE87"
+        android:layout_marginTop="16dp"
+        android:background="#4D2A2B29"
         android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="#fff"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp">
+        app:titleTextColor="#fff">
+
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/toolbar_title_doctor"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Profile"
-            android:textColor="@android:color/white"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_gravity="center"
-            />
+            android:textColor="@android:color/black" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="413dp"
-        android:layout_height="262dp"
+        android:layout_width="200dp"
+        android:layout_height="190dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141"
+        app:layout_constraintVertical_bias="0.134"
         app:srcCompat="@drawable/ic_profile"
         tools:ignore="VectorDrawableCompat" />
 
@@ -48,10 +50,16 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="470dp"
-        android:background="@drawable/rounded_relativelayout"
+        android:background="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/medical1"
+            android:scaleType="centerCrop"/>
 
         <LinearLayout
             android:layout_marginLeft="30dp"
@@ -63,14 +71,17 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/name"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -90,14 +101,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Surname"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/surname"
+                android:gravity="center_vertical" />
 
             <ImageView
                 android:layout_weight="1"
@@ -110,7 +125,39 @@
         <LinearLayout
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:id="@+id/date"
             android:layout_below="@+id/layout_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/date_birth"
+                android:gravity="center_vertical" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@+id/date"
             android:id="@+id/layout_text3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,14 +165,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="@string/cellphone"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/phone_number"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -146,14 +197,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Email"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/patient_email_address"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"
@@ -174,41 +229,18 @@
             android:weightSum="2"
             tools:ignore="MissingConstraints">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Location"
-                android:inputType="textPersonName" />
-
-            <ImageView
-                android:layout_weight="1"
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_below="@+id/layout_text5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:hint="Previous visit date"
-                android:inputType="textPersonName" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:id="@+id/Location"
+                android:gravity="center_vertical"/>
 
             <ImageView
                 android:layout_weight="1"

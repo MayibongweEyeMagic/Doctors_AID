@@ -20,21 +20,6 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
         this.Listner = Listner;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Nametxt;
-
-        public MyViewHolder(final View view){
-            super(view);
-            Nametxt = view.findViewById(R.id.textView5);
-            view.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Listner.onClick(view, getAdapterPosition());
-        }
-    }
-
     @NonNull
     @Override
     public list_adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,5 +42,20 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
 
     public interface RecyclerViewClickListner{
         void onClick(View v, int position);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView Nametxt;
+
+        public MyViewHolder(final View view){
+            super(view);
+            Nametxt = view.findViewById(R.id.textView5);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Listner.onClick(view, getAdapterPosition());
+        }
     }
 }

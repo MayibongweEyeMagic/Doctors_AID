@@ -126,7 +126,18 @@ public class Patient_Homepage extends AppCompatActivity {
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Patient_Homepage.this,Booking_System.class);
+                        Intent intent = new Intent(Patient_Homepage.this,Booking_Patient.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            else if(i == 4){
+                CardView cardView = (CardView)Patient_homepage.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Patient_Homepage.this,Patient_appointments.class);
                         startActivity(intent);
                     }
                 });
