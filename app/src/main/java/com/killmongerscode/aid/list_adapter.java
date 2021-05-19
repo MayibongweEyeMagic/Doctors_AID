@@ -23,14 +23,18 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
     @NonNull
     @Override
     public list_adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_of_patients, parent, false);
+        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.choose_doc, parent, false);
         return new MyViewHolder(patientview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull list_adapter.MyViewHolder holder, int position) {
         String name = usersList.get(position).getPatient_name();
-        holder.Nametxt.setText(name);
+        String lname = usersList.get(position).getPatient_lname();
+        String email = usersList.get(position).getPatient_email();
+        holder.Name.setText(name);
+        holder.Surname.setText(lname);
+        holder.Email.setText(email);
 
 
     }
@@ -45,11 +49,13 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Nametxt;
+        private final TextView Name, Surname, Email;
 
         public MyViewHolder(final View view){
             super(view);
-            Nametxt = view.findViewById(R.id.textView5);
+            Name = view.findViewById(R.id.Patient_Name);
+            Surname =view.findViewById(R.id.Surname);
+            Email =view.findViewById(R.id.patient_email);
             view.setOnClickListener(this);
         }
 

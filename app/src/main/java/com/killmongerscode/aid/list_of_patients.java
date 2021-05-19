@@ -51,13 +51,16 @@ public class list_of_patients extends AppCompatActivity {
     }
 
     private void setPatientInfo() {
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
-        usersList.add(new Patient("Phindulo"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
+        usersList.add(new Patient("Phindulo", "Makhado", "Makhado@gmail.com"));
     }
 }

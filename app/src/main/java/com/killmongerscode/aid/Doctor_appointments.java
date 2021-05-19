@@ -51,13 +51,13 @@ public class Doctor_appointments extends AppCompatActivity {
     }
 
     private void setPatientInfo() {
+        /*confirmedList.add(new Patient("Phindulo"));
         confirmedList.add(new Patient("Phindulo"));
         confirmedList.add(new Patient("Phindulo"));
         confirmedList.add(new Patient("Phindulo"));
         confirmedList.add(new Patient("Phindulo"));
         confirmedList.add(new Patient("Phindulo"));
         confirmedList.add(new Patient("Phindulo"));
-        confirmedList.add(new Patient("Phindulo"));
-        confirmedList.add(new Patient("Phindulo"));
+        confirmedList.add(new Patient("Phindulo"));*/
     }
 }

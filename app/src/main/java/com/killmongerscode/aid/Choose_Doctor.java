@@ -48,13 +48,13 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Name, Surname, Email;
+        private final TextView Name, Surname, Email;
 
         public MyViewHolder(final View view){
             super(view);
-            Name = view.findViewById(R.id.Name_searched);
-            Surname =view.findViewById(R.id.Surname_searched);
-            Email =view.findViewById(R.id.Email_of_name_searched);
+            Name = view.findViewById(R.id.Patient_Name);
+            Surname =view.findViewById(R.id.Surname);
+            Email =view.findViewById(R.id.patient_email);
             view.setOnClickListener(this);
         }
 
