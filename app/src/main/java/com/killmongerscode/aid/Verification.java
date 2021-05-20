@@ -67,8 +67,6 @@ public class Verification {
 
 
              bio =  first_name + ":" + surname + ":"+ specialization + ":" + doctor_phone_phone + ":" + doctor_qlf + ":" + grad_at;
-            //acesskey.add(temp);
-            //biography.add(bio);
         }
 
         return bio;

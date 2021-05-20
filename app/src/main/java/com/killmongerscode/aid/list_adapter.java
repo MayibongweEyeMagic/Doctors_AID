@@ -23,7 +23,7 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
     @NonNull
     @Override
     public list_adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.choose_doc, parent, false);
+        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_of_patients, parent, false);
         return new MyViewHolder(patientview);
     }
 
