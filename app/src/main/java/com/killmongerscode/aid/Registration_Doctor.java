@@ -32,7 +32,7 @@ import okhttp3.Response;
 
 public class Registration_Doctor extends AppCompatActivity {
 
-    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION;
+    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION, TOKEN;
     private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone;
     Button registration_button;
 
