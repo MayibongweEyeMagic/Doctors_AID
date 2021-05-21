@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -51,7 +52,7 @@ public class list_of_patients extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
-                .add("email",message)
+                .add("dr_email",message)
                 .build();
 
         Request request = new Request.Builder()
@@ -77,11 +78,7 @@ public class list_of_patients extends AppCompatActivity {
                 list_of_patients.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            setField(responseData);
-                        }catch (JSONException e){
-                            e.printStackTrace();
-                        }
+                        Toast.makeText(list_of_patients.this,responseData, Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -114,32 +111,27 @@ public class list_of_patients extends AppCompatActivity {
         };
     }
 
-    private void setPatientInfo(String name, String surname, String email) {
-        usersList.add(new Patient(name, surname, email));
-    }
-
-
     private void setField(String json) throws JSONException{
-        JSONArray jsonArray = new JSONArray(json);
 
-        for(int i=0; i< jsonArray.length();++i) {
+        Verification verification =new Verification();
+        ArrayList<String> holder =new ArrayList<>();
+        holder =verification.getSeenPatients(json);
 
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
+        if(!holder.isEmpty()){
+            for (int i=0; i < holder.size();i++){
 
-            String first_name = jsonObject.getString("PATIENT_FNAME");
-            String surname = jsonObject.getString("PATIENT_LNAME");
-            String patient_dob = jsonObject.getString("PATIENT_DOB");
-            String home_address = jsonObject.getString("PATIENT_ADDRESS");
-            String patient_email =jsonObject.getString("PATIENT_EMAIL");
-            String patient_phone = jsonObject.getString("PATIENT_PHONE");
-            String reason = jsonObject.getString("REASON");
-            String outcome = jsonObject.getString("OUTCOME");
-            String booking_date = jsonObject.getString("BOOKING_DATE");
+                String[] thing =holder.get(i).split(":");
 
-            // set the fields name, surname and email of the patient
-            setPatientInfo(first_name,surname, patient_email);
+                String name = thing[0];
+                String surname =thing[1];
 
-            patBio = first_name + ":" + surname + ":" + patient_email + ":" + reason+ ":" + outcome + ":" + home_address + ":" + patient_phone + ":" + patient_dob + ":" + booking_date;
+                usersList.add(new Patient(name, surname, "Dendario@gmail.com"));
+
+
+            }
+
         }
+
+
     }
 }
