@@ -29,12 +29,6 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
 
     @Override
     public void onBindViewHolder(@NonNull Choose_Doctor.MyViewHolder holder, int position) {
-        String name = usersList.get(position).getPatient_name();
-        String surname = usersList.get(position).getPatient_name();
-        String email = usersList.get(position).getPatient_name();
-        holder.Name.setText(name);
-        holder.Surname.setText(surname);
-        holder.Email.setText(email);
 
     }
 
@@ -48,13 +42,10 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Name, Surname, Email;
 
         public MyViewHolder(final View view){
             super(view);
-            Name = view.findViewById(R.id.Name_searched);
-            Surname =view.findViewById(R.id.Surname_searched);
-            Email =view.findViewById(R.id.Email_of_name_searched);
+
             view.setOnClickListener(this);
         }
 

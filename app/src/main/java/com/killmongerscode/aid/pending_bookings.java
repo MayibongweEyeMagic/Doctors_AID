@@ -53,14 +53,14 @@ public class pending_bookings extends AppCompatActivity {
     }
 
     private void setPatientInfo() {
+       /* patientList.add(new Patient("Phindulo Makhado"));
         patientList.add(new Patient("Phindulo Makhado"));
         patientList.add(new Patient("Phindulo Makhado"));
         patientList.add(new Patient("Phindulo Makhado"));
         patientList.add(new Patient("Phindulo Makhado"));
         patientList.add(new Patient("Phindulo Makhado"));
         patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
+        patientList.add(new Patient("Phindulo Makhado"));*/
     }
 
 }
