@@ -37,12 +37,7 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
         holder.Surname.setText(usersList.get(position).getPatient_lname());
         holder.Email.setText(usersList.get(position).getPatient_email());
 
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
     @Override
