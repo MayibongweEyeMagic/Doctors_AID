@@ -29,24 +29,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class list_of_patients extends AppCompatActivity {
-    private ArrayList<Patient> usersList;
+    private ArrayList<Patient> usersList =new ArrayList<>();
     private RecyclerView recyclerView;
-    private list_adapter.RecyclerViewClickListner Listner;
-    private String patBio;
-    private String message;
+
+
+    private String message, patientBio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patients);
+
         recyclerView =findViewById(R.id.list);
-        usersList = new ArrayList<>();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Bundle bundle = getIntent().getExtras();
 
         message = bundle.getString("email");
-
-        setAdapter();
 
 
         OkHttpClient client = new OkHttpClient();
@@ -78,8 +78,11 @@ public class list_of_patients extends AppCompatActivity {
                 list_of_patients.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(list_of_patients.this,responseData, Toast.LENGTH_SHORT).show();
-
+                        try {
+                            setField(responseData);
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
                     }
                 });
 
@@ -90,48 +93,53 @@ public class list_of_patients extends AppCompatActivity {
         });
     }
 
-    private void setAdapter() {
-        setOnClickListner();
-        list_adapter adapter = new list_adapter(usersList, Listner);
-        RecyclerView.LayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(LayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void setOnClickListner() {
-        Listner = new list_adapter.RecyclerViewClickListner(){
-            @Override
-            public void onClick(View v, int position){
-                Intent intent = new Intent(getApplicationContext(), PatientDetail.class);
-                intent.putExtra("Patient Name",usersList.get(position).getPatient_name());
-                startActivity(intent);
-            }
-
-        };
-    }
-
     private void setField(String json) throws JSONException{
 
-        Verification verification =new Verification();
         ArrayList<String> holder =new ArrayList<>();
-        holder =verification.getSeenPatients(json);
+        holder =getSeenPatients(json);
 
-        if(!holder.isEmpty()){
             for (int i=0; i < holder.size();i++){
 
                 String[] thing =holder.get(i).split(":");
 
                 String name = thing[0];
                 String surname =thing[1];
-
-                usersList.add(new Patient(name, surname, "Dendario@gmail.com"));
-
-
+                String email = thing[2];
+                String patient_dob = thing[3];
+                String home_address =thing[4];
+                String patient_phone =thing[5];
+                String reason =thing[6];
+                String outcome =thing[7];
+                String booking_date =thing[8];
+                usersList.add(new Patient(name, surname, email, patient_dob, home_address, patient_phone, reason, outcome, booking_date));
             }
+            list_adapter adapter =new list_adapter(usersList, list_of_patients.this);
+            recyclerView.setAdapter(adapter);
+    }
 
+    public ArrayList getSeenPatients(String json) throws JSONException{
+        ArrayList<String> getPatients =new ArrayList<>();
+
+        JSONArray jsonArray = new JSONArray(json);
+
+        for(int i=0; i< jsonArray.length();++i) {
+
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+            String first_name = jsonObject.getString("PATIENT_FNAME");
+            String surname = jsonObject.getString("PATIENT_LNAME");
+            String patient_email =jsonObject.getString("PATIENT_EMAIL");
+            String patient_dob = jsonObject.getString("PATIENT_DOB");
+            String home_address = jsonObject.getString("PATIENT_ADDRESS");
+            String patient_phone = jsonObject.getString("PATIENT_PHONE");
+            String reason = jsonObject.getString("REASON");
+            String outcome = jsonObject.getString("OUTCOME");
+            String booking_date = jsonObject.getString("BOOKING_DATE");
+
+            patientBio = first_name + ":" + surname+ ":" + patient_email
+                    + ":" + patient_dob + ":" + home_address+ ":" + patient_phone+ ":" + reason + ":" + outcome+ ":"+ booking_date;
+            getPatients.add(patientBio);
         }
-
-
+        return getPatients;
     }
 }

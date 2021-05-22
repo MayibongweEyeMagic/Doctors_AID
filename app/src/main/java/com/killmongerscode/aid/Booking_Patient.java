@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -42,16 +43,12 @@ public class Booking_Patient extends AppCompatActivity {
         ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.select_dialog_item, predefined);
         spec_field.setThreshold(1);
         spec_field.setInputType(0);
-        choose_doc.setInputType(0);
         spec_field.setAdapter(adapter);
 
         spec_field.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 spec_field.showDropDown();
-
-                choose_doc.setVisibility(View.VISIBLE);
-
             }
         });
 
@@ -98,6 +95,18 @@ public class Booking_Patient extends AppCompatActivity {
                 timePickerDialog.updateTime(t1Hour, t1Minute);
 
                 timePickerDialog.show();
+            }
+        });
+
+        choose_doc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String spec = spec_field.getText().toString();
+
+                Intent intent =new Intent(Booking_Patient.this, Type_of_Doctor.class);
+                intent.putExtra("specialization", spec);
+                startActivityForResult(intent, 1);
+
             }
         });
     }
