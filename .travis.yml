@@ -35,3 +35,6 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  
+codecov:
+  token: fd544622-cba5-4962-9919-2afc6995a338
