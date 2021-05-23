@@ -37,8 +37,6 @@ public class Booking_Patient extends AppCompatActivity {
         spec_field =findViewById(R.id.doctor_spec);
         choose_doc =findViewById(R.id.doctors);
 
-        et_date =findViewById(R.id.select_date);
-        et_time = findViewById(R.id.select_time);
 
         ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.select_dialog_item, predefined);
         spec_field.setThreshold(1);
