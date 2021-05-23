@@ -42,7 +42,7 @@ public class Doctor_appointments extends AppCompatActivity {
         Listr = new doctor_appointments_adapter.RecyclerViewClickListner(){
             @Override
             public void onClick(View v, int position){
-                Intent intent = new Intent(getApplicationContext(), Appointment_detail.class);
+                Intent intent = new Intent(getApplicationContext(), PatientBookingInfo.class);
                 intent.putExtra("Patient Name",confirmedList.get(position).getPatient_name());
                 startActivity(intent);
             }

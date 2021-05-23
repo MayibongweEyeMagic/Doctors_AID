@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/medicine4"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".PatientDetail">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/elevation_10">
+
+        <ImageView
+            android:id="@+id/detail_back"
+            android:layout_width="24dp"
+            android:layout_height="@dimen/height_24"
+            android:src="@drawable/ic_back"
+            android:padding="@dimen/elavation_6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient's Booking Information"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="NAME : "
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="gravity"
+        android:id="@+id/name"
+        android:gravity="center_vertical"
+        android:layout_marginTop="80dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="SURNAME : "
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="gravity"
+        android:id="@+id/surname"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="PHONE NO. :"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="gravity"
+        android:id="@+id/cellphone"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="LOCATION : "
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="gravity"
+        android:id="@+id/location"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="BOOKING DATE AND TIME : "
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="gravity"
+        android:id="@+id/DATE"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="DESCRIPTION : "
+        android:textAlignment="gravity"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Accept"
+        android:text="Accept"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Reject"
+        android:text="Reject"/>
+
+</LinearLayout>
