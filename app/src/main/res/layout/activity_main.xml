@@ -33,9 +33,10 @@
             android:id="@+id/user"
             android:layout_width="309dp"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="  Email"
             android:inputType="textEmailAddress"
             android:paddingLeft="5dp"
+            android:background="@drawable/round_border"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textColorHint="@color/black"/>
@@ -52,9 +53,10 @@
             android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="   Password"
             android:inputType="textPassword"
             android:textColor="@color/black"
+            android:background="@drawable/round_border"
             android:textStyle="bold"
             android:textColorHint="@color/black"/>
     </RelativeLayout>
@@ -71,6 +73,7 @@
             android:textAllCaps="false"
             android:backgroundTint="@android:color/holo_green_light"
             android:layout_width="match_parent"
+            android:background="@drawable/round_border"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
 

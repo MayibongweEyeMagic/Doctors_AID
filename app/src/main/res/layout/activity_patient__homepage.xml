@@ -151,7 +151,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar" />
+                    android:src="@drawable/ic_appointments" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -186,7 +186,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_appointments" />
+                    android:src="@drawable/calendar" />
 
                 <TextView
                     android:layout_width="wrap_content"

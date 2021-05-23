@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AiD">
-        <activity android:name=".PatientBookingInfo"></activity>
-        <activity android:name=".PatientMedicalFolder" />
-        <activity android:name=".Matching_Select_Field" />
+        <activity android:name=".Matching_Select_Field"></activity>
         <activity android:name=".Appointment_detail" />
         <activity android:name=".pending_bookings" />
         <activity android:name=".Patient_appointments" />

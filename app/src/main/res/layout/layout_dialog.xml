@@ -28,8 +28,8 @@
         <Button
             android:id="@+id/to_reg_patient"
             android:text="Patient"
-            android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
+            android:background="@drawable/round_border"
             android:layout_height="wrap_content"/>
 
 
@@ -43,8 +43,8 @@
         <Button
             android:id="@+id/to_reg_doctor"
             android:text="Doctor"
-            android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
+            android:background="@drawable/round_border"
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>

@@ -79,6 +79,7 @@
                 android:layout_weight="1"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/name"
                 android:gravity="center_vertical"/>
@@ -110,6 +111,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/surname"
                 android:gravity="center_vertical" />
@@ -142,6 +144,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/date_birth"
                 android:gravity="center_vertical" />
@@ -174,6 +177,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/phone_number"
                 android:gravity="center_vertical"/>
@@ -206,6 +210,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/patient_email_address"
                 android:gravity="center_vertical"/>
@@ -238,6 +243,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/Location"
                 android:gravity="center_vertical"/>

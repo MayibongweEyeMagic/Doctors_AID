@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="My Profile"
+            android:background="@drawable/round_border"
             android:textStyle="bold"
             android:textColor="@android:color/black" />
     </androidx.appcompat.widget.Toolbar>
@@ -81,6 +82,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/doctor_name"
                 android:gravity="center_vertical"/>
@@ -113,6 +115,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textAlignment="gravity"
+                android:background="@drawable/round_border"
                 android:id="@+id/doctor_surname"
                 android:gravity="center_vertical"/>
 
@@ -144,6 +147,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/doctor_cell"
                 android:gravity="center_vertical"/>
@@ -176,6 +180,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/doctor_email_address"
                 android:gravity="center_vertical"/>
@@ -208,6 +213,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/doctor_spectialization"
                 android:gravity="center_vertical"/>
@@ -240,6 +246,7 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@drawable/round_border"
                 android:textAlignment="gravity"
                 android:id="@+id/doctor_qualification"
                 android:gravity="center_vertical"/>
