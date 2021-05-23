@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Book An Appointment"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/black"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
@@ -46,10 +46,11 @@
             android:layout_height="@dimen/height_45"
             android:drawableRight="@drawable/ic_doctor"
             android:hint="Select specialization"
+            android:background="@drawable/round_border"
             android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
+            android:textColorHint="@android:color/black"
             android:textSize="@dimen/elavation_16" />
 
         <EditText
@@ -58,10 +59,11 @@
             android:layout_height="@dimen/height_45"
             android:drawableRight="@drawable/ic_doctor"
             android:hint="Select a Doctor"
+            android:background="@drawable/round_border"
             android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
+            android:textColorHint="@color/black"
             android:textSize="@dimen/elavation_16" />
 
         <EditText
@@ -69,10 +71,11 @@
             android:layout_height="@dimen/height_45"
             android:drawableRight="@drawable/calendar"
             android:hint="Select Date"
+            android:background="@drawable/round_border"
             android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
+            android:textColorHint="@color/black"
             android:textSize="@dimen/elavation_16" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -81,7 +84,7 @@
             android:layout_height="@dimen/height_45"
             android:layout_marginTop="@dimen/elevation_10"
             android:backgroundTint="@color/purple_700"
-            android:fontFamily="casual"
+            android:background="@drawable/round_border"
             android:text="Request For Booking Confirmation"
             android:textAllCaps="false"
             android:textColor="@color/white"
