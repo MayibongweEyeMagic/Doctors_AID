@@ -121,6 +121,7 @@ public class Doctor_Homepage extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(Doctor_Homepage.this,list_of_patients.class);
+                            intent.putExtra("email", message);
                             startActivity(intent);
                         }
             });

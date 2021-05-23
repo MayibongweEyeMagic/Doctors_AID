@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class pending_bookings extends AppCompatActivity {
     private ArrayList<Patient> patientList;
     private RecyclerView recyclerView;
-    private list_adapter.RecyclerViewClickListner Listener;
+
 
     private Button accept;
     private Button decline;
@@ -27,40 +27,9 @@ public class pending_bookings extends AppCompatActivity {
         recyclerView =findViewById(R.id.pending_bookings);
         patientList = new ArrayList<>();
 
-        setPatientInfo();
-        setAdapter();
+
     }
 
-    private void setAdapter() {
-        setOnClickListner();
-        list_adapter adapter = new list_adapter(patientList, Listener);
-        RecyclerView.LayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(LayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-    }
 
-    private void setOnClickListner() {
-        Listener = new list_adapter.RecyclerViewClickListner(){
-            @Override
-            public void onClick(View v, int position){
-                Intent intent = new Intent(getApplicationContext(), Doctor_appointments.class);
-                intent.putExtra("Patient Name",patientList.get(position).getPatient_name());
-                startActivity(intent);
-            }
-
-        };
-    }
-
-    private void setPatientInfo() {
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-        patientList.add(new Patient("Phindulo Makhado"));
-    }
 
 }

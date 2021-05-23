@@ -24,7 +24,8 @@ public class Verification {
 
     private ArrayList<String>acesskey = new ArrayList<>();
     private  ArrayList<String>biography = new ArrayList<>();
-    private  String bio, patBio;
+    private  String bio, patBio, patientBio;
+
 
 
 
@@ -67,8 +68,6 @@ public class Verification {
 
 
              bio =  first_name + ":" + surname + ":"+ specialization + ":" + doctor_phone_phone + ":" + doctor_qlf + ":" + grad_at;
-            //acesskey.add(temp);
-            //biography.add(bio);
         }
 
         return bio;
@@ -82,6 +81,30 @@ public class Verification {
     // method of track user and access biographical information using password and email combination
 
 
+    public ArrayList getSeenPatients(String json) throws JSONException{
+        ArrayList<String> getPatients =new ArrayList<>();
+
+        JSONArray jsonArray = new JSONArray(json);
+
+        for(int i=0; i< jsonArray.length();++i) {
+
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+            String first_name = jsonObject.getString("PATIENT_FNAME");
+            String surname = jsonObject.getString("PATIENT_LNAME");
+            String patient_dob = jsonObject.getString("PATIENT_DOB");
+            String home_address = jsonObject.getString("PATIENT_ADDRESS");
+            String patient_email =jsonObject.getString("PATIENT_EMAIL");
+            String patient_phone = jsonObject.getString("PATIENT_PHONE");
+            String reason = jsonObject.getString("REASON");
+            String outcome = jsonObject.getString("OUTCOME");
+            String booking_date = jsonObject.getString("BOOKING_DATE");
+
+            patientBio = first_name + ":" + surname + ":" + patient_email + ":" + reason+ ":" + outcome + ":" + home_address + ":" + patient_phone + ":" + patient_dob + ":" + booking_date;
+            getPatients.add(patientBio);
+        }
+        return getPatients;
+    }
 
 
     // method to get users biographical information from the database

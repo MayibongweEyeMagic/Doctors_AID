@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433505368798",
+    "project_id": "doctor-s-aid",
+    "storage_bucket": "doctor-s-aid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433505368798:android:91f7eb966b322327c6a04f",
+        "android_client_info": {
+          "package_name": "com.killmongerscode.aid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433505368798-pq64a30hmqi27niqk4bhrtlbojschaa3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa_AJDm0ipYzBCmEU_xEHJRmG4z3YI2f4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433505368798-pq64a30hmqi27niqk4bhrtlbojschaa3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/medicine5"
+    android:background="@drawable/medical4"
     tools:context=".Booking_Patient">
 
     <RelativeLayout
@@ -44,7 +44,6 @@
             android:id="@+id/doctor_spec"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
-            android:drawableRight="@drawable/ic_doctor"
             android:hint="Select specialization"
             android:background="@drawable/round_border"
             android:textStyle="bold"
@@ -57,7 +56,6 @@
             android:id="@+id/doctors"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
-            android:drawableRight="@drawable/ic_doctor"
             android:hint="Select a Doctor"
             android:background="@drawable/round_border"
             android:textStyle="bold"
@@ -67,15 +65,26 @@
             android:textSize="@dimen/elavation_16" />
 
         <EditText
+            android:id="@+id/select_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
-            android:drawableRight="@drawable/calendar"
             android:hint="Select Date"
             android:background="@drawable/round_border"
             android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
             android:textColorHint="@color/black"
+            android:textSize="@dimen/elavation_16" />
+
+        <EditText
+            android:id="@+id/select_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:hint="Select Time"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/teal_700"
             android:textSize="@dimen/elavation_16" />
 
         <androidx.appcompat.widget.AppCompatButton

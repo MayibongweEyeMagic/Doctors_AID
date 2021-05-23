@@ -10,6 +10,9 @@ public class Doctor {
     private String qualification;
 
 
+    // trying some shit out
+
+
     public Doctor(){
         this.name = name;
         this.surname = surname;
