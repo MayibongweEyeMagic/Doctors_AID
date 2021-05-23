@@ -21,9 +21,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book An Appointment"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/black"
+            android:text="Book An Appointment"
+            android:textColor="@color/teal_200"
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
@@ -44,45 +44,36 @@
             android:id="@+id/doctor_spec"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:drawableRight="@drawable/ic_doctor"
             android:hint="Select specialization"
-            android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
-            android:textSize="@dimen/elavation_16" />
+            android:textColorHint="@color/purple_700"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/doctors"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:drawableRight="@drawable/ic_doctor"
             android:hint="Select a Doctor"
-            android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
-            android:textSize="@dimen/elavation_16" />
+            android:textColorHint="@color/purple_500"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/select_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:drawableRight="@drawable/calendar"
             android:hint="Select Date"
-            android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
-            android:textSize="@dimen/elavation_16" />
-
-        <EditText
-            android:id="@+id/select_time"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_45"
-            android:hint="Select Time"
-            android:textStyle="bold"
-            android:paddingLeft="@dimen/elevation_10"
-            android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/teal_700"
-            android:textSize="@dimen/elavation_16" />
+            android:textColorHint="@color/purple_700"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_show2"
