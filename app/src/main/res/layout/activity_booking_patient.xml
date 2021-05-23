@@ -65,6 +65,20 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/select_time"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Select time"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp"
+            android:textColorHint="@color/purple_700"
+            android:textStyle="bold"
+            />
+
+
+        <EditText
+            android:id="@+id/select_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
             android:drawableRight="@drawable/calendar"
