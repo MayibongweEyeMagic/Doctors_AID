@@ -1,14 +1,9 @@
 <?php
 //get doctors list based on their medical specialization field when patient creates a booking
-
-$patient_email = $_POST["email"];
+require "conn.php";
 $dr_spec = $_POST["specialisation"];
 
-if(empty($patient_email)){
-    echo "Patient's email not found"; //this means that the data cannot be accessed from the database because
-                                        //we do not know whose information we need
-}
-elseif(empty($dr_spec)){
+if(empty($dr_spec)){
     echo "Which specialisation is it?"; // specialisation has not been chosen yet
 }
 else{
