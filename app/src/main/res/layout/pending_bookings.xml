@@ -1,44 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/textView9"
+    <RelativeLayout
+        android:id="@+id/prof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text=" Patient Name :"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="79dp"
+        android:layout_marginTop="9dp">
+
+
+        <TextView
+            android:id="@+id/Patient_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="46dp"
+            android:layout_toEndOf="@+id/Patient_Name"
+            android:layout_toRightOf="@+id/Patient_Name"
+            android:text="Surname"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/patient_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/prof"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/circle_image"
+        android:layout_toRightOf="@+id/circle_image"
+        android:text="Email Address"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_profile" />
 
     <Button
         android:id="@+id/Accept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginStart="173dp"
         android:layout_marginLeft="173dp"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginRight="121dp"
         android:layout_marginBottom="2dp"
         android:text="ACCEPT"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,11 +81,14 @@
         android:id="@+id/Decline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:layout_marginBottom="2dp"
         android:backgroundTint="@color/Red"
         android:text="DECLINE"
@@ -64,4 +98,4 @@
         app:layout_constraintStart_toEndOf="@+id/Accept"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

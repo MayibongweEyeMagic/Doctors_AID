@@ -147,7 +147,7 @@ public class pending_bookings extends AppCompatActivity {
 
         }
 
-        list_adapter adapter =new list_adapter(usersList, pending_bookings.this);
+        pending_bookings_adapter adapter =new pending_bookings_adapter(usersList, pending_bookings.this);
         recyclerView.setAdapter(adapter);
 
 
