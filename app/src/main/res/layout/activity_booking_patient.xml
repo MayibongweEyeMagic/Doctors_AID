@@ -44,8 +44,18 @@
             android:id="@+id/doctor_spec"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
-            android:drawableRight="@drawable/ic_doctor"
             android:hint="Select specialization"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/purple_700"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/bookie_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:hint="Enter Your Email"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
             android:textColorHint="@color/purple_700"
@@ -56,8 +66,7 @@
             android:id="@+id/doctors"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
-            android:drawableRight="@drawable/ic_doctor"
-            android:hint="Select a Doctor"
+            android:hint="Enter Doctor's Email"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
             android:textColorHint="@color/purple_500"
@@ -65,10 +74,10 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/select_time"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:hint="Select time"
+            android:hint="Enter Doctor's First Name"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="16dp"
@@ -76,13 +85,45 @@
             android:textStyle="bold"
             />
 
+        <EditText
+            android:id="@+id/last_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:hint="Enter Doctor's Last Name"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/purple_700"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/Reason"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:hint="What is the reason for the Appointment?"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/purple_500"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/select_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_45"
+            android:hint="Select time of Appointment"
+            android:paddingLeft="@dimen/elevation_10"
+            android:paddingRight="@dimen/elevation_10"
+            android:textColorHint="@color/purple_700"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/select_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
-            android:drawableRight="@drawable/calendar"
-            android:hint="Select Date"
+            android:hint="Select Date of Appointment"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
             android:textColorHint="@color/purple_700"
