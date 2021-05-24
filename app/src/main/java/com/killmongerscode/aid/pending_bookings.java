@@ -130,6 +130,7 @@ public class pending_bookings extends AppCompatActivity {
 
         temp = verification.getSeenPatients(json);
 
+            usersList.clear();
         for(int i =0; i<temp.size();++i){
 
             String [] thing = temp.get(i).split(":");
