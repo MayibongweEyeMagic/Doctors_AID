@@ -33,6 +33,7 @@ public class list_adapter extends RecyclerView.Adapter<list_adapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         holder.Name.setText(usersList.get(position).getPatient_name());
         holder.Surname.setText(usersList.get(position).getPatient_lname());
         holder.Email.setText(usersList.get(position).getPatient_email());
