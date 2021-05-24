@@ -129,7 +129,7 @@ public class pending_bookings extends AppCompatActivity {
         //ArrayList<String>temp1 = new ArrayList<>();
 
         temp = verification.getSeenPatients(json);
-
+// clears arraylist
             usersList.clear();
         for(int i =0; i<temp.size();++i){
 
