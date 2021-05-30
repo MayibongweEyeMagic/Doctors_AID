@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/medicine5">
+    android:background="@drawable/medical4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,9 +18,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book An Appointment"
             android:layout_centerHorizontal="true"
-            android:textColor="@android:color/white"
+            android:text="Book An Appointment"
+            android:textColor="@color/purple_700"
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
@@ -44,22 +44,22 @@
             android:hint="Select a Doctor"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColor="@android:color/holo_green_dark"
-            android:textColorHint="@android:color/white"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:background="@drawable/round_border"
             android:drawableRight="@drawable/calendar"
             android:hint="Select Date"
-            android:textStyle="bold"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@android:color/white"
-            android:background="@drawable/round_border"
-            android:textSize="@dimen/elavation_16" />
+            android:textColorHint="@color/purple_700"
+            android:textSize="@dimen/elavation_16"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
