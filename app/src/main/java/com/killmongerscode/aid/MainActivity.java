@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                         sleep(3500);
                         Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
                         intent.putExtra("email", USERNAME);
-                        startActivity(intent);
+                        startActivityForResult(intent, 1);
                         progressDialog.dismiss();
                         super.run();
                     }catch (InterruptedException e){
@@ -220,4 +220,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Bundle bundle =getIntent().getExtras();
+        String singout =bundle.toString();
+
+        if(singout.isEmpty()){
+
+            super.onBackPressed();
+        }
+
+    }
 }

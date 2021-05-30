@@ -81,7 +81,7 @@ public class Verification {
     // method of track user and access biographical information using password and email combination
 
 
-    public ArrayList getSeenPatients(String json) throws JSONException{
+    public ArrayList<String> getSeenPatients(String json) throws JSONException{
         ArrayList<String> getPatients =new ArrayList<>();
 
         JSONArray jsonArray = new JSONArray(json);
@@ -203,7 +203,7 @@ public class Verification {
             return emails;
     }
 
-    public ArrayList getPatientEmails(String json) throws JSONException{
+    public ArrayList<String> getPatientEmails(String json) throws JSONException{
 
         ArrayList<String> emails = new ArrayList<>();
 

@@ -37,6 +37,7 @@ public class pending_bookings extends AppCompatActivity {
     private ArrayList<Patient> usersList =new ArrayList<>();
     String emailAddress;
 
+
     Verification verification = new Verification();
 
 
@@ -124,12 +125,10 @@ public class pending_bookings extends AppCompatActivity {
 
 
     public void refresh_function(String json) throws JSONException {
-
         ArrayList<String>temp = new ArrayList<>();
-        //ArrayList<String>temp1 = new ArrayList<>();
 
         temp = verification.getSeenPatients(json);
-// clears arraylist
+
             usersList.clear();
         for(int i =0; i<temp.size();++i){
 

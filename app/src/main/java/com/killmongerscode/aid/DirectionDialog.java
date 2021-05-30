@@ -61,8 +61,6 @@ public class DirectionDialog   extends AppCompatDialogFragment {
             }
         });
 
-
-
         return builder.create();
     }
 

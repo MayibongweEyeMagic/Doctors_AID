@@ -117,7 +117,7 @@ public class list_of_patients extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
     }
 
-    public ArrayList getSeenPatients(String json) throws JSONException{
+    public ArrayList<String> getSeenPatients(String json) throws JSONException{
         ArrayList<String> getPatients =new ArrayList<>();
 
         JSONArray jsonArray = new JSONArray(json);

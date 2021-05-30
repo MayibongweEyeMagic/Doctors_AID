@@ -16,16 +16,6 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
     private ArrayList<Patient> patientList;
     private Context context;
 
-    //private OnItemCLickListener Listener;
-
-    //public interface OnItemCLickListener{
-      //  void onItemClick(int position);
-    //}
-
-    //public void setOnItemClickListener(OnItemCLickListener listener){
-      //  Listener =listener;
-    //}
-
     public pending_bookings_adapter(ArrayList<Patient>patientList, Context context){
         this.patientList = patientList;
         this.context = context;
@@ -41,17 +31,6 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
             surname =view.findViewById(R.id.Surname);
             email =view.findViewById(R.id.patient_email);
 
-            //view.setOnClickListener(new View.OnClickListener() {
-              //  @Override
-                //public void onClick(View v) {
-                  //      if (lickListener != null){
-                    //        int position =getAdapterPosition();
-                      //      if (position != RecyclerView.NO_POSITION){
-                        //        lickListener.onItemClick(position );
-                          //  }
-
-//                        }                }
-  //          });
         }
 
     }

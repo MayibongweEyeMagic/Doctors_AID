@@ -10,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,12 +23,13 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
-public class Doctor_Homepage extends AppCompatActivity {
+public class Doctor_Homepage extends AppCompatActivity implements SignOutDialog.SignOutDialogListener {
 
     GridLayout doctor_home;
     TextView welcome;
     String get_name , get_surname, get_phonenumber, get_specialization, get_qualification;
 
+    ProgressDialog progressDialog;
 
     String message;
     Verification verification = new Verification();
@@ -183,6 +185,46 @@ public class Doctor_Homepage extends AppCompatActivity {
          welcome.setText("Hi "+ get_name+ "!");
     }
 
+    @Override
+    public void onBackPressed() {
+        openDialog();
+    }
+
+    private void openDialog() {
+        SignOutDialog signOutDialog =new SignOutDialog();
+        signOutDialog.show(getSupportFragmentManager(),"sign out");
+    }
 
 
+    @Override
+    public void onYesClicked() {
+        String signOff ="signout";
+
+        progressDialog =new ProgressDialog(Doctor_Homepage.this);
+
+        progressDialog.show();
+
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
+
+        Thread timer =new Thread(){
+
+            @Override
+            public void run() {
+                try {
+                    sleep(2000);
+                    Intent intent = new Intent(Doctor_Homepage.this, MainActivity.class);
+                    intent.putExtra("signedout", signOff);
+                    startActivityForResult(intent,1);
+                    progressDialog.dismiss();
+                    super.run();
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        timer.start();
+    }
 }
