@@ -25,7 +25,6 @@
         <activity android:name=".Doctor_Homepage" />
         <activity android:name=".Registration_Doctor" />
         <activity android:name=".Registration_Patient" />
-        <activity android:name=".Type_of_Doctor" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

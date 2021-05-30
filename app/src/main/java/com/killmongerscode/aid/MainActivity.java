@@ -3,6 +3,7 @@ package com.killmongerscode.aid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     Button patient_login, doctor_login;
     EditText username, password;
     String USERNAME, PASSWORD;
+
+    ProgressDialog progressDialog;
 
     Verification verification = new Verification();
 
@@ -141,23 +144,65 @@ public class MainActivity extends AppCompatActivity {
                     "One or two fields are empty", Toast.LENGTH_LONG).show();
         }
         else if (response.equals("Patient")){
-            Toast.makeText(MainActivity.this,
-                    "WELCOME", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
-            intent.putExtra("email", USERNAME);
-            startActivity(intent);
+            progressDialog =new ProgressDialog(MainActivity.this);
+
+            progressDialog.show();
+
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(
+                    android.R.color.transparent
+            );
+
+            Thread timer =new Thread(){
+
+                @Override
+                public void run() {
+                    try {
+                        sleep(3500);
+                        Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
+                        intent.putExtra("email", USERNAME);
+                        startActivity(intent);
+                        progressDialog.dismiss();
+                        super.run();
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+            timer.start();
 
             username.getText().clear();
             password.getText().clear();
         }
         else if(response.equals("Doctor")){
-            Toast.makeText(MainActivity.this,
-                    "WELCOME", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(MainActivity.this, Doctor_Homepage.class);
-            intent.putExtra("email", USERNAME);
-            startActivity(intent);
+            progressDialog =new ProgressDialog(MainActivity.this);
+
+            progressDialog.show();
+
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(
+                    android.R.color.transparent
+            );
+
+            Thread timer =new Thread(){
+
+                @Override
+                public void run() {
+                    try {
+                        sleep(3500);
+                        Intent intent = new Intent(MainActivity.this, Doctor_Homepage.class);
+                        intent.putExtra("email", USERNAME);
+                        startActivity(intent);
+                        progressDialog.dismiss();
+                        super.run();
+                    }catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+            timer.start();
 
             username.getText().clear();
             password.getText().clear();
@@ -172,38 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        /*ArrayList<String>holder = new ArrayList<>();
-
-        USERNAME = username.getText().toString();
-        PASSWORD = password.getText().toString();
-
-        String thing = USERNAME + PASSWORD;
-        holder = verification.JSONFUCTION(response);
-
-        if(holder.contains(thing)){
-
-
-
-            Toast.makeText(MainActivity.this,
-                    "WELCOME", Toast.LENGTH_LONG).show();
-
-            Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
-            startActivity(intent);
-
-        }
-
-        else {
-
-            Toast.makeText(MainActivity.this,
-                    "SOMETHING WENT WRONG !", Toast.LENGTH_LONG).show();
-        }*/
 
     }
-
-
-
-
-
-
 
 }

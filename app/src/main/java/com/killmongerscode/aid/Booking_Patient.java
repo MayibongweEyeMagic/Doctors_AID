@@ -18,6 +18,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
@@ -26,22 +27,27 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class Booking_Patient extends AppCompatActivity {
 
+    ArrayList<SelectByProfession> usersList = new ArrayList<>();
+
+    String doctorBio, emailAddress;
 
     String[] predefined ={"General", "Optometrist", "Cardiologist", "Pediatrician", "Dentist"};
-    private EditText choose_doc;
-    private AutoCompleteTextView spec_field;
+    private AutoCompleteTextView spec_field, choose_doc;
 
-    private EditText et_date, et_time, bookie, firstName, lastName, reason;
+    private EditText et_date, et_time, reason;
     private AppCompatButton button;
     int t1Hour, t1Minute;
 
@@ -54,18 +60,13 @@ public class Booking_Patient extends AppCompatActivity {
 
         spec_field =findViewById(R.id.doctor_spec);
         choose_doc =findViewById(R.id.doctors);
-
-        bookie =findViewById(R.id.bookie_email);
-
-        firstName =findViewById(R.id.name);
-        lastName =findViewById(R.id.last_name);
-
         reason =findViewById(R.id.Reason);
-
         et_date = findViewById(R.id.select_date);
         et_time =findViewById(R.id.select_time);
-
         button = findViewById(R.id.button_show2);
+
+        Bundle bundle =getIntent().getExtras();
+        emailAddress =bundle.getString("email");
 
         ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.select_dialog_item, predefined);
         spec_field.setThreshold(1);
@@ -81,60 +82,22 @@ public class Booking_Patient extends AppCompatActivity {
             }
         });
 
-        Calendar calendar = Calendar.getInstance();
-        final  int year =calendar.get(Calendar.YEAR);
-        final  int month =calendar.get(Calendar.MONTH);
-        final  int day =calendar.get(Calendar.DAY_OF_MONTH);
 
-        et_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 DatePickerDialog datePickerDialog =new DatePickerDialog(
-                         Booking_Patient.this, new DatePickerDialog.OnDateSetListener() {
-                     @Override
-                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                         month =month+1;
-                         String date = year+"-"+month+"-"+day;
-                         et_date.setText(date);
-                     }
-                 },year,month,day);
-                 datePickerDialog.show();
-            }
-        });
+        selectDate();
 
-        et_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog timePickerDialog =new TimePickerDialog(
-                        Booking_Patient.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        t1Hour = hourOfDay;
-                        t1Minute =minute;
-
-                        Calendar calendar1 =Calendar.getInstance();
-                        calendar1.set(0,0,0,t1Hour,t1Minute);
-                        et_time.setText(DateFormat.format("hh:mm aa", calendar1));
-                    }
-                        },12,0,false
-                );
-
-                timePickerDialog.updateTime(t1Hour,t1Minute);
-                timePickerDialog.show();
-            }
-        });
+        selectTime();
 
         choose_doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String spec = spec_field.getText().toString();
+
                 if (spec.isEmpty()) {
                     Toast.makeText(Booking_Patient.this, "Select Specialization", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Intent intent = new Intent(Booking_Patient.this, Type_of_Doctor.class);
-                    intent.putExtra("specialization", spec);
-                    startActivity(intent);
+                    getListofDoctors(spec);
                 }
             }
         });
@@ -142,59 +105,7 @@ public class Booking_Patient extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    String patient_email =bookie.getText().toString();
-                    String date = et_date.getText().toString() + " " + et_time.getText().toString();;
-                    String lastname  =lastName.getText().toString();
-                    String firstname =firstName.getText().toString();
-                    String docEmail =choose_doc.getText().toString();
-                    String appointReason =reason.getText().toString();
-                    String spec =spec_field.getText().toString();
-
-                OkHttpClient client = new OkHttpClient();
-
-                RequestBody body = new FormBody.Builder()
-                        .add("email", patient_email)
-                        .add("date", date)
-                        .add("lastname", lastname)
-                        .add("firstname", firstname)
-                        .add("doc_email", docEmail)
-                        .add("reason", appointReason)
-                        .add("specialisation", spec)
-                        .build();
-
-                Request request = new Request.Builder()
-                        .url("https://lamp.ms.wits.ac.za/home/s2090040/create_booking.php")
-                        .post(body)
-                        .build();
-
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
-                    }
-
-                    @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-
-
-                        if (!response.isSuccessful()) {
-                            throw new IOException("Unexpected code " + response);
-                        }
-
-                        final String responseData = response.body().string();
-                        Booking_Patient.this.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                    OnSuccess(responseData);
-                            }
-                        });
-
-                    }
-
-
-
-                });
-
+                   postTotheLamp(emailAddress);
             }
         });
     }
@@ -214,4 +125,192 @@ public class Booking_Patient extends AppCompatActivity {
             Toast.makeText(this, "There may be empty fields", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    public void selectDate(){
+
+
+        Calendar calendar = Calendar.getInstance();
+        final  int year =calendar.get(Calendar.YEAR);
+        final  int month =calendar.get(Calendar.MONTH);
+        final  int day =calendar.get(Calendar.DAY_OF_MONTH);
+
+        et_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog =new DatePickerDialog(
+                        Booking_Patient.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month =month+1;
+                        String date = year+"-"+month+"-"+day;
+                        et_date.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
+    }
+
+    public void selectTime(){
+
+        et_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog =new TimePickerDialog(
+                        Booking_Patient.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        t1Hour = hourOfDay;
+                        t1Minute =minute;
+
+                        Calendar calendar1 =Calendar.getInstance();
+                        calendar1.set(0,0,0,t1Hour,t1Minute);
+                        et_time.setText(DateFormat.format("hh:mm aa", calendar1));
+                    }
+                },12,0,false
+                );
+
+                timePickerDialog.updateTime(t1Hour,t1Minute);
+                timePickerDialog.show();
+            }
+        });
+    }
+
+    public void postTotheLamp(String email){
+
+
+        String date = et_date.getText().toString() + " " + et_time.getText().toString();;
+        String docEmail =choose_doc.getText().toString();
+        String appointReason =reason.getText().toString();
+        String spec =spec_field.getText().toString();
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = new FormBody.Builder()
+                .add("email", email)
+                .add("date", date)
+                .add("doc_email", docEmail)
+                .add("reason", appointReason)
+                .add("specialisation", spec)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("https://lamp.ms.wits.ac.za/home/s2090040/create_booking.php")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+
+                final String responseData = response.body().string();
+                Booking_Patient.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        OnSuccess(responseData);
+                    }
+                });
+
+            }
+
+
+
+        });
+    }
+
+    public void getListofDoctors(String spec){
+
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = new FormBody.Builder()
+                .add("specialisation",spec)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("https://lamp.ms.wits.ac.za/home/s2090040/doctors_list.php")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+
+                final String responseData = response.body().string();
+                Booking_Patient.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            setSelectedDoctors(responseData);
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+            }
+
+
+
+        });
+    }
+
+    public void setSelectedDoctors(String json) throws JSONException{
+        ArrayList<String> holder =new ArrayList<>();
+
+        holder =getSelectedDoctors(json);
+
+        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, holder);
+        choose_doc.setThreshold(1);
+        choose_doc.setAdapter(adapter);
+
+        choose_doc.showDropDown();
+
+
+    }
+
+    public ArrayList<String> getSelectedDoctors(String json) throws JSONException {
+        ArrayList<String> List =new ArrayList<>();
+        JSONArray jsonArray = new JSONArray(json);
+
+        for(int i=0; i< jsonArray.length();++i){
+
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+
+            //String first_name = jsonObject.getString("DOCTOR_FNAME");
+            //String surname = jsonObject.getString("DOCTOR_LNAME");
+            String doctor_email = jsonObject.getString("DOCTOR_EMAIL");
+
+
+            doctorBio = doctor_email;
+
+            List.add(doctorBio);
+        }
+
+        return List;
+    }
+
 }

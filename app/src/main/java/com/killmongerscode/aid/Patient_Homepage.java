@@ -1,4 +1,4 @@
-package com.killmongerscode.aid;
+ package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -127,6 +127,7 @@ public class Patient_Homepage extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Patient_Homepage.this,Booking_Patient.class);
+                        intent.putExtra("email", emailAddress);
                         startActivity(intent);
                     }
                 });
@@ -158,6 +159,8 @@ public class Patient_Homepage extends AppCompatActivity {
         welcome.setText("Hi "+ name+ "!");
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
 }
