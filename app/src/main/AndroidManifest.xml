@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AiD">
-        <activity android:name=".Matching_Select_Field"></activity>
+        <activity
+            android:name=".TabbedActivity"
+            android:label="@string/title_activity_tabbed"
+            android:theme="@style/Theme.AiD.NoActionBar"></activity>
         <activity android:name=".Appointment_detail" />
         <activity android:name=".pending_bookings" />
         <activity android:name=".Patient_appointments" />
         <activity android:name=".Doctor_appointments" />
         <activity android:name=".list_of_patients" />
         <activity android:name=".PatientProfile" />
+        <activity android:name=".PatientMedicalFolder" />
         <activity android:name=".DoctorAccess" />
         <activity android:name=".DoctorChats" />
         <activity android:name=".DoctorProfile" />
@@ -34,8 +38,8 @@
         </activity>
         <activity android:name=".PatientDetail" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
