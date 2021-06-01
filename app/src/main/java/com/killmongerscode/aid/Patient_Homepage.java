@@ -143,6 +143,7 @@ public class Patient_Homepage extends AppCompatActivity implements SignOutDialog
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Patient_Homepage.this, TabbedActivity.class);
+                        intent.putExtra("email", emailAddress);
                         startActivity(intent);
                     }
                 });
