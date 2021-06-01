@@ -105,10 +105,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/Accept"
         android:text="Accept"/>
+
     <Button
+        android:id="@+id/Reject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Reject"
-        android:text="Reject"/>
+        android:text="Reject"
+        app:backgroundTint="#EC0909" />
 
 </LinearLayout>
