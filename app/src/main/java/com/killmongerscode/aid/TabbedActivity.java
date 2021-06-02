@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.killmongerscode.aid.ui.main.SectionsPagerAdapter;
 
@@ -26,6 +27,9 @@ public class TabbedActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+        CompleteFrag frag =new CompleteFrag();
+        Bundle bundle =getIntent().getExtras();
+        frag.setMail(bundle.getString("email"));
 
 
     }
