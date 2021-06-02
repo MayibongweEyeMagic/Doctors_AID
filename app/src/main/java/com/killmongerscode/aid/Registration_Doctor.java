@@ -92,6 +92,9 @@ public class Registration_Doctor extends AppCompatActivity {
             public void onClick(View view) {
 
 
+
+
+
                 NAME = name.getText().toString();
                 SURNAME = surname.getText().toString();
                 QUALIFICATION = qualification.getText().toString();
@@ -157,6 +160,8 @@ public class Registration_Doctor extends AppCompatActivity {
 
 
     }
+
+
 
 
     public void registration_function(String response) {
