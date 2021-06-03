@@ -155,7 +155,8 @@ public class Doctor_Homepage extends AppCompatActivity implements SignOutDialog.
                 cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Doctor_Homepage.this,Doctor_appointments.class);
+                        Intent intent = new Intent(Doctor_Homepage.this,DoctorTabbed.class);
+                        intent.putExtra("email",message);
                         startActivity(intent);
                     }
                 });

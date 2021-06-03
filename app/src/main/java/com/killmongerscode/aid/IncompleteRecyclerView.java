@@ -16,7 +16,7 @@ public class IncompleteRecyclerView extends RecyclerView.Adapter<IncompleteRecyc
     private ArrayList<InOrComplete> usersList;
     private Context context;
 
-    public IncompleteRecyclerView(ArrayList<InOrComplete>usersList, Context context){
+    public IncompleteRecyclerView(Context context, ArrayList<InOrComplete>usersList){
         this.usersList = usersList;
         this.context =context;
     }
@@ -43,6 +43,12 @@ public class IncompleteRecyclerView extends RecyclerView.Adapter<IncompleteRecyc
         return usersList.size();
     }
 
+    public void addAppointment(InOrComplete inOrComplete){
+        usersList.add(inOrComplete);
+
+        notifyItemInserted(usersList.size()-1);
+    }
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView Name, Surname, Email;
@@ -56,4 +62,5 @@ public class IncompleteRecyclerView extends RecyclerView.Adapter<IncompleteRecyc
         }
 
     }
+
 }

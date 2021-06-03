@@ -12,45 +12,38 @@ import com.killmongerscode.aid.CompleteFrag;
 import com.killmongerscode.aid.IncompleteFrag;
 import com.killmongerscode.aid.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
-    private final Context mContext;
+    private final ArrayList<String> mTabTitles;
+    private final ArrayList<Fragment> mFragmentList;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
-        super(fm);
-        mContext = context;
+    public SectionsPagerAdapter(FragmentManager fm, ArrayList<String> tabTitles, ArrayList<Fragment> fragments) {
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        this.mTabTitles = tabTitles;
+        this.mFragmentList = fragments;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment =null;
-
-        switch (position){
-            case 0:
-                fragment =new IncompleteFrag();
-                break;
-            case 1:
-                fragment =new CompleteFrag();
-                break;
-        }
-        return fragment;
+        return mFragmentList.get(position);
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
+        return mTabTitles.get(position);
     }
 
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return mFragmentList.size();
     }
 }

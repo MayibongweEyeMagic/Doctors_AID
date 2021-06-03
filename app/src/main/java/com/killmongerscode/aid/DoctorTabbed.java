@@ -7,43 +7,42 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.killmongerscode.aid.ui.main.SectionsPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TabbedActivity extends AppCompatActivity {
+public class DoctorTabbed extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabbed);
+        setContentView(R.layout.activity_doctor_tabbed);
+        ViewPager viewPager = findViewById(R.id.view_pager1);
+        TabLayout tabs = findViewById(R.id.tabs1);
 
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        TabLayout tabs = findViewById(R.id.tabs);
-        IncompleteFrag frag = new IncompleteFrag();
-        CompleteFrag comFrag = new CompleteFrag();
+        DocCompleteFrag docCompleteFrag =new DocCompleteFrag();
+        DocIncompleteFrag docIncompleteFrag =new DocIncompleteFrag();
         Bundle args = new Bundle();
 
         args.putString("email", getIntent().getExtras().getString("email"));
-        frag.setArguments(args);
-        comFrag.setArguments(args);
+        docCompleteFrag.setArguments(args);
+        docIncompleteFrag.setArguments(args);
 
         ArrayList<String> tabTitles = new ArrayList<>(Arrays.asList("Incomplete appointments", "complete appointments"));
-        ArrayList<Fragment> fragments = new ArrayList<>(Arrays.asList(frag, comFrag));
+        ArrayList<Fragment> fragments = new ArrayList<>(Arrays.asList(docIncompleteFrag, docCompleteFrag));
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabTitles, fragments);
         viewPager.setAdapter(sectionsPagerAdapter);
         tabs.setupWithViewPager(viewPager);
+
 
 
 

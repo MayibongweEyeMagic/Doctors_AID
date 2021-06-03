@@ -5,20 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,24 +28,24 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class CompleteFrag  extends Fragment {
+public class DocCompleteFrag extends Fragment {
 
     View view;
     String email;
-    private ArrayList<InOrComplete> usersList =new ArrayList<>();
     private RecyclerView recyclerView;
-    private CompleteRecyclerView completeRecyclerView;
-
+    private DocCompleteRecyclerView docCompleteRecyclerView;
+    private ArrayList<InOrComplete> usersList =new ArrayList<>();
+    private TextView textView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.complete_1_layout,container,false);
-        Bundle arg =getArguments();
-        email =arg.getString("email");
-        recyclerView =(RecyclerView) view.findViewById(R.id.complete_recycler);
-        completeRecyclerView = new CompleteRecyclerView(getContext(), usersList);
+        view = inflater.inflate(R.layout.doc_complete_frag, container, false);
+        Bundle args =getArguments();
+        email =args.getString("email");
+        recyclerView =(RecyclerView) view.findViewById(R.id.doc_complete_recycler);
+        docCompleteRecyclerView = new DocCompleteRecyclerView(getContext(), usersList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(completeRecyclerView);
+        recyclerView.setAdapter(docCompleteRecyclerView);
         return view;
     }
 
@@ -62,7 +60,7 @@ public class CompleteFrag  extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/home/s2090040/fulfilled_booking.php")
+                .url("https://lamp.ms.wits.ac.za/home/s2090040/fulfilled_patientList.php")
                 .post(body)
                 .build();
 
@@ -73,8 +71,7 @@ public class CompleteFrag  extends Fragment {
             }
 
             @Override
-            public void onResponse(
-                    @NotNull Call call, @NotNull Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
 
                 if (!response.isSuccessful()) {
@@ -92,11 +89,10 @@ public class CompleteFrag  extends Fragment {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                String first_name = jsonObject.getString("DOCTOR_FNAME");
-                                String last_name = jsonObject.getString("DOCTOR_LNAME");
-                                String emailAddress = jsonObject.getString("DOCTOR_EMAIL");
-                                completeRecyclerView.addAppointmentComp(
-                                        new InOrComplete(first_name,last_name,emailAddress));
+                                String first_name = jsonObject.getString("PATIENT_FNAME");
+                                String last_name = jsonObject.getString("PATIENT_LNAME");
+                                String emailAddress = jsonObject.getString("PATIENT_EMAIL");
+                                docCompleteRecyclerView.addDocAppointmentComp(new InOrComplete(first_name, last_name, emailAddress));
                             }
                         }catch (JSONException e){
                             e.printStackTrace();
@@ -107,5 +103,6 @@ public class CompleteFrag  extends Fragment {
             }
 
         });
+
     }
 }

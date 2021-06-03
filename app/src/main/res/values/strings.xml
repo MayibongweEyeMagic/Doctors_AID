@@ -13,4 +13,5 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="tab_text_1">Incomplete Appointments</string>
     <string name="tab_text_2">Complete Appointments</string>
+    <string name="title_activity_doctor_tabbed">DoctorTabbed</string>
 </resources>
