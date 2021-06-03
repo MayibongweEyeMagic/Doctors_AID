@@ -2,6 +2,8 @@ package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -22,8 +24,11 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Doctor_Homepage extends AppCompatActivity implements SignOutDialog.SignOutDialogListener {
+
+
 
     GridLayout doctor_home;
     TextView welcome;
@@ -144,6 +149,9 @@ public class Doctor_Homepage extends AppCompatActivity implements SignOutDialog.
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+
+
                     Intent intent = new Intent(Doctor_Homepage.this,pending_bookings.class);
                     intent.putExtra("email",message);
                     startActivity(intent);
@@ -228,4 +236,8 @@ public class Doctor_Homepage extends AppCompatActivity implements SignOutDialog.
         };
         timer.start();
     }
+
+
+
+
 }

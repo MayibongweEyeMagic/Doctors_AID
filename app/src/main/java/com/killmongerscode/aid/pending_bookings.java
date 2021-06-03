@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -28,12 +29,16 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class pending_bookings extends AppCompatActivity {
+
     private ArrayList<Patient> patientList;
     private RecyclerView recyclerView;
+    private pending_bookings_adapter.RecyclerViewClickListner Lister;
+     pending_bookings_adapter adapter ;
 
 
     private Button accept;
     private Button decline;
+
     private ArrayList<Patient> usersList =new ArrayList<>();
     String emailAddress;
 
@@ -46,21 +51,17 @@ public class pending_bookings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pending_bookings);
-        recyclerView =findViewById(R.id.pending_bookings);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        patientList = new ArrayList<>();
+
+        BuildRecyclerView();
+
 
 
 
          Bundle bundle = getIntent().getExtras();
           emailAddress = bundle.getString("email");
 
-          FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
+
 
 
         OkHttpClient client = new OkHttpClient();
@@ -108,20 +109,77 @@ public class pending_bookings extends AppCompatActivity {
         });
 
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+        @Override
+         public void onClick(View view) {
+
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody body = new FormBody.Builder()
+                    .add("dr_email",emailAddress)
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url("https://lamp.ms.wits.ac.za/home/s2090040/pending_patientList.php")
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+
+                    if (!response.isSuccessful()) {
+                        throw new IOException("Unexpected code " + response);
+                    }
+
+                    final String responseData = response.body().string();
+                    pending_bookings.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                refresh_function(responseData);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+
+                }
+
+
+
+            });
+
+
 
             }
         });
 
-
-
-
-
-
-
+        setOnClickListr();
 
 
     }
 
+    public  void RemoveItem( int position){
+        usersList.remove(position);
+        adapter.notifyItemRemoved(position);
+
+    }
+
+    public void setAccept(int position ){
+        usersList.remove(position);
+        adapter.notifyItemRemoved(position);
+
+    }
 
 
     public void refresh_function(String json) throws JSONException {
@@ -147,12 +205,39 @@ public class pending_bookings extends AppCompatActivity {
 
         }
 
-        pending_bookings_adapter adapter =new pending_bookings_adapter(usersList, pending_bookings.this);
+         adapter =new pending_bookings_adapter(usersList, Lister);
         recyclerView.setAdapter(adapter);
 
+    }
 
+
+    private void setOnClickListr() {
+
+        Lister = new pending_bookings_adapter.RecyclerViewClickListner() {
+            @Override
+            public void onItemClick(int position) {
+                RemoveItem(position);
+            }
+        };
 
     }
+
+
+
+
+
+
+    public void BuildRecyclerView(){
+
+        recyclerView =findViewById(R.id.pending_bookings);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        patientList = new ArrayList<>();
+    }
+
+
+
+
 
 
 

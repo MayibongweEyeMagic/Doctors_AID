@@ -1,9 +1,11 @@
 package com.killmongerscode.aid;
 
 import android.content.Context;
+import android.net.sip.SipSession;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,25 +15,64 @@ import java.util.ArrayList;
 
 public class pending_bookings_adapter extends RecyclerView.Adapter<pending_bookings_adapter.MyViewHolder>{
 
+
+
     private ArrayList<Patient> patientList;
+    private RecyclerViewClickListner Listner;
     private Context context;
 
-    public pending_bookings_adapter(ArrayList<Patient>patientList, Context context){
+
+    public pending_bookings_adapter(ArrayList<Patient>patientList, RecyclerViewClickListner listner){
         this.patientList = patientList;
-        this.context = context;
+        this.Listner =listner;
+
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView Nametext, surname, email;
 
+
+        public interface  RecyclerViewClickListner{
+
+        void onItemClick(int position);
+      //  void onItemDelete(int position );
+
+
+    }
+
+
+    public class MyViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
+        private TextView Nametext, surname, email;
+        private Button reject, accept;
 
         public MyViewHolder(final View view){
             super(view);
-            Nametext =view.findViewById(R.id.Patient_Name);
-            surname =view.findViewById(R.id.Surname);
-            email =view.findViewById(R.id.patient_email);
+            Nametext = view.findViewById(R.id.Patient_Name);
+            surname = view.findViewById(R.id.Surname);
+            email = view.findViewById(R.id.patient_email);
+            reject = view.findViewById(R.id.Decline);
+            accept = view.findViewById(R.id.Accept);
+
+            reject.setOnClickListener(this);
+            accept.setOnClickListener(this);
 
         }
+
+        @Override
+        public void onClick(View view) {
+            if(Listner !=null) {
+                int position = getAdapterPosition();
+                if(position != RecyclerView.NO_POSITION){
+                Listner.onItemClick( position);
+                }
+
+            }
+
+        }
+
+
+
+
+
+
 
     }
 
@@ -44,11 +85,10 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         holder.Nametext.setText(patientList.get(position).getPatient_name());
         holder.surname.setText(patientList.get(position).getPatient_lname());
         holder.email.setText(patientList.get(position).getPatient_email());
-
-
 
     }
 
@@ -56,5 +96,10 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
     public int getItemCount() {
         return patientList.size();
     }
+
+
+
+
+
 
 }

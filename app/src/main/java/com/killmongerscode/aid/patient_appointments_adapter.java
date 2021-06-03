@@ -20,21 +20,6 @@ public class patient_appointments_adapter extends RecyclerView.Adapter<patient_a
         this.Listner = Listner;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Nametext;
-
-        public MyViewHolder(final View view){
-            super(view);
-            Nametext = view.findViewById(R.id.doctor_display);
-            view.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Listner.onClick(view, getAdapterPosition());
-        }
-    }
-
     @NonNull
     @Override
     public patient_appointments_adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,5 +42,20 @@ public class patient_appointments_adapter extends RecyclerView.Adapter<patient_a
 
     public interface RecyclerViewClickListner{
         void onClick(View v, int position);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView Nametext;
+
+        public MyViewHolder(final View view){
+            super(view);
+            Nametext = view.findViewById(R.id.doctor_display);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Listner.onClick(view, getAdapterPosition());
+        }
     }
 }
