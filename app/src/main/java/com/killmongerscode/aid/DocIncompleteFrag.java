@@ -30,7 +30,7 @@ public class DocIncompleteFrag extends Fragment {
 
     View view;
     String email;
-
+    private DocIncompleteRecyclerView.DocRecyclerClickListner Lister;
     private DocIncompleteRecyclerView docIncompleteRecyclerView;
     private ArrayList<InOrComplete> usersList =new ArrayList<>();
     private RecyclerView recyclerView;
@@ -42,7 +42,7 @@ public class DocIncompleteFrag extends Fragment {
         Bundle args =getArguments();
         email =args.getString("email");
         recyclerView =(RecyclerView) view.findViewById(R.id.doc_incomplete_recycler);
-        docIncompleteRecyclerView = new DocIncompleteRecyclerView(getContext(), usersList);
+        docIncompleteRecyclerView = new DocIncompleteRecyclerView(usersList, Lister);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(docIncompleteRecyclerView);
         return view;
@@ -102,5 +102,16 @@ public class DocIncompleteFrag extends Fragment {
             }
 
         });
+    }
+
+    private void setOnClickListr() {
+
+        Lister = new DocIncompleteRecyclerView.DocRecyclerClickListner() {
+            @Override
+            public void DocOnCLickLister(int position) {
+
+            }
+        };
+
     }
 }

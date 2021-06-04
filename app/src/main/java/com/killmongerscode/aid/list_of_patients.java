@@ -52,7 +52,7 @@ public class list_of_patients extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
-                .add("dr_email",message)
+                .add("patient_email",message)
                 .build();
 
         Request request = new Request.Builder()

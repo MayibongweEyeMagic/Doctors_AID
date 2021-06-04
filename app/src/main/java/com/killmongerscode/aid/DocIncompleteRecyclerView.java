@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,12 +14,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncompleteRecyclerView.MyViewHolder> {
 
-    private ArrayList<InOrComplete> usersList =new ArrayList<>();
-    private Context context;
+    private ArrayList<InOrComplete> usersList;
+    private DocRecyclerClickListner listner;
 
-    public DocIncompleteRecyclerView(Context context, ArrayList<InOrComplete> usersList) {
-        this.context =context;
+    public DocIncompleteRecyclerView(ArrayList<InOrComplete> usersList, DocRecyclerClickListner listner) {
         this.usersList =usersList;
+        this.listner =listner;
+    }
+
+    public interface DocRecyclerClickListner{
+        void DocOnCLickLister(int position);
+    }
+
+
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView Name, Surname, Email;
+
+
+        private Button complete_appointment, view_details;
+        public MyViewHolder(final View view){
+            super(view);
+
+            Name =view.findViewById(R.id.doctor_incomplete_Name);
+            Surname =view.findViewById(R.id.doctor_incomplete_surname);
+            Email =view.findViewById(R.id.doctor_incomplete_email);
+            complete_appointment =view.findViewById(R.id.doctor_complete_appointment);
+            view_details =view.findViewById(R.id.doctor_view);
+
+            //complete_appointment.setOnClickListener();
+            //view_details.setOnClickListener();
+
+        }
+
     }
 
     @NonNull
@@ -46,16 +73,5 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
         notifyItemInserted(usersList.size()-1);
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView Name, Surname, Email;
 
-        public MyViewHolder(final View view){
-            super(view);
-
-            Name =view.findViewById(R.id.doctor_incomplete_Name);
-            Surname =view.findViewById(R.id.doctor_incomplete_surname);
-            Email =view.findViewById(R.id.doctor_incomplete_email);
-        }
-
-    }
 }

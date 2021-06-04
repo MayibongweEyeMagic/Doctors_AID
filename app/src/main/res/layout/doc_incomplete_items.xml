@@ -58,17 +58,30 @@
         android:src="@drawable/ic_profile" />
 
     <Button
+        android:id="@+id/doctor_view"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="Details"
+        android:textAllCaps="false" />
+
+    <Button
         android:id="@+id/doctor_complete_appointment"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="14dp"
         android:layout_marginRight="14dp"
         android:text="Complete appointment"
         android:textAllCaps="false" />
-
 
 </RelativeLayout>

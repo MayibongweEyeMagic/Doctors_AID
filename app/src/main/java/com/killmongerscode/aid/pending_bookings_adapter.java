@@ -19,7 +19,6 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
 
     private ArrayList<Patient> patientList;
     private RecyclerViewClickListner Listner;
-    private Context context;
 
 
     public pending_bookings_adapter(ArrayList<Patient>patientList, RecyclerViewClickListner listner){
@@ -51,8 +50,8 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
             reject = view.findViewById(R.id.Decline);
             accept = view.findViewById(R.id.Accept);
 
-            reject.setOnClickListener(this);
-            accept.setOnClickListener(this);
+            //reject.setOnClickListener(this);
+            //accept.setOnClickListener(this);
 
         }
 
