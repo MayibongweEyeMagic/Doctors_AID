@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 
 public class Doctor_appointmentsTest {
 
-    @Rule
+    /*@Rule
     public ActivityTestRule<Doctor_appointments> main = new ActivityTestRule<Doctor_appointments>(Doctor_appointments.class);
 
 
@@ -51,6 +51,6 @@ public class Doctor_appointmentsTest {
                 }
             }
         }
-    }
+    }*/
 
 }
