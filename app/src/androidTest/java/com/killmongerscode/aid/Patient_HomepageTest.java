@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class Patient_HomepageTest {
 
-    @Rule
+    /*@Rule
     public ActivityTestRule<Patient_Homepage> activityTestRule = new ActivityTestRule<>(Patient_Homepage.class);
 
 
@@ -124,7 +124,7 @@ public class Patient_HomepageTest {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-    }
+    }*/
 
 
 
