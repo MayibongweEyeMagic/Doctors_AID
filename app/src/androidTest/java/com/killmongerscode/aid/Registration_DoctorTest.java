@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 public class Registration_DoctorTest {
 
 
-    @Rule
+    /*@Rule
     public ActivityTestRule<Registration_Doctor> activityTestRule = new ActivityTestRule<>(Registration_Doctor.class);
 
 
@@ -51,7 +51,7 @@ public class Registration_DoctorTest {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-    }
+    }*/
 
 
 
