@@ -18,12 +18,9 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
     private DocRecyclerClickListner listner;
     private Context context;
 
-
-    private int positionToDelete;
-
-    public void removeFromList(){
+    public void removeFromList(int positionToDelete){
         usersList.get(positionToDelete);
-        notifyItemRemoved(usersList.size()-1);
+        notifyItemRemoved(positionToDelete);
     }
 
     public DocIncompleteRecyclerView(ArrayList<InOrComplete> usersList, Context context) {
@@ -58,7 +55,6 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
                 public void onClick(View v) {
                     if (listner != null){
                         int position =getAdapterPosition();
-                        positionToDelete =position;
                         if(position != RecyclerView.NO_POSITION){
                             listner.DocOnCLickLister(position);
                         }

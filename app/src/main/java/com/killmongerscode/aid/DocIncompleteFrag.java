@@ -56,8 +56,10 @@ public class DocIncompleteFrag extends Fragment {
         docIncompleteRecyclerView.setDocCLickLster(new DocIncompleteRecyclerView.DocRecyclerClickListner() {
             @Override
             public void DocOnCLickLister(int position) {
-                Completion_form completion_form =new Completion_form();
-                completion_form.show(getChildFragmentManager(), "Some Dialog");
+                //Completion_form completion_form =new Completion_form();
+                //completion_form.show(getChildFragmentManager(), "Some Dialog");
+
+                docIncompleteRecyclerView.removeFromList(position);
             }
         });
 

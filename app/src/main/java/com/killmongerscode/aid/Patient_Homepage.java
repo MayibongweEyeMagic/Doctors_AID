@@ -95,7 +95,7 @@ public class Patient_Homepage extends AppCompatActivity implements SignOutDialog
 
     }
 
-    private void setSingleEvent(GridLayout Patient_homepage) {
+    public void setSingleEvent(GridLayout Patient_homepage) {
         for (int i = 0; i < Patient_homepage.getChildCount();i++)
         {
             if(i == 0){

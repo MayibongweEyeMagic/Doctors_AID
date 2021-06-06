@@ -3,6 +3,7 @@ package com.killmongerscode.aid;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.PopupMenu;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -18,14 +19,11 @@ import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class Patient_HomepageTest {
-
     @Rule
     public ActivityTestRule<Patient_Homepage> activityTestRule = new ActivityTestRule<>(Patient_Homepage.class);
 
-
     @Test
     public void onCreate() {
-
 
         try {
             runOnUiThread(() -> {
@@ -38,6 +36,18 @@ public class Patient_HomepageTest {
 
     }
 
+    /*@Test
+    public void setSingleEvent(){
+
+        try {
+            runOnUiThread(() -> {
+                Patient_Homepage patient_homepage =new Patient_Homepage();
+                patient_homepage.setSingleEvent(GridLayout);
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+
+    }
 
     @Test
     public void Item0() {
@@ -124,7 +134,7 @@ public class Patient_HomepageTest {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-    }
+    }*/
 
 
 

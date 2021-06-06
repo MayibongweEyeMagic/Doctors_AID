@@ -39,7 +39,7 @@ public class Doctor_HomepageTest {
     }
 
 
-    @Test
+    /*@Test
     public void Item0() {
         try {
             runOnUiThread(() -> {
@@ -124,7 +124,7 @@ public class Doctor_HomepageTest {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-    }
+    }*/
 
 
 

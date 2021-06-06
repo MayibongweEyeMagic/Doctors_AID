@@ -53,7 +53,12 @@ public class Completion_form extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        docIncompleteRecyclerView.removeFromList();
+                        docIncompleteRecyclerView.setDocCLickLster(new DocIncompleteRecyclerView.DocRecyclerClickListner() {
+                            @Override
+                            public void DocOnCLickLister(int position) {
+                                    docIncompleteRecyclerView.removeFromList(position);
+                            }
+                        });
 
                     }
                 });
@@ -81,5 +86,6 @@ public class Completion_form extends AppCompatDialogFragment {
     public void removeTheView(View view){
         linearLayout.removeView(view);
     }*/
+
 
 }

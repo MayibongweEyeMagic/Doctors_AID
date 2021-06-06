@@ -36,9 +36,6 @@ public class Booking_PatientTest extends TestCase {
         }
 
 
-
-
-
     }
 
 
@@ -81,5 +78,18 @@ public class Booking_PatientTest extends TestCase {
         }
 
     }
+
+    /*@Test
+    public void getListofDoctors() {
+
+        try{
+            runOnUiThread(() -> {
+                activityTestRule.getActivity().getListofDoctors("Dentist");
+            });
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+
+    }*/
 
 }

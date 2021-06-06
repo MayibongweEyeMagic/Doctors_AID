@@ -19,11 +19,8 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class Registration_PatientTest {
 
-
     @Rule
     public ActivityTestRule<Registration_Patient> activityTestRule = new ActivityTestRule<>(Registration_Patient.class);
-
-
 
 
 
@@ -43,10 +40,13 @@ public class Registration_PatientTest {
     }
 
     @Test
-    public void dummyFunctionWithParams(){
+    public void registration_function(){
         try{
             runOnUiThread(() -> {
-                activityTestRule.getActivity().registration_function("Stringresponse");
+                activityTestRule.getActivity().registration_function("Successfully Registered");
+                activityTestRule.getActivity().registration_function("Can't register one of the fields are empty");
+                activityTestRule.getActivity().registration_function("Invalid email");
+                activityTestRule.getActivity().registration_function("Email already exists");
             });
         } catch (Throwable throwable) {
             throwable.printStackTrace();
