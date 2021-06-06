@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="18dp"
+        android:textColor="@android:color/holo_green_light"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Diagnosis and Treatment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp">
+
+
+        <EditText
+            android:id="@+id/add_diagnosis"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/round_grey"
+            android:layout_weight="1"
+            android:hint="Diagnosis"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+
+        <EditText
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/round_grey"
+            android:id="@+id/add_treatment"
+            android:hint="Treatment"
+            android:layout_width="150dp"
+            android:layout_height="40dp"/>
+
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="18dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Date of another visit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/date_visit"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:background="@drawable/round_grey"
+            android:paddingLeft="5dp"
+            android:hint="Date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+
+        <EditText
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/round_grey"
+            android:id="@+id/add_time"
+            android:hint="Time"
+            android:layout_width="150dp"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

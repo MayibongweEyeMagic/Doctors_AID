@@ -16,23 +16,35 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
 
     private ArrayList<InOrComplete> usersList;
     private DocRecyclerClickListner listner;
+    private Context context;
 
-    public DocIncompleteRecyclerView(ArrayList<InOrComplete> usersList, DocRecyclerClickListner listner) {
+
+    private int positionToDelete;
+
+    public void removeFromList(){
+        usersList.get(positionToDelete);
+        notifyItemRemoved(usersList.size()-1);
+    }
+
+    public DocIncompleteRecyclerView(ArrayList<InOrComplete> usersList, Context context) {
         this.usersList =usersList;
-        this.listner =listner;
+        this.context =context;
     }
 
     public interface DocRecyclerClickListner{
         void DocOnCLickLister(int position);
     }
 
+    public void setDocCLickLster(DocRecyclerClickListner docCLickLster){
+        listner =docCLickLster;
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView Name, Surname, Email;
 
-
-        private Button complete_appointment, view_details;
-        public MyViewHolder(final View view){
+        Button complete_appointment, view_details;
+        public MyViewHolder(final View view, DocRecyclerClickListner listner){
             super(view);
 
             Name =view.findViewById(R.id.doctor_incomplete_Name);
@@ -41,8 +53,19 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
             complete_appointment =view.findViewById(R.id.doctor_complete_appointment);
             view_details =view.findViewById(R.id.doctor_view);
 
-            //complete_appointment.setOnClickListener();
-            //view_details.setOnClickListener();
+            complete_appointment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listner != null){
+                        int position =getAdapterPosition();
+                        positionToDelete =position;
+                        if(position != RecyclerView.NO_POSITION){
+                            listner.DocOnCLickLister(position);
+                        }
+                    }
+                }
+            });
+
 
         }
 
@@ -52,7 +75,7 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
     @Override
     public DocIncompleteRecyclerView.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View incompleteview = LayoutInflater.from(parent.getContext()).inflate(R.layout.doc_incomplete_items, parent, false);
-        return new DocIncompleteRecyclerView.MyViewHolder(incompleteview);
+        return new DocIncompleteRecyclerView.MyViewHolder(incompleteview, listner);
     }
 
     @Override
@@ -69,9 +92,7 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
 
     public void addDocAppointment(InOrComplete inOrComplete){
         usersList.add(inOrComplete);
-
         notifyItemInserted(usersList.size()-1);
     }
-
 
 }

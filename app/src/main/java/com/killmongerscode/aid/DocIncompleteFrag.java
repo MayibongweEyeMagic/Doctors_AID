@@ -42,15 +42,25 @@ public class DocIncompleteFrag extends Fragment {
         Bundle args =getArguments();
         email =args.getString("email");
         recyclerView =(RecyclerView) view.findViewById(R.id.doc_incomplete_recycler);
-        docIncompleteRecyclerView = new DocIncompleteRecyclerView(usersList, Lister);
+        docIncompleteRecyclerView = new DocIncompleteRecyclerView(usersList, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(docIncompleteRecyclerView);
         return view;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        docIncompleteRecyclerView.setDocCLickLster(new DocIncompleteRecyclerView.DocRecyclerClickListner() {
+            @Override
+            public void DocOnCLickLister(int position) {
+                Completion_form completion_form =new Completion_form();
+                completion_form.show(getChildFragmentManager(), "Some Dialog");
+            }
+        });
+
 
         OkHttpClient client = new OkHttpClient();
 
@@ -104,14 +114,4 @@ public class DocIncompleteFrag extends Fragment {
         });
     }
 
-    private void setOnClickListr() {
-
-        Lister = new DocIncompleteRecyclerView.DocRecyclerClickListner() {
-            @Override
-            public void DocOnCLickLister(int position) {
-
-            }
-        };
-
-    }
 }
