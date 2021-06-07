@@ -55,6 +55,14 @@ public class CompleteFrag  extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        completeRecyclerView.setDocCLickLster(new CompleteRecyclerView.CompleteRecyclerClickListner() {
+            @Override
+            public void OnCLickLister(int position) {
+                Completion_form completion_form =new Completion_form();
+                completion_form.show(getChildFragmentManager(), "View Form details");
+            }
+        });
+
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
