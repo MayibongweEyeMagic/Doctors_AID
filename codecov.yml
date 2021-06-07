@@ -19,4 +19,3 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/InOrComplete.java"
   - "app/src/main/java/com/killmongerscode/aid/IncompleteFrag.java"
   - "app/src/main/java/com/killmongerscode/aid/IncompleteRecyclerView.java"
-  - "app/src/main/java/com/killmongerscode/aid/MainActivity.java"
