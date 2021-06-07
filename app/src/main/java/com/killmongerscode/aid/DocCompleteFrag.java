@@ -53,6 +53,14 @@ public class DocCompleteFrag extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        docCompleteRecyclerView.setDocCompleteCLickLster(new DocCompleteRecyclerView.DocCompleteRecyclerClickListner() {
+            @Override
+            public void OnCLickLister(int position) {
+                ViewCompletedForm viewCompletedForm =new ViewCompletedForm(docCompleteRecyclerView.getIdNumber(position), email);
+                viewCompletedForm.show(getChildFragmentManager(), "someSupport");
+            }
+        });
+
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
@@ -93,7 +101,7 @@ public class DocCompleteFrag extends Fragment {
                                 String first_name = jsonObject.getString("PATIENT_FNAME");
                                 String last_name = jsonObject.getString("PATIENT_LNAME");
                                 String emailAddress = jsonObject.getString("PATIENT_EMAIL");
-                                String id = "1";
+                                String id = jsonObject.getString("BOOKING_NO");
                                 docCompleteRecyclerView.addDocAppointmentComp(new InOrComplete(first_name, last_name, emailAddress,id));
                             }
                         }catch (JSONException e){

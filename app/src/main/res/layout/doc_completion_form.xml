@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Diagnosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Treatment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp">
+
+
+        <TextView
+            android:id="@+id/doc_view_diagnosis"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:id="@+id/doc_view_treatment"
+            android:layout_width="150dp"
+            android:layout_height="40dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/doc_view_date"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:id="@+id/doc_view_time"
+            android:layout_width="150dp"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

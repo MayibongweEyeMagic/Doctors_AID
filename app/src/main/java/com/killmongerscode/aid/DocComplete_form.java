@@ -72,13 +72,6 @@ public class DocComplete_form extends AppCompatDialogFragment {
         selectDate();
         selectTime();
 
-        String diagnose =diagnosis.getText().toString();
-        String treats =treatment.getText().toString();
-        String date =et_date.getText().toString();
-        String time =et_time.getText().toString();
-
-        String OUTCOME = diagnose+";"+treats+";"+date+";"+time;
-
         builder.setView(view)
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -92,11 +85,18 @@ public class DocComplete_form extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        String diagnose =diagnosis.getText().toString();
+                        String treats =treatment.getText().toString();
+                        String date =et_date.getText().toString();
+                        String time =et_time.getText().toString();
+
+                        String OUTCOME = diagnose+";"+treats+";"+date+";"+time;
+
                         OkHttpClient client = new OkHttpClient();
 
                         RequestBody body = new FormBody.Builder()
                                 .add("booking_number", ID)
-                                .add("status", "FUFILLED")
+                                .add("status", "FULFILLED")
                                 .add("outcome", OUTCOME)
                                 .build();
 

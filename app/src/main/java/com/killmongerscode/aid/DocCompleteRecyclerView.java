@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,6 +16,16 @@ public class DocCompleteRecyclerView  extends RecyclerView.Adapter<DocCompleteRe
 
     private ArrayList<InOrComplete> usersList;
     private Context context;
+    private DocCompleteRecyclerClickListner listner;
+
+
+    public interface DocCompleteRecyclerClickListner{
+        void OnCLickLister(int position);
+    }
+
+    public void setDocCompleteCLickLster(DocCompleteRecyclerClickListner docCLickLster){
+        listner =docCLickLster;
+    }
 
     public DocCompleteRecyclerView(Context context, ArrayList<InOrComplete> usersList) {
         this.context =context;
@@ -25,7 +36,7 @@ public class DocCompleteRecyclerView  extends RecyclerView.Adapter<DocCompleteRe
     @Override
     public DocCompleteRecyclerView.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View completeview = LayoutInflater.from(parent.getContext()).inflate(R.layout.doc_complete_items, parent, false);
-        return new DocCompleteRecyclerView.MyViewHolder(completeview);
+        return new DocCompleteRecyclerView.MyViewHolder(completeview, listner);
 
     }
 
@@ -47,16 +58,34 @@ public class DocCompleteRecyclerView  extends RecyclerView.Adapter<DocCompleteRe
         notifyItemInserted(usersList.size()-1);
     }
 
+    public String getIdNumber(int position){
+        return usersList.get(position).getId();
+    }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView Name, Surname, Email;
-
-        public MyViewHolder(final View view){
+        Button button;
+        public MyViewHolder(final View view, DocCompleteRecyclerClickListner listner){
             super(view);
 
             Name =view.findViewById(R.id.doctor_complete_Name);
             Surname =view.findViewById(R.id.doctor_complete_surname);
             Email =view.findViewById(R.id.doctor_complete_email);
+            button =view.findViewById(R.id.doc_view_details);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listner !=null){
+                        int position =getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listner.OnCLickLister(position);
+                        }
+                    }
+                }
+            });
         }
 
     }
+
 }
