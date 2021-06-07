@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 public class Completion_form extends AppCompatDialogFragment {
 
     EditText diagnose, treats, time, date;
-    private DocIncompleteRecyclerView docIncompleteRecyclerView;
+
     ArrayList<InOrComplete> userList =new ArrayList<>();
 
     @NonNull
@@ -32,7 +32,6 @@ public class Completion_form extends AppCompatDialogFragment {
         LayoutInflater inflater =getActivity().getLayoutInflater();
         View view =inflater.inflate(R.layout.complete_appointment_form, null);
 
-        docIncompleteRecyclerView =new DocIncompleteRecyclerView(userList, getContext());
 
 
         builder.setView(view)
