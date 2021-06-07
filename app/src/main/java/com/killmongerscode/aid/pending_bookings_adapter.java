@@ -43,7 +43,7 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView Nametext, surname, email;
         private Button reject, accept;
 
@@ -73,7 +73,7 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
                     if(Listner !=null) {
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
-                            Listner.onItemClick( position);
+                            Listner.onItemDelete( position);
                         }
 
                     }
@@ -82,16 +82,7 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
 
         }
 
-        @Override
-        public void onClick(View view) {
-            if(Listner !=null) {
-                int position = getAdapterPosition();
-                if(position != RecyclerView.NO_POSITION){
-                Listner.onItemDelete(position);
-                }
 
-            }
-        }
 
 
 
