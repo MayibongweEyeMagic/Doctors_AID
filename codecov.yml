@@ -19,3 +19,8 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/InOrComplete.java"
   - "app/src/main/java/com/killmongerscode/aid/IncompleteFrag.java"
   - "app/src/main/java/com/killmongerscode/aid/IncompleteRecyclerView.java"
+  - "app/src/main/java/com/killmongerscode/aid/MainActivity.java"
+  - "app/src/main/java/com/killmongerscode/aid/Registration.java"
+  - "app/src/main/java/com/killmongerscode/aid/pending_bookings_adapter.java"
+  - "app/src/main/java/com/killmongerscode/aid/list_of_patients.java"
+  - "app/src/main/java/com/killmongerscode/aid/Verification.java"
