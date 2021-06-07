@@ -24,3 +24,7 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/pending_bookings_adapter.java"
   - "app/src/main/java/com/killmongerscode/aid/list_of_patients.java"
   - "app/src/main/java/com/killmongerscode/aid/Verification.java"
+  - "app/src/main/java/com/killmongerscode/aid/pending_bookings.java"
+  - "app/src/main/java/com/killmongerscode/aid/Registration_Doctor.java"
+  - "app/src/main/java/com/killmongerscode/aid/Registration_Patient.java"
+  - "app/src/main/java/com/killmongerscode/aid/Patient_Homepage.java"
