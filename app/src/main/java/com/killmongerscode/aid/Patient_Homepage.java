@@ -148,6 +148,17 @@ public class Patient_Homepage extends AppCompatActivity implements SignOutDialog
                     }
                 });
             }
+
+            else if(i == 5){
+                CardView cardView = (CardView)Patient_homepage.getChildAt(i);
+                cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Patient_Homepage.this, DoctorsList.class);
+                        startActivity(intent);
+                    }
+                });
+            }
         }
 
 

@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AiD">
+        <activity android:name=".DoctorsList"></activity>
         <activity
             android:name=".DoctorTabbed"
             android:label="@string/title_activity_doctor_tabbed"
-            android:theme="@style/Theme.AiD.NoActionBar"/>
+            android:theme="@style/Theme.AiD.NoActionBar" />
         <activity
             android:name=".TabbedActivity"
             android:label="@string/title_activity_tabbed"
@@ -42,8 +43,8 @@
         </activity>
         <activity android:name=".PatientDetail" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
