@@ -96,5 +96,10 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
         return usersList.get(position).getId();
     }
 
+    public void removeFromList(int position){
+        usersList.remove(position);
+        notifyItemRemoved(position);
+    }
+
 
 }

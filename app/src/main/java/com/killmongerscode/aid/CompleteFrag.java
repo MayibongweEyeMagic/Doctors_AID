@@ -58,7 +58,7 @@ public class CompleteFrag  extends Fragment {
         completeRecyclerView.setDocCLickLster(new CompleteRecyclerView.CompleteRecyclerClickListner() {
             @Override
             public void OnCLickLister(int position) {
-                Completion_form completion_form =new Completion_form();
+                Completion_form completion_form =new Completion_form(completeRecyclerView.getIdNumber(position), email);
                 completion_form.show(getChildFragmentManager(), "View Form details");
             }
         });
@@ -103,7 +103,7 @@ public class CompleteFrag  extends Fragment {
                                 String first_name = jsonObject.getString("DOCTOR_FNAME");
                                 String last_name = jsonObject.getString("DOCTOR_LNAME");
                                 String emailAddress = jsonObject.getString("DOCTOR_EMAIL");
-                                String id ="1";
+                                String id =jsonObject.getString("BOOKING_NO");
                                 completeRecyclerView.addAppointmentComp(new InOrComplete(first_name,last_name,emailAddress, id));
                             }
                         }catch (JSONException e){

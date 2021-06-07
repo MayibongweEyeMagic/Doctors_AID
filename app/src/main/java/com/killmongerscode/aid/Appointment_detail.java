@@ -100,7 +100,12 @@ public class Appointment_detail extends AppCompatActivity {
                         }
 
                         final String responseData = response.body().string();
+                        Appointment_detail.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
 
+                            }
+                        });
 
                     }
 

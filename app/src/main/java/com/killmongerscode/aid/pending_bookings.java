@@ -312,9 +312,6 @@ public class pending_bookings extends AppCompatActivity {
                            @Override
                            public void run() {
                                Toast.makeText(pending_bookings.this, responseData, Toast.LENGTH_SHORT).show();
-
-
-
                            }
                        });
 

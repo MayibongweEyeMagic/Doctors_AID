@@ -76,6 +76,7 @@ public class DocCompleteFrag extends Fragment {
 
                 if (!response.isSuccessful()) {
                     throw new IOException("Unexpected code " + response);
+
                 }
 
                 final String responseData = response.body().string();
@@ -92,7 +93,7 @@ public class DocCompleteFrag extends Fragment {
                                 String first_name = jsonObject.getString("PATIENT_FNAME");
                                 String last_name = jsonObject.getString("PATIENT_LNAME");
                                 String emailAddress = jsonObject.getString("PATIENT_EMAIL");
-                                String id = jsonObject.getString("BOOKING_NO");
+                                String id = "1";
                                 docCompleteRecyclerView.addDocAppointmentComp(new InOrComplete(first_name, last_name, emailAddress,id));
                             }
                         }catch (JSONException e){

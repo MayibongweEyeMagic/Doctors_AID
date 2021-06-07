@@ -20,6 +20,10 @@ public class CompleteRecyclerView extends RecyclerView.Adapter<CompleteRecyclerV
     private CompleteRecyclerClickListner listner;
 
 
+    public String getIdNumber(int position){
+        return usersList.get(position).getId();
+    }
+
     public interface CompleteRecyclerClickListner{
         void OnCLickLister(int position);
     }

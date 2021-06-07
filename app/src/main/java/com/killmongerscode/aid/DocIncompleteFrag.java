@@ -58,9 +58,8 @@ public class DocIncompleteFrag extends Fragment {
             @Override
             public void DocOnCLickLister(int position) {
                 ID =docIncompleteRecyclerView.getIdNumber(position);
-                Intent intent =new Intent(getActivity(), Appointment_detail.class);
-                intent.putExtra("ID", ID);
-                startActivityForResult(intent, 1);
+                DocComplete_form docComplete_form =new DocComplete_form(position, docIncompleteRecyclerView, ID, getActivity());
+                docComplete_form.show(getChildFragmentManager(), "someSupport");
             }
         });
 
