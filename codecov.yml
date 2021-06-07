@@ -36,3 +36,5 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/Patient_appointments.java"
   - "app/src/main/java/com/killmongerscode/aid/DocIncompleteRecyclerView.java"
   - "app/src/main/java/com/killmongerscode/aid/TabbedActivity.java"
+  - "app/src/main/java/com/killmongerscode/aid/DocComplete_form.java"
+  - "app/src/main/java/com/killmongerscode/aid/patients_appointments_adapter.java"
