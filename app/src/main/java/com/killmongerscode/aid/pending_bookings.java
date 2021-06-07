@@ -33,6 +33,7 @@ public class pending_bookings extends AppCompatActivity {
     private ArrayList<Patient> patientList;
     private RecyclerView recyclerView;
     private pending_bookings_adapter.RecyclerViewClickListner Lister;
+    String booking_no = "";
      pending_bookings_adapter adapter ;
 
 
@@ -164,12 +165,74 @@ public class pending_bookings extends AppCompatActivity {
             }
         });
 
-        setOnClickListr();
+      //  setOnClickListr();
+
+
+       // OkHttpClient client = new OkHttpClient();
+
+
+
+       Lister = new pending_bookings_adapter.RecyclerViewClickListner() {
+            @Override
+            public void onItemClick(int position) {
+                RemoveItem(position);
+                RequestBody body1 = new FormBody.Builder()
+                        .add("booking number",booking_no)
+                        .add("status","REJECTED")
+                        .build();
+
+                Request request1 = new Request.Builder()
+                        .url("https://lamp.ms.wits.ac.za/home/s2090040/update_status.php")
+                        .post(body1)
+                        .build();
+
+                client.newCall(request1).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+
+                        if (!response.isSuccessful()) {
+                            throw new IOException("Unexpected code " + response);
+                        }
+
+                        final String responseData = response.body().string();
+                        pending_bookings.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(pending_bookings.this, responseData, Toast.LENGTH_SHORT).show();
+
+
+
+                            }
+                        });
+
+                    }
+
+                });
+            }
+
+            @Override
+            public void onItemDelete(int position) {
+
+               setAccept(position);
+            }
+        };
+
 
 
     }
 
     public  void RemoveItem( int position){
+        booking_no = getBooking_no(position);
+
+        Toast.makeText(this, booking_no, Toast.LENGTH_SHORT).show();
+
+
         usersList.remove(position);
         adapter.notifyItemRemoved(position);
 
@@ -213,12 +276,18 @@ public class pending_bookings extends AppCompatActivity {
 
     private void setOnClickListr() {
 
-        Lister = new pending_bookings_adapter.RecyclerViewClickListner() {
-            @Override
-            public void onItemClick(int position) {
-                RemoveItem(position);
-            }
-        };
+       Lister = new pending_bookings_adapter.RecyclerViewClickListner() {
+           @Override
+           public void onItemClick(int position) {
+               RemoveItem(position);
+           }
+
+           @Override
+           public void onItemDelete(int position) {
+
+               setAccept(position);
+           }
+       };
 
     }
 
@@ -233,6 +302,12 @@ public class pending_bookings extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         patientList = new ArrayList<>();
+    }
+
+    public String getBooking_no(int position){
+        String temp = usersList.get(position).getPatient_reason();
+
+        return temp;
     }
 
 

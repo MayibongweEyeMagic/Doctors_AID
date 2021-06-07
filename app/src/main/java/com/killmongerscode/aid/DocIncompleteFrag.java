@@ -1,5 +1,6 @@
 package com.killmongerscode.aid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,8 +33,8 @@ public class DocIncompleteFrag extends Fragment {
     String email;
     private DocIncompleteRecyclerView.DocRecyclerClickListner Lister;
     private DocIncompleteRecyclerView docIncompleteRecyclerView;
-    private ArrayList<InOrComplete> usersList =new ArrayList<>();
     private RecyclerView recyclerView;
+    String ID;
 
     @Nullable
     @Override
@@ -42,7 +43,7 @@ public class DocIncompleteFrag extends Fragment {
         Bundle args =getArguments();
         email =args.getString("email");
         recyclerView =(RecyclerView) view.findViewById(R.id.doc_incomplete_recycler);
-        docIncompleteRecyclerView = new DocIncompleteRecyclerView(usersList, getContext());
+        docIncompleteRecyclerView = new DocIncompleteRecyclerView(getContext(),Lister);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(docIncompleteRecyclerView);
         return view;
@@ -56,8 +57,10 @@ public class DocIncompleteFrag extends Fragment {
         docIncompleteRecyclerView.setDocCLickLster(new DocIncompleteRecyclerView.DocRecyclerClickListner() {
             @Override
             public void DocOnCLickLister(int position) {
-                Completion_form completion_form =new Completion_form();
-                completion_form.show(getChildFragmentManager(), "Some Dialog");
+                ID =docIncompleteRecyclerView.getIdNumber(position);
+                Intent intent =new Intent(getActivity(), Appointment_detail.class);
+                intent.putExtra("ID", ID);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -101,7 +104,8 @@ public class DocIncompleteFrag extends Fragment {
                                 String first_name = jsonObject.getString("PATIENT_FNAME");
                                 String last_name = jsonObject.getString("PATIENT_LNAME");
                                 String emailAddress = jsonObject.getString("PATIENT_EMAIL");
-                                docIncompleteRecyclerView.addDocAppointment(new InOrComplete(first_name, last_name, emailAddress));
+                                String id = jsonObject.getString("BOOKING_NO");
+                                docIncompleteRecyclerView.addDocAppointment(new InOrComplete(first_name, last_name, emailAddress,id));
                             }
                         }catch (JSONException e){
                             e.printStackTrace();
@@ -112,6 +116,10 @@ public class DocIncompleteFrag extends Fragment {
             }
 
         });
+
+
+
+
     }
 
 }

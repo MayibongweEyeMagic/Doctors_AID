@@ -92,7 +92,8 @@ public class DocCompleteFrag extends Fragment {
                                 String first_name = jsonObject.getString("PATIENT_FNAME");
                                 String last_name = jsonObject.getString("PATIENT_LNAME");
                                 String emailAddress = jsonObject.getString("PATIENT_EMAIL");
-                                docCompleteRecyclerView.addDocAppointmentComp(new InOrComplete(first_name, last_name, emailAddress));
+                                String id = jsonObject.getString("BOOKING_NO");
+                                docCompleteRecyclerView.addDocAppointmentComp(new InOrComplete(first_name, last_name, emailAddress,id));
                             }
                         }catch (JSONException e){
                             e.printStackTrace();

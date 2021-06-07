@@ -32,9 +32,14 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
         public interface  RecyclerViewClickListner{
 
         void onItemClick(int position);
-      //  void onItemDelete(int position );
+       void onItemDelete(int position );
 
 
+    }
+
+    public void setClicklister(RecyclerViewClickListner listner){
+
+        Listner = listner;
     }
 
 
@@ -50,8 +55,30 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
             reject = view.findViewById(R.id.Decline);
             accept = view.findViewById(R.id.Accept);
 
-            reject.setOnClickListener(this);
-            accept.setOnClickListener(this);
+            reject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(Listner !=null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            Listner.onItemClick( position);
+                        }
+
+                    }
+                }
+            });
+            accept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(Listner !=null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            Listner.onItemClick( position);
+                        }
+
+                    }
+                }
+            });
 
         }
 
@@ -60,12 +87,13 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
             if(Listner !=null) {
                 int position = getAdapterPosition();
                 if(position != RecyclerView.NO_POSITION){
-                Listner.onItemClick( position);
+                Listner.onItemDelete(position);
                 }
 
             }
-
         }
+
+
 
 
 
