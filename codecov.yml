@@ -1,0 +1,47 @@
+ignore:
+  - "app/src/main/java/com/killmongerscode/aid/Appointment_detail.java" 
+  - "app/src/main/java/com/killmongerscode/aid/Booking_Patient.java"
+  - "app/src/main/java/com/killmongerscode/aid/Choose_Doctor"
+  - "app/src/main/java/com/killmongerscode/aid/CompleteFrag.java"
+  - "app/src/main/java/com/killmongerscode/aid/CompleteRecyclerView.java"
+  - "app/src/main/java/com/killmongerscode/aid/Completion_form.java"
+  - "app/src/main/java/com/killmongerscode/aid/DirectionDialog.java"
+  - "app/src/main/java/com/killmongerscode/aid/DocCompleteFrag.java"
+  - "app/src/main/java/com/killmongerscode/aid/DocCompleteRecyclerView.java"
+  - "app/src/main/java/com/killmongerscode/aid/DocIncompleteFrag.java"
+  - "app/src/main/java/com/killmongerscode/aid/DoctorAccess.java"
+  - "app/src/main/java/com/killmongerscode/aid/DoctorChats.java"
+  - "app/src/main/java/com/killmongerscode/aid/DoctorName.java"
+  - "app/src/main/java/com/killmongerscode/aid/DoctorProfile.java"
+  - "app/src/main/java/com/killmongerscode/aid/DoctorTabbed.java"
+  - "app/src/main/java/com/killmongerscode/aid/Doctor_Homepage.java"
+  - "app/src/main/java/com/killmongerscode/aid/Doctor_appointments.java"
+  - "app/src/main/java/com/killmongerscode/aid/InOrComplete.java"
+  - "app/src/main/java/com/killmongerscode/aid/IncompleteFrag.java"
+  - "app/src/main/java/com/killmongerscode/aid/IncompleteRecyclerView.java"
+  - "app/src/main/java/com/killmongerscode/aid/MainActivity.java"
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+

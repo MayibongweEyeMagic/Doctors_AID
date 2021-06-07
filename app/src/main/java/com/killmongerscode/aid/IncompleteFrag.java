@@ -92,7 +92,8 @@ public class IncompleteFrag  extends Fragment {
                                 String first_name = jsonObject.getString("DOCTOR_FNAME");
                                 String last_name = jsonObject.getString("DOCTOR_LNAME");
                                 String emailAddress = jsonObject.getString("DOCTOR_EMAIL");
-                                incompleteRecyclerView.addAppointment(new InOrComplete(first_name, last_name, emailAddress));
+                                String id ="1";
+                                incompleteRecyclerView.addAppointment(new InOrComplete(first_name, last_name, emailAddress, id));
                             }
                         }catch (JSONException e){
                             e.printStackTrace();
