@@ -63,7 +63,7 @@ public class ViewCompletedForm extends AppCompatDialogFragment{
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
-                .add("booking number", ID)
+                .add("booking_number", ID)
                 .add("email",patientEmail)
                 .build();
 
