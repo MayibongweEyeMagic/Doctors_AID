@@ -37,6 +37,6 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/DocIncompleteRecyclerView.java"
   - "app/src/main/java/com/killmongerscode/aid/TabbedActivity.java"
   - "app/src/main/java/com/killmongerscode/aid/DocComplete_form.java"
-  - "app/src/main/java/com/killmongerscode/aid/patients_appointments_adapter.java"
-  - "app/src/main/java/com/killmongerscode/aid/VieweCompletedForm.java"
+  - "app/src/main/java/com/killmongerscode/aid/patient_appointments_adapter.java"
+  - "app/src/main/java/com/killmongerscode/aid/ViewCompletedForm.java"
   - "app/src/main/java/com/killmongerscode/aid/doctor_appointments_adapter.java"
