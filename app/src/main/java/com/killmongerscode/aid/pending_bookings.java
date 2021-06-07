@@ -192,7 +192,7 @@ public class pending_bookings extends AppCompatActivity {
     public void setAccept(int position ){
 
         booking_no = getBooking_no(position);
-        
+
         usersList.remove(position);
         adapter.notifyItemRemoved(position);
 
