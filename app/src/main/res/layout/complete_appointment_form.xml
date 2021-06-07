@@ -3,17 +3,37 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:textSize="18dp"
-        android:textColor="@android:color/holo_green_light"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Diagnosis and Treatment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Diagnosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Treatment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_marginRight="5dp"
@@ -24,13 +44,11 @@
         android:paddingBottom="5dp">
 
 
-        <EditText
-            android:id="@+id/add_diagnosis"
+        <TextView
+            android:id="@+id/view_diagnosis"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/round_grey"
             android:layout_weight="1"
-            android:hint="Diagnosis"
             android:textSize="14sp"
             android:paddingLeft="10dp"
             android:textColor="@color/black"
@@ -38,32 +56,49 @@
             android:layout_height="40dp"/>
 
 
-        <EditText
+        <TextView
             android:textColor="@color/black"
             android:textSize="14sp"
             android:paddingLeft="10dp"
-            android:background="@drawable/round_grey"
-            android:id="@+id/add_treatment"
-            android:hint="Treatment"
+            android:id="@+id/view_treatment"
             android:layout_width="150dp"
             android:layout_height="40dp"/>
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="18dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
-    <TextView
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="18dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Date of another visit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 
 
     <LinearLayout
@@ -73,26 +108,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/date_visit"
+        <TextView
+            android:id="@+id/view_date"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:textSize="14sp"
-            android:background="@drawable/round_grey"
             android:paddingLeft="5dp"
-            android:hint="Date"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
 
-        <EditText
+        <TextView
             android:textColor="@color/black"
             android:textSize="14sp"
             android:paddingLeft="10dp"
-            android:background="@drawable/round_grey"
-            android:id="@+id/add_time"
-            android:hint="Time"
+            android:id="@+id/view_time"
             android:layout_width="150dp"
             android:layout_height="40dp"/>
 

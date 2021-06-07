@@ -32,11 +32,6 @@ public class Completion_form extends AppCompatDialogFragment {
         LayoutInflater inflater =getActivity().getLayoutInflater();
         View view =inflater.inflate(R.layout.complete_appointment_form, null);
 
-        diagnose =view.findViewById(R.id.add_diagnosis);
-        treats =view.findViewById(R.id.add_treatment);
-        time =view.findViewById(R.id.add_time);
-        date =view.findViewById(R.id.date_visit);
-
         docIncompleteRecyclerView =new DocIncompleteRecyclerView(userList, getContext());
 
 
@@ -47,23 +42,6 @@ public class Completion_form extends AppCompatDialogFragment {
 
                     }
                 });
-
-        builder.setView(view)
-                .setPositiveButton("Complete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        docIncompleteRecyclerView.setDocCLickLster(new DocIncompleteRecyclerView.DocRecyclerClickListner() {
-                            @Override
-                            public void DocOnCLickLister(int position) {
-                                    docIncompleteRecyclerView.removeFromList(position);
-                            }
-                        });
-
-                    }
-                });
-
-
 
         return builder.create();
     }
