@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = (EditText)findViewById(R.id.user);
-        password = (EditText)findViewById(R.id.pass);
+        username = findViewById(R.id.user);
+        password = findViewById(R.id.pass);
 
-        patient_login = (Button)findViewById(R.id.log_in_patient);
+        patient_login = findViewById(R.id.log_in_patient);
         //doctor_login = (Button)findViewById(R.id.patient_create_account);
 
-        clicks = (TextView) findViewById(R.id.register_path);
+        clicks =  findViewById(R.id.register_path);
 
 
         clicks.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 USERNAME =username.getText().toString();
                 PASSWORD =password.getText().toString();
 
+
+
                 RequestBody body = new FormBody.Builder()
                         .add("email",USERNAME)
                         .add("password",PASSWORD)
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 Request request = new Request.Builder()
                         .url("https://lamp.ms.wits.ac.za/home/s2090040/dProfile.php")
                         .post(body)
-                        .build();
+                       .build();
 
                     client.newCall(request).enqueue(new Callback() {
                         @Override
@@ -92,20 +94,23 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
 
-                            if (!response.isSuccessful()) {
+                           if (!response.isSuccessful()) {
                                 throw new IOException("Unexpected code " + response);
                             }
 
                             final String responseData = response.body().string();
+
+                           String [] holder = responseData.split(" ");
+
                             MainActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     try {
-                                        loginPatient(responseData);
+                                        loginPatient(holder[0]);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-                                }
+                               }
                             });
 
                         }
@@ -135,15 +140,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void loginPatient(String response) throws JSONException {
 
-        if (response.equals("Invalid email")){
+ //       Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+
+        if (response.equals("Invalidemail")){
             Toast.makeText(MainActivity.this,
                     "Invalid email", Toast.LENGTH_LONG).show();
         }
-        else if(response.equals("Fields are empty")){
+        else if(response.equals("Fieldsareempty")){
             Toast.makeText(MainActivity.this,
                     "One or two fields are empty", Toast.LENGTH_LONG).show();
         }
-        else if (response.equals("Patient")){
+         if (response.equals("Patient")){
 
             progressDialog =new ProgressDialog(MainActivity.this);
 
@@ -162,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                         sleep(3500);
                         Intent intent = new Intent(MainActivity.this, Patient_Homepage.class);
                         intent.putExtra("email", USERNAME);
-                        startActivityForResult(intent, 1);
+                        startActivity(intent);
                         progressDialog.dismiss();
                         super.run();
                     }catch (InterruptedException e){
@@ -182,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             progressDialog.show();
 
             progressDialog.setContentView(R.layout.progress_dialog);
-            progressDialog.getWindow().setBackgroundDrawableResource(
+           progressDialog.getWindow().setBackgroundDrawableResource(
                     android.R.color.transparent
             );
 
@@ -207,11 +214,11 @@ public class MainActivity extends AppCompatActivity {
             username.getText().clear();
             password.getText().clear();
         }
-        else if(response.equals("Password is incorrect")){
+        else if(response.equals("Passwordisincorrect")){
             Toast.makeText(MainActivity.this,
                     "Password is incorrect", Toast.LENGTH_LONG).show();
         }
-        else {
+        else if(response.equals("Emaildoesnotexistpleaseregister!")){
             Toast.makeText(MainActivity.this,
                     "Account does not exist please register", Toast.LENGTH_LONG).show();
 

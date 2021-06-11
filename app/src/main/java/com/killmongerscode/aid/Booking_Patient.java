@@ -11,10 +11,13 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -43,6 +46,7 @@ public class Booking_Patient extends AppCompatActivity {
     ArrayList<SelectByProfession> usersList = new ArrayList<>();
 
     String doctorBio, emailAddress;
+    private static final String CHANNEL_ID = "101";
 
     String[] predefined ={"General", "Optometrist", "Cardiologist", "Pediatrician", "Dentist"};
     private AutoCompleteTextView spec_field, choose_doc;
@@ -105,7 +109,11 @@ public class Booking_Patient extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               // Toast.makeText(Booking_Patient.this, emailAddress, Toast.LENGTH_SHORT).show();
                    postTotheLamp(emailAddress);
+
+
+
             }
         });
     }
@@ -312,5 +320,24 @@ public class Booking_Patient extends AppCompatActivity {
 
         return List;
     }
+
+    private void createNotificationChannel() {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "FirebaseNotificationChannel";
+
+            String description = "Receive Firebase Notification";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
 
 }

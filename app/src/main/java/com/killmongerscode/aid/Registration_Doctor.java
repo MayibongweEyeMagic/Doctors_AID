@@ -3,7 +3,11 @@ package com.killmongerscode.aid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.media.session.MediaSession;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +18,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -35,6 +43,9 @@ public class Registration_Doctor extends AppCompatActivity {
     String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION, TOKEN;
     private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone;
     Button registration_button;
+    String TAG ="pushnotification";
+    private static final String CHANNEL_ID = "101";
+
 
     Random random = new Random();
 
@@ -54,6 +65,9 @@ public class Registration_Doctor extends AppCompatActivity {
 
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
+
+       // createNotificationChannel();
+        getToken();
 
         registration_button = findViewById(R.id.doctor_create_account);
         name =  findViewById(R.id.first_name_doctor);
@@ -92,7 +106,7 @@ public class Registration_Doctor extends AppCompatActivity {
             public void onClick(View view) {
 
 
-
+            //getToken();
 
 
                 NAME = name.getText().toString();
@@ -116,6 +130,7 @@ public class Registration_Doctor extends AppCompatActivity {
                         .add("email",EMAIL)
                         .add("password",PASSWORD)
                         .add("grad_at",UNIVERSITY)
+                        .add("token",TOKEN)
                         .build();
 
                 Request request = new Request.Builder()
@@ -206,6 +221,49 @@ public class Registration_Doctor extends AppCompatActivity {
         }
 
     }
+
+
+    private void getToken(){
+
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete( Task<String> task) {
+
+                if(!task.isSuccessful()){
+
+
+                }
+
+                TOKEN = task.getResult();
+                Log.d(TAG,TOKEN);
+
+
+
+            }
+        });
+
+    }
+
+
+    private void createNotificationChannel() {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "FirebaseNotificationChannel";
+
+            String description = "Receive Firebase Notification";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
 
 
 
