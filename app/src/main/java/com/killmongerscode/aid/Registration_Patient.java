@@ -73,6 +73,7 @@ public class Registration_Patient extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            getToken();
 
                 FNAME = name.getText().toString();
                 LNAME = surname.getText().toString();
