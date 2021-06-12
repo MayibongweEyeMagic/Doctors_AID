@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -30,6 +33,7 @@ import okhttp3.Response;
 
 public class pending_bookings extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "101";
     private ArrayList<Patient> patientList;
     private RecyclerView recyclerView;
     private pending_bookings_adapter.RecyclerViewClickListner Lister;
@@ -40,7 +44,7 @@ public class pending_bookings extends AppCompatActivity {
     private Button accept;
     private Button decline;
 
-    private ArrayList<Patient> usersList =new ArrayList<>();
+    private ArrayList<PendingBookingObjects> usersList =new ArrayList<>();
     String emailAddress;
 
 
@@ -208,17 +212,18 @@ public class pending_bookings extends AppCompatActivity {
         for(int i =0; i<temp.size();++i){
 
             String [] thing = temp.get(i).split(":");
-            String thing1 = thing[0];
-            String thing2 = thing[1];
-            String thing3 = thing[2];
-            String thing4 = thing[3];
-            String thing5 = thing[4];
-            String thing6 = thing[5];
-            String thing7 = thing[6];
-            String thing8 = thing[7];
-            String thing9 = thing[8];
+            String first_name = thing[0];
+            String surname = thing[1];
+            String patient_email = thing[2];
+            String reason = thing[3];
+            String booking_no = thing[4];
+            String patient_phone = thing[5];
+            String booking_date = thing[6];
+            String patient_dob = thing[7];
+            String home_address = thing[8];
+            String token = thing[9];
 
-            usersList.add(new Patient(thing1, thing2, thing3, thing8, thing9, thing4, thing5, thing6, thing7));
+            usersList.add(new PendingBookingObjects(first_name, surname, patient_email, patient_dob, home_address, patient_phone, reason, booking_no, booking_date,token));
 
         }
 
@@ -281,43 +286,45 @@ public class pending_bookings extends AppCompatActivity {
            @Override
            public void onItemDelete(int position) {
 
-               setAccept(position);
-               OkHttpClient client = new OkHttpClient();
-               RequestBody body1 = new FormBody.Builder()
-                       .add("booking_number",booking_no)
-                       .add("status","ACCEPTED")
-                       .build();
+              // setAccept(position);
+             //  OkHttpClient client = new OkHttpClient();
+            //   RequestBody body1 = new FormBody.Builder()
+              //         .add("booking_number",booking_no)
+                //       .add("status","ACCEPTED")
+                  //     .build();
 
-               Request request1 = new Request.Builder()
-                       .url("https://lamp.ms.wits.ac.za/home/s2090040/update_status.php")
-                       .post(body1)
-                       .build();
+          //     Request request1 = new Request.Builder()
+              //         .url("https://lamp.ms.wits.ac.za/home/s2090040/update_status.php")
+            //           .post(body1)
+        //               .build();
 
-               client.newCall(request1).enqueue(new Callback() {
-                   @Override
-                   public void onFailure(@NotNull Call call, @NotNull IOException e) {
+          //     client.newCall(request1).enqueue(new Callback() {
+      //             @Override
+        //           public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
-                   }
+          //         }
 
-                   @Override
-                   public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+       //            @Override
+         //          public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
 
-                       if (!response.isSuccessful()) {
-                           throw new IOException("Unexpected code " + response);
-                       }
+           //            if (!response.isSuccessful()) {
+             //              throw new IOException("Unexpected code " + response);
+        //               }
 
-                       final String responseData = response.body().string();
-                       pending_bookings.this.runOnUiThread(new Runnable() {
-                           @Override
-                           public void run() {
-                               Toast.makeText(pending_bookings.this, responseData, Toast.LENGTH_SHORT).show();
-                           }
-                       });
+               String test = getBooking_no(position);
 
-                   }
+          //             final String responseData = response.body().string();
+            //           pending_bookings.this.runOnUiThread(new Runnable() {
+          //                 @Override
+            //               public void run() {
+                               Toast.makeText(pending_bookings.this, test, Toast.LENGTH_SHORT).show();
+          //                 }
+            //           });
 
-               });
+         //          }
+
+           //    });
            }
        };
 
@@ -337,9 +344,23 @@ public class pending_bookings extends AppCompatActivity {
     }
 
     public String getBooking_no(int position){
-        String temp = usersList.get(position).getPatient_reason();
+        return usersList.get(position).getPatient_dob();
+    }
 
-        return temp;
+
+    private void createNotificationChannel() {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "FirebaseNotificationChannel";
+
+            String description = "Receive Firebase Notification";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
 

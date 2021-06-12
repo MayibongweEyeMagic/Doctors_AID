@@ -99,8 +99,9 @@ public class Verification {
             String reason = jsonObject.getString("REASON");
             String booking_no = jsonObject.getString("BOOKING_NO");
             String booking_date = jsonObject.getString("BOOKING_DATE");
+            String token = jsonObject.getString("TOKEN");
 
-           String patientBio = first_name + ":" + surname + ":" + patient_email + ":" + reason+ ":" + booking_no + ":" + patient_phone + ":" + booking_date + ":" + patient_dob + ":" + home_address;
+           String patientBio = first_name + ":" + surname + ":" + patient_email + ":" + reason+ ":" + booking_no + ":" + patient_phone + ":" + booking_date + ":" + patient_dob + ":" + home_address+":"+token;
             getPatients.add(patientBio);
         }
         return getPatients;

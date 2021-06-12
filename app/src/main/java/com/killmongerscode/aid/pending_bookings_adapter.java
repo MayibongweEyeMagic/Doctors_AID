@@ -17,11 +17,11 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
 
 
 
-    private ArrayList<Patient> patientList;
+    private ArrayList<PendingBookingObjects> patientList;
     private RecyclerViewClickListner Listner;
 
 
-    public pending_bookings_adapter(ArrayList<Patient>patientList, RecyclerViewClickListner listner){
+    public pending_bookings_adapter(ArrayList<PendingBookingObjects>patientList, RecyclerViewClickListner listner){
         this.patientList = patientList;
         this.Listner =listner;
 

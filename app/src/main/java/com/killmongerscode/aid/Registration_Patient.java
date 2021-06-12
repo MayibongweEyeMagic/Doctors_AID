@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
@@ -28,9 +32,11 @@ import okhttp3.Response;
 
 public class Registration_Patient extends AppCompatActivity {
 
-    String FNAME, LNAME, EMAILADRESS,PASSWORD, CONFIRMPASSWORD, HOMEADDRESS,dateofbirth,PHONENUM;
+    String FNAME, LNAME, EMAILADRESS,PASSWORD, CONFIRMPASSWORD, HOMEADDRESS,dateofbirth,PHONENUM,TOKEN;
     EditText name, surname, email, password, homeadress, dob, confirmpassword;
     Button registration_button;
+    String TAG ="pushnotification";
+    private static final String CHANNEL_ID = "101";
 
     Random random = new Random();
 
@@ -87,6 +93,7 @@ public class Registration_Patient extends AppCompatActivity {
                         .add("dob",dateofbirth)
                         .add("email",EMAILADRESS)
                         .add("password",PASSWORD)
+                        .add("token",TOKEN)
                         .build();
 
                 Request request = new Request.Builder()
@@ -157,6 +164,31 @@ public class Registration_Patient extends AppCompatActivity {
 
 
     }*/
+
+    private void getToken(){
+
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete( Task<String> task) {
+
+                if(!task.isSuccessful()){
+
+
+                }
+
+                TOKEN = task.getResult();
+                Log.d(TAG,TOKEN);
+
+
+
+            }
+        });
+
+    }
+
+
+
     public void registration_function(String response){
 
 
