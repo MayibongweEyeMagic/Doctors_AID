@@ -44,6 +44,9 @@ import java.util.Date;
 public class Booking_Patient extends AppCompatActivity {
 
     ArrayList<SelectByProfession> usersList = new ArrayList<>();
+    ArrayList<String>thing = new ArrayList<>();
+    ArrayList<String>temp  =new ArrayList<>();
+    String docEmail = "";
 
     String doctorBio, emailAddress;
     private static final String CHANNEL_ID = "101";
@@ -109,7 +112,9 @@ public class Booking_Patient extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                // Toast.makeText(Booking_Patient.this, emailAddress, Toast.LENGTH_SHORT).show();
+                    createNotificationChannel();
                    postTotheLamp(emailAddress);
 
 
@@ -123,6 +128,7 @@ public class Booking_Patient extends AppCompatActivity {
             Toast.makeText(this, "Booking was created successfully", Toast.LENGTH_SHORT).show();
 
             Intent intent =new Intent(Booking_Patient.this, Patient_Homepage.class);
+            intent.putExtra("email", emailAddress);
             startActivity(intent);
 
         }
@@ -189,9 +195,16 @@ public class Booking_Patient extends AppCompatActivity {
 
 
         String date = et_date.getText().toString() + " " + et_time.getText().toString();;
-        String docEmail =choose_doc.getText().toString();
+         docEmail =choose_doc.getText().toString();
         String appointReason =reason.getText().toString();
         String spec =spec_field.getText().toString();
+        String token  ="";
+
+        if(thing.contains(docEmail)){
+                int index = thing.indexOf(docEmail);
+                token = temp.get(index);
+
+        }
 
         OkHttpClient client = new OkHttpClient();
 
@@ -201,6 +214,7 @@ public class Booking_Patient extends AppCompatActivity {
                 .add("doc_email", docEmail)
                 .add("reason", appointReason)
                 .add("specialisation", spec)
+                .add("token",token)
                 .build();
 
         Request request = new Request.Builder()
@@ -286,11 +300,12 @@ public class Booking_Patient extends AppCompatActivity {
     }
 
     public void setSelectedDoctors(String json) throws JSONException{
-        ArrayList<String> holder =new ArrayList<>();
 
-        holder =getSelectedDoctors(json);
+        ArrayList<String>list = new ArrayList<>();
+        list = getSelectedDoctors(json);
 
-        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, holder);
+
+        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, list);
         choose_doc.setThreshold(1);
         choose_doc.setAdapter(adapter);
 
@@ -300,7 +315,8 @@ public class Booking_Patient extends AppCompatActivity {
     }
 
     public ArrayList<String> getSelectedDoctors(String json) throws JSONException {
-        ArrayList<String> List =new ArrayList<>();
+
+        ArrayList<String> holder =new ArrayList<>();
         JSONArray jsonArray = new JSONArray(json);
 
         for(int i=0; i< jsonArray.length();++i){
@@ -311,14 +327,18 @@ public class Booking_Patient extends AppCompatActivity {
             //String first_name = jsonObject.getString("DOCTOR_FNAME");
             //String surname = jsonObject.getString("DOCTOR_LNAME");
             String doctor_email = jsonObject.getString("DOCTOR_EMAIL");
+            String token = jsonObject.getString("TOKEN");
 
 
-            doctorBio = doctor_email;
+            //doctorBio = doctor_email + ":" + token;
 
-            List.add(doctorBio);
+            holder.add(doctor_email);
+            thing.add(doctor_email);
+            temp.add(token);
+
         }
 
-        return List;
+        return holder;
     }
 
     private void createNotificationChannel() {
