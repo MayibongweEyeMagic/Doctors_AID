@@ -48,6 +48,8 @@ public class Registration_Patient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__patient);
 
+        getToken();
+
         registration_button = (Button)findViewById(R.id.patient_create_account);
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
@@ -73,7 +75,7 @@ public class Registration_Patient extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-            getToken();
+
 
                 FNAME = name.getText().toString();
                 LNAME = surname.getText().toString();
