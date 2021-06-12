@@ -2,6 +2,7 @@ package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.DialogFragment;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -97,6 +98,9 @@ public class Booking_Patient extends AppCompatActivity {
         choose_doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                DialogFragment dialog = FullScreenDialog.newInstance();
+                dialog.show(getSupportFragmentManager(), "tag");
 
                 String spec = spec_field.getText().toString();
 
