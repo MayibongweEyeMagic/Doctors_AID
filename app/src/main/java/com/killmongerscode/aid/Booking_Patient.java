@@ -186,7 +186,7 @@ public class Booking_Patient extends AppCompatActivity {
 
                         Calendar calendar1 =Calendar.getInstance();
                         calendar1.set(0,0,0,t1Hour,t1Minute);
-                        et_time.setText(DateFormat.format("hh:mmaa", calendar1));
+                        et_time.setText(DateFormat.format("hh:mm aa", calendar1));
                     }
                 },12,0,false
                 );
@@ -200,7 +200,8 @@ public class Booking_Patient extends AppCompatActivity {
     public void postTotheLamp(String email){
 
 
-        String date = et_date.getText().toString() + " " + et_time.getText().toString();;
+        String date = et_date.getText().toString();
+        String time = et_time.getText().toString();
         String appointReason =reason.getText().toString();
         String spec =spec_field.getText().toString();
 
@@ -209,6 +210,7 @@ public class Booking_Patient extends AppCompatActivity {
         RequestBody body = new FormBody.Builder()
                 .add("email", email)
                 .add("date", date)
+                .add("time", time)
                 .add("doc_email", getSelectedEmail())
                 .add("reason", appointReason)
                 .add("specialisation", spec)

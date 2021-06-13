@@ -219,16 +219,13 @@ public class pending_bookings extends AppCompatActivity {
             String booking_no = thing[4];
             String patient_phone = thing[5];
             String booking_date = thing[6];
-            String patient_dob = thing[7];
-            String home_address = thing[8];
-            String token = thing[9];
+            String booking_time =thing[7];
+            String patient_dob = thing[8];
+            String home_address = thing[9];
+            String token = thing[10];
 
-            String[] dateTime =booking_date.split(" ");
-
-            String book_date =dateTime[0];
-            String book_time =dateTime[1];
-
-            usersList.add(new PendingBookingObjects(first_name, surname, patient_email, patient_dob, home_address, patient_phone, reason, booking_no,book_date, book_time ,token));
+            usersList.add(new PendingBookingObjects(first_name, surname, patient_email,
+                    patient_dob, home_address, patient_phone, reason, booking_no,booking_date, booking_time ,token));
         }
 
          adapter =new pending_bookings_adapter(usersList, Lister);
