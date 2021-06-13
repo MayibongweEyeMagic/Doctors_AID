@@ -1,101 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:id="@+id/prof"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_marginRight="3dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="79dp"
-        android:layout_marginTop="9dp">
+        android:id="@+id/expanding_layout"
+        android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/Patient_Name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@android:color/black"
-            android:textSize="20dp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/Surname"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_profile" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/bookie_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/bookie_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:text="Surname"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/Accept"
+                android:layout_width="120dp"
+                android:layout_height="39dp"
+                android:textAlignment="center"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textAllCaps="false"
+                android:text="Confirm"
+                />
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/Decline"
+                android:textAlignment="center"
+                android:layout_width="120dp"
+                android:layout_height="39dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="Decline"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="46dp"
-            android:layout_toEndOf="@+id/Patient_Name"
-            android:layout_toRightOf="@+id/Patient_Name"
-            android:text="Surname"
-            android:textColor="@android:color/black"
-            android:textSize="20dp" />
+            android:id="@+id/expandable_desc_bookings">
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Email Address:"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp" />
 
-    <TextView
-        android:id="@+id/patient_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/prof"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/circle_image"
-        android:layout_toRightOf="@+id/circle_image"
-        android:text="Email Address"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
+            <TextView
+                android:id="@+id/bookie_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:textSize="14dp" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circle_image"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_profile" />
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="40dp"
+                android:text="Date:"
+                android:textSize="14dp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/Accept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="173dp"
-        android:layout_marginLeft="173dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="121dp"
-        android:layout_marginRight="121dp"
-        android:layout_marginBottom="2dp"
-        android:text="ACCEPT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Decline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="68dp"
+                android:text="Time:"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <Button
-        android:id="@+id/Decline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="2dp"
-        android:backgroundTint="@color/Red"
-        android:text="DECLINE"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Accept"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_alignStart="@+id/bookie_email"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/date_booking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/time_of_booking"
+                android:layout_alignStart="@+id/bookie_email"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="68dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <RelativeLayout
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="95dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@android:color/darker_gray"
+                    android:id="@+id/heading_text"
+                    android:textSize="14dp"
+                    android:text="Reason for Visit:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_alignStart="@+id/heading_text"
+                    android:text="Text"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/reason_for_booking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,16 +46,33 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView Nametext, surname, email;
-        private Button reject, accept;
+         TextView Nametext, surname, email, date, time, reason;
+         Button reject, accept;
 
+        LinearLayout expand_layout;
+        RelativeLayout expandable_desc;
         public MyViewHolder(final View view){
             super(view);
-            Nametext = view.findViewById(R.id.Patient_Name);
-            surname = view.findViewById(R.id.Surname);
-            email = view.findViewById(R.id.patient_email);
+            Nametext = view.findViewById(R.id.bookie_Name);
+            surname = view.findViewById(R.id.bookie_surname);
+            email = view.findViewById(R.id.bookie_email);
+            date =view.findViewById(R.id.date_booking);
+            time =view.findViewById(R.id.time_of_booking);
+            reason =view.findViewById(R.id.reason_for_booking);
             reject = view.findViewById(R.id.Decline);
             accept = view.findViewById(R.id.Accept);
+            expand_layout =view.findViewById(R.id.expanding_layout);
+            expandable_desc =view.findViewById(R.id.expandable_desc_bookings);
+
+
+            expand_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PendingBookingObjects pendingBookingObjects =patientList.get(getAdapterPosition());
+                    pendingBookingObjects.setExpandableBooking(!pendingBookingObjects.isExpandableBooking());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
 
             reject.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,16 +101,6 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
 
         }
 
-
-
-
-
-
-
-
-
-
-
     }
 
     @NonNull
@@ -107,6 +116,14 @@ public class pending_bookings_adapter extends RecyclerView.Adapter<pending_booki
         holder.Nametext.setText(patientList.get(position).getPatient_name());
         holder.surname.setText(patientList.get(position).getPatient_lname());
         holder.email.setText(patientList.get(position).getPatient_email());
+        holder.date.setText(patientList.get(position).getPatient_booking_date());
+        holder.time.setText(patientList.get(position).getPatientTime());
+        holder.reason.setText(patientList.get(position).getPatient_reason());
+
+        boolean isExpandable =patientList.get(position).isExpandableBooking();
+        holder.expandable_desc.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
+
+
 
     }
 

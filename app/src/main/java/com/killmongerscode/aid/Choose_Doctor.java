@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,26 +19,36 @@ import java.util.ArrayList;
 
 public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHolder> {
 
-    private ArrayList<SelectByProfession> usersList;
-    private Context context;
+    private ArrayList<MakeABooking> usersList =new ArrayList<>();
 
-    public Choose_Doctor(ArrayList<SelectByProfession>usersList, Context context){
-        this.usersList = usersList;
-        this.context =context;
+    public Choose_Doctor(){
+    }
+
+    public void addDocAppointment(MakeABooking makeABooking) {
+        usersList.add(makeABooking);
+        notifyItemInserted(usersList.size() - 1);
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.choose_doc, parent, false);
+        View patientview = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_doctors_items, parent, false);
         return new MyViewHolder(patientview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.Name.setText(usersList.get(position).getDocName());
-        holder.Surname.setText(usersList.get(position).getDoSurname());
-        holder.Email.setText(usersList.get(position).getDocEmail());
+        holder.name.setText(usersList.get(position).getBookName());
+        holder.surname.setText(usersList.get(position).getBookSurname());
+        holder.email.setText(usersList.get(position).getBookEmail());
+        holder.specialization.setText(usersList.get(position).getSpecialization());
+        holder.qualification.setText(usersList.get(position).getQualification());
+        holder.phoneNumber.setText(usersList.get(position).getPhone_number());
+        holder.graduated_at.setText(usersList.get(position).getGraduated_at());
+
+        boolean isExpandable =usersList.get(position).isExpandable();
+        holder.expandable_desc.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
+
 
     }
 
@@ -48,19 +59,33 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
     }
 
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView Name, Surname, Email;
+        TextView name, surname, email, specialization, qualification, phoneNumber, graduated_at;
 
-        RelativeLayout parentLayout;
-
+        LinearLayout expand_layout;
+        RelativeLayout expandable_desc;
         public MyViewHolder(final View view){
             super(view);
 
-            Name =view.findViewById(R.id.Doctor_Name);
-            Surname =view.findViewById(R.id.doc_surname);
-            Email =view.findViewById(R.id.doc_mail);
+            name =view.findViewById(R.id.doc_select_Name);
+            surname =view.findViewById(R.id.doc_select_surname);
+            email =view.findViewById(R.id.doc_booking_email);
+            specialization =view.findViewById(R.id.doc_specialization);
+            qualification =view.findViewById(R.id.doc_qualification);
+            phoneNumber =view.findViewById(R.id.cellNumber);
+            graduated_at =view.findViewById(R.id.grad_at);
+            expand_layout =view.findViewById(R.id.expandable_layout);
+            expandable_desc =view.findViewById(R.id.expandable_descriptions);
 
-            parentLayout =view.findViewById(R.id.parent_layout);
+            expand_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MakeABooking makeABooking =usersList.get(getAdapterPosition());
+                    makeABooking.setExpandable(!makeABooking.isExpandable());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
         }
 
     }

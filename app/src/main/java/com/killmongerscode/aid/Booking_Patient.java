@@ -53,9 +53,9 @@ public class Booking_Patient extends AppCompatActivity {
     private static final String CHANNEL_ID = "101";
 
     String[] predefined ={"General", "Optometrist", "Cardiologist", "Pediatrician", "Dentist"};
-    private AutoCompleteTextView spec_field, choose_doc;
+    private AutoCompleteTextView spec_field;
 
-    private EditText et_date, et_time, reason;
+    private EditText et_date, et_time, reason,  choose_doc;
     private AppCompatButton button;
     int t1Hour, t1Minute;
 
@@ -98,18 +98,11 @@ public class Booking_Patient extends AppCompatActivity {
         choose_doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                DialogFragment dialog = FullScreenDialog.newInstance();
+                String spec = spec_field.getText().toString();
+                FullScreenDialog fullScreenDialog =new FullScreenDialog(spec);
+                DialogFragment dialog = fullScreenDialog.newInstance();
                 dialog.show(getSupportFragmentManager(), "tag");
 
-                String spec = spec_field.getText().toString();
-
-                if (spec.isEmpty()) {
-                    Toast.makeText(Booking_Patient.this, "Select Specialization", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    getListofDoctors(spec);
-                }
             }
         });
 
@@ -305,15 +298,18 @@ public class Booking_Patient extends AppCompatActivity {
 
     public void setSelectedDoctors(String json) throws JSONException{
 
-        ArrayList<String>list = new ArrayList<>();
-        list = getSelectedDoctors(json);
+        JSONArray jsonArray = new JSONArray(json);
 
+        for(int i=0; i< jsonArray.length();++i){
 
-        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, list);
-        choose_doc.setThreshold(1);
-        choose_doc.setAdapter(adapter);
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String doctor_email = jsonObject.getString("DOCTOR_EMAIL");
+            String token = jsonObject.getString("TOKEN");
 
-        choose_doc.showDropDown();
+            thing.add(doctor_email);
+            temp.add(token);
+
+        }
 
 
     }

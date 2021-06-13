@@ -3,7 +3,7 @@
     <style name="Theme.AiD" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@android:color/holo_green_light</item>
-        <item name="colorPrimaryVariant">@android:color/holo_green_dark</item>
+        <item name="colorPrimaryVariant">#0E9AC5</item>
         <item name="colorOnPrimary">@color/cardview_light_background</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

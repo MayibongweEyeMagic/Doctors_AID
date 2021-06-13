@@ -223,12 +223,16 @@ public class pending_bookings extends AppCompatActivity {
             String home_address = thing[8];
             String token = thing[9];
 
-            usersList.add(new PendingBookingObjects(first_name, surname, patient_email, patient_dob, home_address, patient_phone, reason, booking_no, booking_date,token));
+            String[] dateTime =booking_date.split(" ");
 
+            String book_date =dateTime[0];
+            String book_time =dateTime[1];
+
+            usersList.add(new PendingBookingObjects(first_name, surname, patient_email, patient_dob, home_address, patient_phone, reason, booking_no,book_date, book_time ,token));
         }
 
          adapter =new pending_bookings_adapter(usersList, Lister);
-        recyclerView.setAdapter(adapter);
+         recyclerView.setAdapter(adapter);
 
     }
 

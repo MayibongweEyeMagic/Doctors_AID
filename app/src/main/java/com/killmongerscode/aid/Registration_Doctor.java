@@ -105,10 +105,6 @@ public class Registration_Doctor extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-            //getToken();
-
-
                 NAME = name.getText().toString();
                 SURNAME = surname.getText().toString();
                 QUALIFICATION = qualification.getText().toString();

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_marginRight="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/expandable_layout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_profile" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/doc_select_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/doc_select_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:text="Surname"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18dp" />
+
+            <Button
+                android:layout_marginLeft="90dp"
+                android:textAllCaps="false"
+                android:text="Select"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/expandable_descriptions">
+
+            <TextView
+                android:id="@+id/doc_booking_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Email Address"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cellNumber"
+                android:text="Phone number"
+                android:textSize="14dp"
+                android:layout_marginRight="40dp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_alignParentEnd="true"/>
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="40dp"
+                android:id="@+id/doc_qualification"
+                android:text="Qualification"
+                android:textSize="14dp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="65dp"
+                android:id="@+id/doc_specialization"
+                android:text="Specialization"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_alignStart="@+id/cellNumber"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentRight="true"
+                android:text="Graduated at"
+                android:id="@+id/grad_at"
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

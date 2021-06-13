@@ -51,7 +51,7 @@
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/doctors"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
