@@ -38,6 +38,7 @@ public class pending_bookings extends AppCompatActivity {
     private RecyclerView recyclerView;
     private pending_bookings_adapter.RecyclerViewClickListner Lister;
     String booking_no = "";
+    String token ="";
      pending_bookings_adapter adapter ;
 
 
@@ -187,6 +188,7 @@ public class pending_bookings extends AppCompatActivity {
 
     public  void RemoveItem( int position){
         booking_no = getBooking_no(position);
+        token = getToken(position);
 
         usersList.remove(position);
         adapter.notifyItemRemoved(position);
@@ -196,6 +198,7 @@ public class pending_bookings extends AppCompatActivity {
     public void setAccept(int position ){
 
         booking_no = getBooking_no(position);
+        token  = getToken(position);
 
         usersList.remove(position);
         adapter.notifyItemRemoved(position);
@@ -244,6 +247,7 @@ public class pending_bookings extends AppCompatActivity {
                OkHttpClient client = new OkHttpClient();
                RequestBody body1 = new FormBody.Builder()
                        .add("booking_number",booking_no)
+                       .add("token", token)
                        .add("status","REJECTED")
                        .build();
 
@@ -287,45 +291,46 @@ public class pending_bookings extends AppCompatActivity {
            @Override
            public void onItemDelete(int position) {
 
-              // setAccept(position);
-             //  OkHttpClient client = new OkHttpClient();
-            //   RequestBody body1 = new FormBody.Builder()
-              //         .add("booking_number",booking_no)
-                //       .add("status","ACCEPTED")
-                  //     .build();
+               setAccept(position);
+               OkHttpClient client = new OkHttpClient();
+                   RequestBody body1 = new FormBody.Builder()
+                       .add("booking_number",booking_no)
+                           .add("token",token)
+                       .add("status","ACCEPTED")
+                       .build();
 
-          //     Request request1 = new Request.Builder()
-              //         .url("https://lamp.ms.wits.ac.za/home/s2090040/update_status.php")
-            //           .post(body1)
-        //               .build();
+               Request request1 = new Request.Builder()
+                       .url("https://lamp.ms.wits.ac.za/home/s2090040/update_status.php")
+                       .post(body1)
+                      .build();
 
-          //     client.newCall(request1).enqueue(new Callback() {
-      //             @Override
-        //           public void onFailure(@NotNull Call call, @NotNull IOException e) {
+               client.newCall(request1).enqueue(new Callback() {
+                   @Override
+                   public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
-          //         }
+                   }
 
-       //            @Override
-         //          public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                   @Override
+                   public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
 
-           //            if (!response.isSuccessful()) {
-             //              throw new IOException("Unexpected code " + response);
-        //               }
+                       if (!response.isSuccessful()) {
+                           throw new IOException("Unexpected code " + response);
+                       }
 
-               String test = getBooking_no(position);
 
-          //             final String responseData = response.body().string();
-            //           pending_bookings.this.runOnUiThread(new Runnable() {
-          //                 @Override
-            //               public void run() {
-                               Toast.makeText(pending_bookings.this, test, Toast.LENGTH_SHORT).show();
-          //                 }
-            //           });
+                       final String responseData = response.body().string();
+                       pending_bookings.this.runOnUiThread(new Runnable() {
+                           @Override
+                           public void run() {
 
-         //          }
 
-           //    });
+                           }
+                       });
+
+                   }
+
+               });
            }
        };
 
@@ -345,7 +350,12 @@ public class pending_bookings extends AppCompatActivity {
     }
 
     public String getBooking_no(int position){
-        return usersList.get(position).getPatient_dob();
+        return usersList.get(position).getBooking_no();
+    }
+
+    public  String getToken(int position){
+
+        return usersList.get(position).getToken();
     }
 
 
