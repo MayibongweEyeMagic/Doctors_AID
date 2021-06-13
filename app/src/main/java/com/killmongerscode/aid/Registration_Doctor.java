@@ -115,6 +115,51 @@ public class Registration_Doctor extends AppCompatActivity {
                 PHONENUM = phone.getText().toString();
                 SPECIALIZATION = special.getText().toString();
 
+                if (name.getText().toString().trim().equals("") && surname.getText().toString().trim().equals("") &&
+                        qualification.getText().toString().trim().equals("") && unversity.getText().toString().trim().equals("") &&
+                        email.getText().toString().trim().equals("") && password.getText().toString().trim().equals("")
+                        && phone.getText().toString().trim().equals("") && special.getText().toString().trim().equals("")) {
+
+                    name.setError("Please Enter a name");
+                    surname.setError("Please Enter a surname");
+                    qualification.setError("Please Enter your qualification");
+                    unversity.setError("Please Enter university");
+                    email.setError("Please Enter your email");
+                    password.setError("Please Enter password");
+                    phone.setError("Please Enter phone number");
+                    special.setError("Please Enter specialization");
+
+                    return;
+                }
+                /*if (surname.getText().toString().trim().equals("")) {
+                    surname.setError("Please Enter a surname");
+                    return;
+                }
+                if (qualification.getText().toString().trim().equals("")){
+                    qualification.setError("Please Enter your qualification");
+                    return;
+                }
+                if (unversity.getText().toString().trim().equals("")){
+                    unversity.setError("Please Enter your university");
+                    return;
+                }
+                if (email.getText().toString().trim().equals("")){
+                    email.setError("Please Enter your email");
+                    return;
+                }
+                if (password.getText().toString().trim().equals("")){
+                    password.setError("Please Enter password");
+                    return;
+                }
+                if (phone.getText().toString().trim().equals("")){
+                    phone.setError("Please Enter a username");
+                    return;
+                }
+                if (special.getText().toString().trim().equals("")){
+                    special.setError("Please Enter a username");
+                    return;
+                }*/
+
 
 
                 RequestBody body = new FormBody.Builder()
