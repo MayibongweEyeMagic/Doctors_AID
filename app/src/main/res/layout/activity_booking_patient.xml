@@ -35,15 +35,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/margin_32"
         android:layout_marginRight="@dimen/margin_32"
-        android:layout_marginBottom="307dp"
+        android:layout_marginBottom="250dp"
         android:orientation="vertical"
         android:padding="@dimen/height_5">
 
 
         <AutoCompleteTextView
+            android:background="@drawable/edit_reason"
             android:id="@+id/doctor_spec"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:layout_marginBottom="5dp"
             android:hint="Select specialization"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
@@ -52,30 +54,22 @@
             android:textStyle="bold" />
 
         <EditText
+            android:background="@drawable/edit_reason"
             android:id="@+id/doctors"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
             android:hint="Choose Doctor"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:textColorHint="@color/purple_500"
-            android:textSize="@dimen/elavation_16"
-            android:textStyle="bold" />
-
-
-        <EditText
-            android:id="@+id/Reason"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_45"
-            android:hint="What is the reason for the Appointment?"
-            android:paddingLeft="@dimen/elevation_10"
-            android:paddingRight="@dimen/elevation_10"
+            android:layout_marginBottom="5dp"
             android:textColorHint="@color/purple_500"
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
         <EditText
+            android:background="@drawable/edit_reason"
             android:id="@+id/select_date"
+            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
             android:hint="Select Date of Appointment"
@@ -86,6 +80,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:background="@drawable/edit_reason"
             android:id="@+id/select_time"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
@@ -96,6 +91,20 @@
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/Reason"
+                android:textColorHint="@color/purple_700"
+                android:gravity="top"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="3dp"
+                android:textSize="15dp"
+                android:hint="What is the reason of the appointment?"
+                android:layout_marginTop="10dp"
+                android:inputType="textMultiLine"
+                android:background="@drawable/edit_reason"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_show2"

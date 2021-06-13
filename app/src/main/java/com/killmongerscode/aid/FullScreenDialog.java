@@ -1,9 +1,12 @@
 package com.killmongerscode.aid;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,7 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
     private Choose_Doctor choose_doctor;
     private RecyclerView recyclerView;
     private TextView special;
+    private OnMyResultListener onMyResultListener;
 
     public FullScreenDialog(String spec){
         FullScreenDialog.spec =spec;
@@ -129,12 +133,26 @@ public class FullScreenDialog extends DialogFragment implements View.OnClickList
 
         });
 
+        choose_doctor.setDocCLickLster(new Choose_Doctor.Choose_DoctorListener() {
+            @Override
+            public void ChooseDoctorListener(int position) {
+                String email =choose_doctor.getBookieEmail(position);
+                String token =choose_doctor.getBookieToken(position);
+                ((Booking_Patient)requireActivity()).setSelected(token, email);
+                FullScreenDialog.this.dismiss();
+            }
+        });
+
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public interface OnMyResultListener{
+        void getMyresult(String email, String token);
     }
+
+    public void setDialogResult(OnMyResultListener dialogResult){
+        onMyResultListener = dialogResult;
+    }
+
 
     @Override
     public void onClick(View v) {

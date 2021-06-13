@@ -49,6 +49,7 @@
                 android:textSize="18dp" />
 
             <Button
+                android:id="@+id/select_item"
                 android:layout_marginLeft="90dp"
                 android:textAllCaps="false"
                 android:text="Select"

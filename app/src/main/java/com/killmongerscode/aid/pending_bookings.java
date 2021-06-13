@@ -211,7 +211,7 @@ public class pending_bookings extends AppCompatActivity {
             usersList.clear();
         for(int i =0; i<temp.size();++i){
 
-            String [] thing = temp.get(i).split(":");
+            String [] thing = temp.get(i).split("#");
             String first_name = thing[0];
             String surname = thing[1];
             String patient_email = thing[2];

@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,7 +22,17 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
 
     private ArrayList<MakeABooking> usersList =new ArrayList<>();
 
+    private Choose_DoctorListener listner;
+
     public Choose_Doctor(){
+    }
+
+    public interface Choose_DoctorListener {
+        void ChooseDoctorListener(int position);
+    }
+
+    public void setDocCLickLster(Choose_DoctorListener doctorListener) {
+        listner = doctorListener;
     }
 
     public void addDocAppointment(MakeABooking makeABooking) {
@@ -60,9 +71,9 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
 
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView name, surname, email, specialization, qualification, phoneNumber, graduated_at;
-
+        Button button;
         LinearLayout expand_layout;
         RelativeLayout expandable_desc;
         public MyViewHolder(final View view){
@@ -77,6 +88,7 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
             graduated_at =view.findViewById(R.id.grad_at);
             expand_layout =view.findViewById(R.id.expandable_layout);
             expandable_desc =view.findViewById(R.id.expandable_descriptions);
+            button =view.findViewById(R.id.select_item);
 
             expand_layout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,7 +98,28 @@ public class Choose_Doctor  extends RecyclerView.Adapter<Choose_Doctor.MyViewHol
                     notifyItemChanged(getAdapterPosition());
                 }
             });
+
+            button.setOnClickListener(this);
+
         }
 
+        @Override
+        public void onClick(View v) {
+            if (listner != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    listner.ChooseDoctorListener(position);
+                }
+            }
+        }
+    }
+
+    public String getBookieToken(int position){
+        return usersList.get(position).getToken();
+    }
+
+    public String getBookieEmail(int position){
+        return usersList.get(position).getBookEmail();
     }
 }
+

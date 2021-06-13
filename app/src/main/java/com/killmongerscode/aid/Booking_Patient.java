@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class Booking_Patient extends AppCompatActivity {
     ArrayList<String>temp  =new ArrayList<>();
     String docEmail = "";
 
-    String doctorBio, emailAddress;
+    String doctorBio, emailAddress, doc_email, doc_token;
     private static final String CHANNEL_ID = "101";
 
     String[] predefined ={"General", "Optometrist", "Cardiologist", "Pediatrician", "Dentist"};
@@ -60,6 +61,8 @@ public class Booking_Patient extends AppCompatActivity {
     int t1Hour, t1Minute;
 
     DatePickerDialog.OnDateSetListener listener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,21 +101,27 @@ public class Booking_Patient extends AppCompatActivity {
         choose_doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String spec = spec_field.getText().toString();
-                FullScreenDialog fullScreenDialog =new FullScreenDialog(spec);
-                DialogFragment dialog = fullScreenDialog.newInstance();
-                dialog.show(getSupportFragmentManager(), "tag");
+                String toString =spec_field.getText().toString();
+                if(!toString.isEmpty()){
+                    FullScreenDialog fullScreenDialog = new FullScreenDialog(toString);
+                    DialogFragment dialog = fullScreenDialog.newInstance();
+                    dialog.show(getSupportFragmentManager(), "tag");
+                }
+                else{
+                    Toast.makeText(Booking_Patient.this, "Select specialization", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                // Toast.makeText(Booking_Patient.this, emailAddress, Toast.LENGTH_SHORT).show();
-                    createNotificationChannel();
                    postTotheLamp(emailAddress);
+                   createNotificationChannel();
 
 
 
@@ -177,7 +186,7 @@ public class Booking_Patient extends AppCompatActivity {
 
                         Calendar calendar1 =Calendar.getInstance();
                         calendar1.set(0,0,0,t1Hour,t1Minute);
-                        et_time.setText(DateFormat.format("hh:mm aa", calendar1));
+                        et_time.setText(DateFormat.format("hh:mmaa", calendar1));
                     }
                 },12,0,false
                 );
@@ -192,26 +201,18 @@ public class Booking_Patient extends AppCompatActivity {
 
 
         String date = et_date.getText().toString() + " " + et_time.getText().toString();;
-         docEmail =choose_doc.getText().toString();
         String appointReason =reason.getText().toString();
         String spec =spec_field.getText().toString();
-        String token  ="";
-
-        if(thing.contains(docEmail)){
-                int index = thing.indexOf(docEmail);
-                token = temp.get(index);
-
-        }
 
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
                 .add("email", email)
                 .add("date", date)
-                .add("doc_email", docEmail)
+                .add("doc_email", getSelectedEmail())
                 .add("reason", appointReason)
                 .add("specialisation", spec)
-                .add("token",token)
+                .add("token", getSelectedToken())
                 .build();
 
         Request request = new Request.Builder()
@@ -248,99 +249,6 @@ public class Booking_Patient extends AppCompatActivity {
         });
     }
 
-    public void getListofDoctors(String spec){
-
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody body = new FormBody.Builder()
-                .add("specialisation",spec)
-                .build();
-
-        Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/home/s2090040/doctors_list.php")
-                .post(body)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-
-
-                if (!response.isSuccessful()) {
-                    throw new IOException("Unexpected code " + response);
-                }
-
-                final String responseData = response.body().string();
-                Booking_Patient.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            setSelectedDoctors(responseData);
-                        }catch (JSONException e){
-                            e.printStackTrace();
-                        }
-
-                    }
-                });
-
-            }
-
-
-
-        });
-    }
-
-    public void setSelectedDoctors(String json) throws JSONException{
-
-        JSONArray jsonArray = new JSONArray(json);
-
-        for(int i=0; i< jsonArray.length();++i){
-
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            String doctor_email = jsonObject.getString("DOCTOR_EMAIL");
-            String token = jsonObject.getString("TOKEN");
-
-            thing.add(doctor_email);
-            temp.add(token);
-
-        }
-
-
-    }
-
-    public ArrayList<String> getSelectedDoctors(String json) throws JSONException {
-
-        ArrayList<String> holder =new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(json);
-
-        for(int i=0; i< jsonArray.length();++i){
-
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-
-            //String first_name = jsonObject.getString("DOCTOR_FNAME");
-            //String surname = jsonObject.getString("DOCTOR_LNAME");
-            String doctor_email = jsonObject.getString("DOCTOR_EMAIL");
-            String token = jsonObject.getString("TOKEN");
-
-
-            //doctorBio = doctor_email + ":" + token;
-
-            holder.add(doctor_email);
-            thing.add(doctor_email);
-            temp.add(token);
-
-        }
-
-        return holder;
-    }
-
     private void createNotificationChannel() {
 
 
@@ -358,6 +266,17 @@ public class Booking_Patient extends AppCompatActivity {
         }
     }
 
+    public void setSelected(String token, String email){
+        this.doc_token =token;
+        this.doc_email =email;
+        choose_doc.setText(email);
 
+    }
+    public String getSelectedEmail(){
+        return doc_email;
+    }
+    public String getSelectedToken(){
+        return doc_token;
+    }
 
 }
