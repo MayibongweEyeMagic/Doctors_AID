@@ -10,4 +10,5 @@
     <color name="Red">#F00</color>
     <color name="green">#00FD11</color>
     <color name="blue">#3DDCD4</color>
+    <color name="ic_launcher_background">#00BCD4</color>
 </resources>
