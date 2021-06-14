@@ -34,5 +34,5 @@ script:
   - ./gradlew connectedCheck
   
 after_success:
-  - export CODECOV_TOKEN="1c1ff4fc-8634-44ec-965e-42c053183e0c"
+  - export CODECOV_TOKEN="fd544622-cba5-4962-9919-2afc6995a338"
   - bash <(curl -s https://codecov.io/bash)
