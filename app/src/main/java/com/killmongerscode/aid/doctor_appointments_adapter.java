@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class doctor_appointments_adapter extends RecyclerView.Adapter<doctor_app
 
 
     }
+
 
     @Override
     public int getItemCount() {

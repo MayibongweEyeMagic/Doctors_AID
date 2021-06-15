@@ -180,7 +180,7 @@ public class Patient_Homepage extends AppCompatActivity implements SignOutDialog
         openDialog();
     }
 
-    private void openDialog() {
+    public void openDialog() {
         SignOutDialog signOutDialog =new SignOutDialog();
         signOutDialog.show(getSupportFragmentManager(),"sign out");
     }

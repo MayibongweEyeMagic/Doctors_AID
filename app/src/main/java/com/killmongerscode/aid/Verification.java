@@ -20,7 +20,7 @@ import okhttp3.Response;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class Verification {
+public class Verification extends Activity {
 
     private ArrayList<String>acesskey = new ArrayList<>();
     private  ArrayList<String>biography = new ArrayList<>();

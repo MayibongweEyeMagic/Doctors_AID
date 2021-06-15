@@ -1,6 +1,8 @@
 package com.killmongerscode.aid;
 
-public class Doctor {
+import android.app.Activity;
+
+public class Doctor extends Activity {
     private String name;
     private String surname;
     private String tel;
@@ -10,7 +12,7 @@ public class Doctor {
     private String qualification;
 
 
-    // trying some shit out
+    // trying some stuff out
 
 
     public Doctor(){

@@ -1,6 +1,10 @@
 package com.killmongerscode.aid;
 
-public class Patient {
+import android.app.Activity;
+
+import androidx.fragment.app.Fragment;
+
+public class Patient extends Activity {
     private final String Patient_name, Patient_lname, Patient_email;
     private final String Patient_dob, home_address, patient_phone,reason,outcome,booking_date;
 
@@ -39,7 +43,7 @@ public class Patient {
         return patient_phone;
     }
 
-    public String getPatirnt_home_address() {
+    public String getPatient_home_address() {
         return home_address;
     }
 
