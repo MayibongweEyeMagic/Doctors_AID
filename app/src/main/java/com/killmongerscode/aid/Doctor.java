@@ -2,7 +2,7 @@ package com.killmongerscode.aid;
 
 import android.app.Activity;
 
-public class Doctor extends Activity {
+public class Doctor{
   private String name;
   private String surname;
   private String tel;
