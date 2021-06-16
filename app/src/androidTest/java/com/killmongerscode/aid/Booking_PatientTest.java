@@ -34,15 +34,6 @@ public class Booking_PatientTest {
   }
 
   @Test
-  public void testingsselectTime() {
-    try {
-      runOnUiThread(() -> activityTestRule.getActivity().selectTime());
-    } catch (Throwable throwable) {
-      throwable.printStackTrace();
-    }
-  }
-
-  @Test
   public void testingposttotheThelamp() {
     try {
       runOnUiThread(() -> activityTestRule.getActivity().postTotheLamp("phieze9@gmail.com"));
