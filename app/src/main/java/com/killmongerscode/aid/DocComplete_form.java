@@ -90,51 +90,54 @@ public class DocComplete_form extends AppCompatDialogFragment {
                         String date =et_date.getText().toString();
                         String time =et_time.getText().toString();
 
-                        String OUTCOME = diagnose+";"+treats+";"+date+";"+time;
+                        if(diagnose.isEmpty() && treats.isEmpty() && date.isEmpty() && time.isEmpty()){
+                            Toast.makeText(activity, "Complete the form", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            String OUTCOME = diagnose+";"+treats+";"+date+";"+time;
 
-                        OkHttpClient client = new OkHttpClient();
+                            OkHttpClient client = new OkHttpClient();
 
-                        RequestBody body = new FormBody.Builder()
-                                .add("booking_number", ID)
-                                .add("status", "FULFILLED")
-                                .add("outcome", OUTCOME)
-                                .build();
+                            RequestBody body = new FormBody.Builder()
+                                    .add("booking_number", ID)
+                                    .add("status", "FULFILLED")
+                                    .add("outcome", OUTCOME)
+                                    .build();
 
-                        Request request = new Request.Builder()
-                                .url("https://lamp.ms.wits.ac.za/home/s2090040/update_to_fulfilled.php")
-                                .post(body)
-                                .build();
+                            Request request = new Request.Builder()
+                                    .url("https://lamp.ms.wits.ac.za/home/s2090040/update_to_fulfilled.php")
+                                    .post(body)
+                                    .build();
 
-                        client.newCall(request).enqueue(new Callback() {
-                            @Override
-                            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            client.newCall(request).enqueue(new Callback() {
+                                @Override
+                                public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
-                            }
-
-                            @Override
-                            public void onResponse(
-                                    @NotNull Call call, @NotNull Response response) throws IOException {
-
-
-                                if (!response.isSuccessful()) {
-                                    throw new IOException("Unexpected code " + response);
                                 }
 
-                                final String responseData = response.body().string();
-                                activity.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(activity, responseData, Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
+                                @Override
+                                public void onResponse(
+                                        @NotNull Call call, @NotNull Response response) throws IOException {
 
-                        docIncompleteRecyclerView.removeFromList(position);
+
+                                    if (!response.isSuccessful()) {
+                                        throw new IOException("Unexpected code " + response);
+                                    }
+
+                                    final String responseData = response.body().string();
+                                    activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(activity, responseData, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            });
+
+                            docIncompleteRecyclerView.removeFromList(position);
+                        }
                     }
                 });
-
-
 
 
         return builder.create();

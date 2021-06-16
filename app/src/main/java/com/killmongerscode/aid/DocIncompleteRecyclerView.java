@@ -29,6 +29,7 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
 
     public interface DocRecyclerClickListner {
         void DocOnCLickLister(int position);
+        void DocOnClickListerView(int position);
     }
 
     public void setDocCLickLster(DocRecyclerClickListner docCLickLster) {
@@ -36,7 +37,7 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView Name, Surname, Email;
 
         Button complete_appointment, view_details;
@@ -46,23 +47,35 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
 
             Name = view.findViewById(R.id.doctor_incomplete_Name);
             Surname = view.findViewById(R.id.doctor_incomplete_surname);
-            Email = view.findViewById(R.id.doctor_incomplete_email);
+            //Email = view.findViewById(R.id.doctor_incomplete_email);
             complete_appointment = view.findViewById(R.id.doctor_complete_appointment);
             view_details = view.findViewById(R.id.doctor_view);
 
-            complete_appointment.setOnClickListener(this);
-
-        }
-
-
-        @Override
-        public void onClick(View v) {
-            if (listner != null) {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    listner.DocOnCLickLister(position);
+            complete_appointment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listner != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listner.DocOnCLickLister(position);
+                        }
+                    }
                 }
-            }
+            });
+
+
+            view_details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listner != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listner.DocOnClickListerView(position);
+                        }
+                    }
+                }
+            });
+
         }
 
 
@@ -79,7 +92,7 @@ public class DocIncompleteRecyclerView extends RecyclerView.Adapter<DocIncomplet
     public void onBindViewHolder(@NonNull DocIncompleteRecyclerView.MyViewHolder holder, int position) {
         holder.Name.setText(usersList.get(position).getName());
         holder.Surname.setText(usersList.get(position).getSurname());
-        holder.Email.setText(usersList.get(position).getEmail());
+        //holder.Email.setText(usersList.get(position).getEmail());
     }
 
     @Override
