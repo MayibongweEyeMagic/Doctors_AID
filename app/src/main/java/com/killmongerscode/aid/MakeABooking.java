@@ -1,6 +1,8 @@
 package com.killmongerscode.aid;
 
-public class MakeABooking {
+import android.app.Activity;
+
+public class MakeABooking extends Activity {
 
     private String name, surname, email, specialization, qualification, phone_number, graduated_at, token;
 

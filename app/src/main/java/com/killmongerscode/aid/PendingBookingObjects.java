@@ -1,6 +1,8 @@
 package com.killmongerscode.aid;
 
-public class PendingBookingObjects {
+import android.app.Activity;
+
+public class PendingBookingObjects extends Activity {
 
     private final String Patient_name, Patient_lname, Patient_email,token,Booking_no;
     private final String Patient_dob, home_address, patient_phone,reason,booking_date, time;
@@ -59,7 +61,7 @@ public class PendingBookingObjects {
         return patient_phone;
     }
 
-    public String getPatirnt_home_address() {
+    public String getPatient_home_address() {
         return home_address;
     }
 

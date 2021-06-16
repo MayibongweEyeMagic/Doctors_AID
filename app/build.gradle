@@ -29,7 +29,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 29
     buildToolsVersion "30.0.3"
 
     testOptions {
@@ -39,8 +39,8 @@ android {
 
     defaultConfig {
         applicationId "com.killmongerscode.aid"
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdkVersion 29
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 

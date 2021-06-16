@@ -53,14 +53,5 @@ public class Doctor_HomepageTest {
         }
     }
 
-    @Test
-    public void testingopenDialog(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().openDialog());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-    }
-
 
 }

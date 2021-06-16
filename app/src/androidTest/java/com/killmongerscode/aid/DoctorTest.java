@@ -38,15 +38,6 @@ public class DoctorTest {
     public ActivityTestRule<Doctor> activityTestRule = new ActivityTestRule<>(Doctor.class);
 
 
-
-
-
-
-
-
-
-
-
     @Test
     public void testingsetName(){
         try {

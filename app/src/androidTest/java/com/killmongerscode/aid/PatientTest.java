@@ -38,6 +38,12 @@ public class PatientTest {
     String NAME = "name";
     String SURNAME = "surname";
     String EMAIL = "user@gmail.com";
+    String Patient_dob = "18-05-2000";
+    String home_address = "Wits";
+    String patient_phone = "0794166035";
+    String reason = "isisu";
+    String outcome = "dfg";
+    String booking_date = "05-05-2021";
 
 
     @Rule
@@ -53,93 +59,46 @@ public class PatientTest {
     @Test
     public void getPatientName(){
         assertEquals(NAME, patient.getPatient_name());
-
-
     }
-
-
-
 
 
     @Test
-    public void testinggetpatientname(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_name());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientlname(){
+        assertEquals(SURNAME,patient.getPatient_lname());
     }
 
     @Test
-    public void testinggetpatientlname(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_lname());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientemail(){
+        assertEquals(EMAIL,patient.getPatient_email());
     }
 
     @Test
-    public void testinggetpatientemail(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_email());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientdob(){
+        assertEquals(Patient_dob,patient.getPatient_dob());
     }
 
     @Test
-    public void testinggetpatientreason(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_reason());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatienthomeaddress(){
+        assertEquals(home_address,patient.getPatient_home_address());
     }
 
     @Test
-    public void testinggetpatientdob(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_dob());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientphone(){
+        assertEquals(patient_phone,patient.getPatient_phone());
     }
 
     @Test
-    public void testinggetpatientphone(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_phone());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientreson(){
+        assertEquals(reason,patient.getPatient_reason());
     }
 
     @Test
-    public void testinggetpatienthomeaddress(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_home_address());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientoutcome(){
+        assertEquals(outcome,patient.getPatient_outcome());
     }
 
     @Test
-    public void testinggetpatientoutcome(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_outcome());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+    public void getpatientbookingdate(){
+        assertEquals(booking_date,patient.getPatient_booking_date());
     }
-
-    @Test
-    public void testinggetpatientboookingdate(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().getPatient_booking_date());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-    }
-
 }

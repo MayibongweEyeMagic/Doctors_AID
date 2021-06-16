@@ -199,7 +199,7 @@ public class Doctor_Homepage extends AppCompatActivity implements SignOutDialog.
         openDialog();
     }
 
-    public void openDialog() {
+    private void openDialog() {
         SignOutDialog signOutDialog =new SignOutDialog();
         signOutDialog.show(getSupportFragmentManager(),"sign out");
     }
