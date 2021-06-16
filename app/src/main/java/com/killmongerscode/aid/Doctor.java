@@ -1,7 +1,5 @@
 package com.killmongerscode.aid;
 
-import android.app.Activity;
-
 public class Doctor{
   private String name;
   private String surname;
