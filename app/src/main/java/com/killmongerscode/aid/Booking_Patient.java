@@ -126,10 +126,18 @@ public class Booking_Patient extends AppCompatActivity {
       intent.putExtra("email", emailAddress);
       startActivity(intent);
 
-    } else if (responseData.equals("Booking was not created successfully!")) {
+    }else if(responseData.equals("Cannot create booking. You already have a booking in progress.")){
+        Toast.makeText(this, "Cannot create booking. You already have a booking in progress", Toast.LENGTH_SHORT)
+                .show();
+    }
+    else if (responseData.equals("Failed to create booking!")) {
       Toast.makeText(this, "Something went wrong please try again later", Toast.LENGTH_SHORT)
           .show();
-    } else if (responseData.equals("There may be empty inputs")) {
+    }else if(responseData.equals("There are illegal bookings made")){
+        Toast.makeText(this, "This booking is illegal until you complete the one still in progress", Toast.LENGTH_SHORT)
+                .show();
+    }
+    else if (responseData.equals("There may be empty inputs")) {
       Toast.makeText(this, "There may be empty fields", Toast.LENGTH_SHORT).show();
     }
   }
@@ -216,7 +224,7 @@ public class Booking_Patient extends AppCompatActivity {
 
     Request request =
         new Request.Builder()
-            .url("https://lamp.ms.wits.ac.za/home/s2090040/create_booking.php")
+            .url("https://lamp.ms.wits.ac.za/home/s2090040/new.php")
             .post(body)
             .build();
 
