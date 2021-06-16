@@ -31,10 +31,10 @@ public class DocIncompleteFrag extends Fragment {
 
     View view;
     String email;
-    private DocIncompleteRecyclerView.DocRecyclerClickListner Lister;
-    private DocIncompleteRecyclerView docIncompleteRecyclerView;
+    private DocIncompleteRecyclerView.DocRecyclerClickListner docIncompleteRecycler;
+    DocIncompleteRecyclerView docIncompleteRecyclerView;
     private RecyclerView recyclerView;
-    String ID;
+    String ID, booking_no;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class DocIncompleteFrag extends Fragment {
         Bundle args =getArguments();
         email =args.getString("email");
         recyclerView =(RecyclerView) view.findViewById(R.id.doc_incomplete_recycler);
-        docIncompleteRecyclerView = new DocIncompleteRecyclerView(getContext(),Lister);
+        docIncompleteRecyclerView = new DocIncompleteRecyclerView(getContext(), docIncompleteRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(docIncompleteRecyclerView);
         return view;
@@ -54,14 +54,22 @@ public class DocIncompleteFrag extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        docIncompleteRecyclerView.setDocCLickLster(new DocIncompleteRecyclerView.DocRecyclerClickListner() {
+        docIncompleteRecyclerView.setDocCLickLster( docIncompleteRecycler =new DocIncompleteRecyclerView.DocRecyclerClickListner() {
             @Override
             public void DocOnCLickLister(int position) {
                 ID =docIncompleteRecyclerView.getIdNumber(position);
                 DocComplete_form docComplete_form =new DocComplete_form(position, docIncompleteRecyclerView, ID, getActivity());
                 docComplete_form.show(getChildFragmentManager(), "someSupport");
             }
-        });
+
+            @Override
+            public void DocOnClickListerView(int position) {
+                booking_no =docIncompleteRecyclerView.getIdNumber(position);
+                ViewDetailsOfBooking viewDetailsOfBooking =new ViewDetailsOfBooking(email, booking_no);
+                viewDetailsOfBooking.show(getChildFragmentManager(), "someSupport");
+            }
+        }
+        );
 
 
         OkHttpClient client = new OkHttpClient();

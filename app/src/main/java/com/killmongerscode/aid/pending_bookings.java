@@ -10,6 +10,7 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.service.notification.StatusBarNotification;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -40,6 +41,7 @@ public class pending_bookings extends AppCompatActivity {
     String booking_no = "";
     String token ="";
      pending_bookings_adapter adapter ;
+     NotificationListener notificationListener;
 
 
     private Button accept;
@@ -62,7 +64,7 @@ public class pending_bookings extends AppCompatActivity {
         BuildRecyclerView();
 
 
-
+        startService(new Intent(this,NotificationListener.class));
 
          Bundle bundle = getIntent().getExtras();
           emailAddress = bundle.getString("email");
@@ -250,6 +252,7 @@ public class pending_bookings extends AppCompatActivity {
                        .add("token", token)
                        .add("status","REJECTED")
                        .build();
+
 
                Request request1 = new Request.Builder()
                        .url("https://lamp.ms.wits.ac.za/home/s2090040/update_status.php")

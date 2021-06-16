@@ -3,15 +3,11 @@ package com.killmongerscode.aid;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -19,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,32 +27,26 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Completion_form extends AppCompatDialogFragment {
+public class ViewDetailsOfBooking extends AppCompatDialogFragment {
 
-    TextView diagnosis, treatment, date, time;
+    String email;
+    String booking_no;
 
+    TextView emailOfBookie, date, time, reason;
 
-    public String ID, patientEmail;
-
-    public Completion_form(String ID, String patientEmail) {
-        this.ID = ID;
-        this.patientEmail =patientEmail;
+    public ViewDetailsOfBooking(String email, String booking_no) {
+        this.email = email;
+        this.booking_no =booking_no;
     }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
-        AlertDialog.Builder builder =new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater =getActivity().getLayoutInflater();
-        View view =inflater.inflate(R.layout.complete_appointment_form, null);
-
-        diagnosis = view.findViewById(R.id.view_diagnosis);
-        treatment =view.findViewById(R.id.view_treatment);
-        date =view.findViewById(R.id.view_date);
-        time =view.findViewById(R.id.view_time);
-
+        View view =inflater.inflate(R.layout.view_details, null);
 
         builder.setView(view)
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -67,16 +56,20 @@ public class Completion_form extends AppCompatDialogFragment {
                     }
                 });
 
+        emailOfBookie =view.findViewById(R.id.view_bookie_email);
+        date =view.findViewById(R.id.date_booking);
+        time =view.findViewById(R.id.view_time_of_booking);
+        reason =view.findViewById(R.id.view_reason_for_booking);
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client =new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
-                .add("booking_number", ID)
-                .add("email",patientEmail)
+                .add("booking_number", booking_no)
+                .add("email_doc",email)
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/home/s2090040/display_form.php")
+                .url("https://lamp.ms.wits.ac.za/home/s2090040/show.php")
                 .post(body)
                 .build();
 
@@ -87,8 +80,7 @@ public class Completion_form extends AppCompatDialogFragment {
             }
 
             @Override
-            public void onResponse(
-                    @NotNull Call call, @NotNull Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
 
                 if (!response.isSuccessful()) {
@@ -105,18 +97,16 @@ public class Completion_form extends AppCompatDialogFragment {
                             for(int i=0; i< jsonArray.length();++i) {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                String outcome =jsonObject.getString("OUTCOME");
-                                String[] formDetails =outcome.split(";");
+                                String mail =jsonObject.getString("PATIENT_EMAIL");
+                                String vreason =jsonObject.getString("REASON");
+                                String vdate =jsonObject.getString("BOOKING_DATE");
+                                String vtime =jsonObject.getString("BOOKING_TIME");
 
-                                if(formDetails.length ==0){
-                                    Toast.makeText(getActivity(), "No Details", Toast.LENGTH_SHORT).show();
 
-                                }else{
-                                    diagnosis.setText(formDetails[0]);
-                                    treatment.setText(formDetails[1]);
-                                    date.setText(formDetails[2]);
-                                    time.setText(formDetails[3]);
-                                }
+                                emailOfBookie.setText(mail);
+                                date.setText(vdate);
+                                time.setText(vtime);
+                                reason.setText(vreason);
 
                             }
                         }catch (JSONException e){
@@ -129,9 +119,7 @@ public class Completion_form extends AppCompatDialogFragment {
 
         });
 
+
         return builder.create();
     }
-
-
-
 }

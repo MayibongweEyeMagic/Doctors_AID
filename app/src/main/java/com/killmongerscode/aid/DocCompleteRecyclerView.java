@@ -44,7 +44,7 @@ public class DocCompleteRecyclerView  extends RecyclerView.Adapter<DocCompleteRe
     public void onBindViewHolder(@NonNull DocCompleteRecyclerView.MyViewHolder holder, int position) {
         holder.Name.setText(usersList.get(position).getName());
         holder.Surname.setText(usersList.get(position).getSurname());
-        holder.Email.setText(usersList.get(position).getEmail());
+        //holder.Email.setText(usersList.get(position).getEmail());
     }
 
     @Override
@@ -70,7 +70,6 @@ public class DocCompleteRecyclerView  extends RecyclerView.Adapter<DocCompleteRe
 
             Name =view.findViewById(R.id.doctor_complete_Name);
             Surname =view.findViewById(R.id.doctor_complete_surname);
-            Email =view.findViewById(R.id.doctor_complete_email);
             button =view.findViewById(R.id.doc_view_details);
 
             button.setOnClickListener(new View.OnClickListener() {

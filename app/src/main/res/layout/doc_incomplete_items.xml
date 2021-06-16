@@ -1,87 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:id="@+id/incomplete_prof"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_marginRight="3dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="79dp"
-        android:layout_marginTop="9dp">
+        android:id="@+id/expanding_layout"
+        android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/doctor_incomplete_Name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@android:color/black"
-            android:textSize="20dp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/doctor_incomplete_surname"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_profile" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/doctor_incomplete_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/doctor_incomplete_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:text="Surname"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="46dp"
-            android:layout_toEndOf="@+id/doctor_incomplete_Name"
-            android:layout_toRightOf="@+id/doctor_incomplete_Name"
-            android:text="Surname"
-            android:textColor="@android:color/black"
-            android:textSize="20dp" />
+            android:layout_height="wrap_content">
 
-    </RelativeLayout>
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/doctor_complete_appointment"
+                android:layout_width="120dp"
+                android:layout_height="39dp"
+                android:textAlignment="center"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textAllCaps="false"
+                android:text="Complete"
+                />
 
-    <TextView
-        android:id="@+id/doctor_incomplete_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/incomplete_prof"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/circle_image"
-        android:layout_toRightOf="@+id/circle_image"
-        android:text="Email Address"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/doctor_view"
+                android:textAlignment="center"
+                android:layout_width="140dp"
+                android:layout_height="39dp"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="View details"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circle_image"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_profile" />
-
-    <Button
-        android:id="@+id/doctor_view"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginRight="13dp"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="Details"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/doctor_complete_appointment"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:text="Complete appointment"
-        android:textAllCaps="false" />
-
-</RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

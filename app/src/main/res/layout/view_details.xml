@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_marginRight="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/expanding_layout"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/expandable_desc_bookings">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Email Address:"
+                android:id="@+id/vbookie_email"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/view_bookie_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/vbookie_email"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="40dp"
+                android:text="Date:"
+                android:textSize="14dp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="68dp"
+                android:text="Time:"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_alignStart="@+id/view_bookie_email"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/date_booking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/view_time_of_booking"
+                android:layout_alignStart="@+id/view_bookie_email"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="68dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <RelativeLayout
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="95dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@android:color/darker_gray"
+                    android:id="@+id/heading_text"
+                    android:textSize="14dp"
+                    android:text="Reason for Visit:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_alignStart="@+id/heading_text"
+                    android:text="Text"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/view_reason_for_booking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

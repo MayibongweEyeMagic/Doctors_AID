@@ -1,74 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:id="@+id/complete_prof"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_marginRight="3dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="79dp"
-        android:layout_marginTop="9dp">
+        android:id="@+id/expanding_layout"
+        android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/doctor_complete_Name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@android:color/black"
-            android:textSize="20dp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/doctor_complete_surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="46dp"
-            android:layout_toEndOf="@+id/doctor_complete_Name"
-            android:layout_toRightOf="@+id/doctor_complete_Name"
-            android:text="Surname"
-            android:textColor="@android:color/black"
-            android:textSize="20dp" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_profile" />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/doctor_complete_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp" />
 
-    <TextView
-        android:id="@+id/doctor_complete_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/complete_prof"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/circle_image"
-        android:layout_toRightOf="@+id/circle_image"
-        android:text="Email Address"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/doctor_complete_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:text="Surname"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16dp" />
+        </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circle_image"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_profile" />
-
-    <Button
-        android:id="@+id/doc_view_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:text="View Details"
-        android:textAllCaps="false" />
+        <Button
+            android:layout_marginLeft="230dp"
+            android:id="@+id/doc_view_details"
+            android:layout_width="150dp"
+            android:layout_height="39dp"
+            android:text="View Details"
+            android:textAllCaps="false" />
 
 
-</RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
