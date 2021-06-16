@@ -4,6 +4,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,6 +21,9 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -37,6 +42,10 @@ public class pending_bookings extends AppCompatActivity {
   String booking_no = "";
   String token = "";
   pending_bookings_adapter adapter;
+
+  String DataBaseTableSize = "";
+
+  String UserListSize ="";
 
   private Button accept;
   private Button decline;
@@ -97,58 +106,18 @@ public class pending_bookings extends AppCompatActivity {
               }
             });
 
-    FloatingActionButton fab = findViewById(R.id.fab);
+      Date date = new Date();
+      Timer timer = new Timer();
+      int period = 10000;
+      timer.schedule( timerTask, date, period );
 
-    fab.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
 
-            OkHttpClient client = new OkHttpClient();
 
-            RequestBody body = new FormBody.Builder().add("dr_email", emailAddress).build();
 
-            Request request =
-                new Request.Builder()
-                    .url("https://lamp.ms.wits.ac.za/home/s2090040/pending_patientList.php")
-                    .post(body)
-                    .build();
 
-            client
-                .newCall(request)
-                .enqueue(
-                    new Callback() {
-                      @Override
-                      public void onFailure(@NotNull Call call, @NotNull IOException e) {}
 
-                      @Override
-                      public void onResponse(@NotNull Call call, @NotNull Response response)
-                          throws IOException {
 
-                        if (!response.isSuccessful()) {
-                          throw new IOException("Unexpected code " + response);
-                        }
-
-                        final String responseData = response.body().string();
-                        pending_bookings.this.runOnUiThread(
-                            new Runnable() {
-                              @Override
-                              public void run() {
-                                try {
-                                  refresh_function(responseData);
-                                } catch (JSONException e) {
-                                  e.printStackTrace();
-                                }
-                              }
-                            });
-                      }
-                    });
-          }
-        });
-
-    setOnClickListr();
-
-    // OkHttpClient client = new OkHttpClient();
+      setOnClickListr();
 
   }
 
@@ -204,6 +173,7 @@ public class pending_bookings extends AppCompatActivity {
               booking_time,
               token));
     }
+     UserListSize =Integer.toString(usersList.size());
 
     adapter = new pending_bookings_adapter(usersList, Lister);
     recyclerView.setAdapter(adapter);
@@ -335,4 +305,99 @@ public class pending_bookings extends AppCompatActivity {
       notificationManager.createNotificationChannel(channel);
     }
   }
+
+
+
+ TimerTask timerTask = new TimerTask() {
+     @Override
+     public void run() {
+
+         OkHttpClient client = new OkHttpClient();
+         RequestBody body1 =
+                 new FormBody.Builder()
+                         .add("dr_email",emailAddress)
+                         .build();
+
+         Request request1 =
+                 new Request.Builder()
+                         .url("https://lamp.ms.wits.ac.za/home/s2090040/count.php")
+                         .post(body1)
+                         .build();
+
+         client
+                 .newCall(request1)
+                 .enqueue(
+                         new Callback() {
+                             @Override
+                             public void onFailure(@NotNull Call call, @NotNull IOException e) {}
+
+                             @Override
+                             public void onResponse(@NotNull Call call, @NotNull Response response)
+                                     throws IOException {
+
+                                 if (!response.isSuccessful()) {
+                                     throw new IOException("Unexpected code " + response);
+                                 }
+
+                                 final String responseData = response.body().string();
+                                 pending_bookings.this.runOnUiThread(
+                                         new Runnable() {
+                                             @Override
+                                             public void run() {
+                                                 if(!responseData.equals(UserListSize)){
+                                                     OkHttpClient client = new OkHttpClient();
+
+                                                     RequestBody body = new FormBody.Builder().add("dr_email", emailAddress).build();
+
+                                                     Request request =
+                                                             new Request.Builder()
+                                                                     .url("https://lamp.ms.wits.ac.za/home/s2090040/pending_patientList.php")
+                                                                     .post(body)
+                                                                     .build();
+
+                                                     client
+                                                             .newCall(request)
+                                                             .enqueue(
+                                                                     new Callback() {
+                                                                         @Override
+                                                                         public void onFailure(@NotNull Call call, @NotNull IOException e) {}
+
+                                                                         @Override
+                                                                         public void onResponse(@NotNull Call call, @NotNull Response response)
+                                                                                 throws IOException {
+
+                                                                             if (!response.isSuccessful()) {
+                                                                                 throw new IOException("Unexpected code " + response);
+                                                                             }
+
+                                                                             final String responseData = response.body().string();
+                                                                             pending_bookings.this.runOnUiThread(
+                                                                                     new Runnable() {
+                                                                                         @Override
+                                                                                         public void run() {
+                                                                                             try {
+                                                                                                 refresh_function(responseData);
+                                                                                             } catch (JSONException e) {
+                                                                                                 e.printStackTrace();
+                                                                                             }
+                                                                                         }
+                                                                                     });
+                                                                         }
+                                                                     });
+
+                                                 }
+
+
+                                             }
+                                         });
+                             }
+                         });
+
+
+     }
+ };
+
+
+
+
 }
