@@ -68,13 +68,4 @@ public class MainActivityTest {
             throwable.printStackTrace();
         }
     }
-
-    @Test
-    public void backPressed(){
-        try {
-            runOnUiThread(() -> activityTestRule.getActivity().onBackPressed());
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-    }
 }
