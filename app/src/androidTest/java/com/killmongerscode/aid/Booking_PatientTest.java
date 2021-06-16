@@ -34,15 +34,6 @@ public class Booking_PatientTest {
   }
 
   @Test
-  public void testingposttotheThelamp() {
-    try {
-      runOnUiThread(() -> activityTestRule.getActivity().postTotheLamp("phieze9@gmail.com"));
-    } catch (Throwable throwable) {
-      throwable.printStackTrace();
-    }
-  }
-
-  @Test
   public void testingssetSelected() {
     try {
       runOnUiThread(() -> activityTestRule.getActivity().setSelected("5665416", "Dr Luqhide"));
