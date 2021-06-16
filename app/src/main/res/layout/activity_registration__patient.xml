@@ -54,7 +54,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date of Birth"
-            android:inputType="date"
             android:paddingLeft="8dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"

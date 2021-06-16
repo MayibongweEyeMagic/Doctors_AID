@@ -2,11 +2,13 @@ package com.killmongerscode.aid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 
 import okhttp3.Call;
@@ -41,6 +44,11 @@ public class Registration_Patient extends AppCompatActivity {
     Random random = new Random();
 
     private EditText number;
+
+    int t1Hour, t1Minute;
+
+    DatePickerDialog.OnDateSetListener listener;
+
 
 
     @Override
@@ -64,7 +72,28 @@ public class Registration_Patient extends AppCompatActivity {
         number =findViewById(R.id.phone_no);
 
 
+        dob.setInputType(0);
+        Calendar calendar = Calendar.getInstance();
+        final  int year =calendar.get(Calendar.YEAR);
+        final  int month =calendar.get(Calendar.MONTH);
+        final  int day =calendar.get(Calendar.DAY_OF_MONTH);
 
+
+        dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog =new DatePickerDialog(
+                        Registration_Patient.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month =month+1;
+                        String date = year+"-"+month+"-"+day;
+                        dob.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
 
 
