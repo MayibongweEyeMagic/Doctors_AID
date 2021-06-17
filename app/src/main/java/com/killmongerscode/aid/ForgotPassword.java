@@ -75,8 +75,6 @@ public class ForgotPassword extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
-
                         try {
                          JSONArray jsonArray = new JSONArray(responseData);
 
@@ -105,13 +103,12 @@ public class ForgotPassword extends AppCompatActivity {
 
 
 
-        String temp = security_question.getText().toString();
 
         update_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String new_password =new_pass.getText().toString();
-
+                String temp = security_question.getText().toString();
 
 
                 RequestBody body = new FormBody.Builder()
@@ -145,7 +142,7 @@ public class ForgotPassword extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                              //  Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
 
                                 if(responseData.equals("Password has been updated")){
                                     Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
