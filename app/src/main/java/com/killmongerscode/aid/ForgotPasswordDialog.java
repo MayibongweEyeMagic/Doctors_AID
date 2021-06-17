@@ -1,21 +1,46 @@
 package com.killmongerscode.aid;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class ForgotPasswordDialog extends AppCompatDialogFragment {
 
+
     EditText confirm;
+    OkHttpClient client = new OkHttpClient();
+
+    Activity activity;
+    public ForgotPasswordDialog(Activity activity){
+        this.activity =activity;
+
+
+    }
 
     @NonNull
     @Override
@@ -36,14 +61,96 @@ public class ForgotPasswordDialog extends AppCompatDialogFragment {
 
         /*post this email to the database to verify it*/ confirm =view.findViewById(R.id.confirm_email);
 
+
         builder.setPositiveButton("Check", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Check if email exist or not and do something
+
+                String email = confirm.getText().toString();
+                RequestBody body = new FormBody.Builder()
+                        .add("email",email)
+                        .build();
+
+                Request request = new Request.Builder()
+                        .url("https://lamp.ms.wits.ac.za/home/s2090040/exist.php")
+                        .post(body)
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+
+                        if (!response.isSuccessful()) {
+                            throw new IOException("Unexpected code " + response);
+                        }
+
+                        final String responseData = response.body().string();
+
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+                               // EmailChecker(responseData);
+
+
+                            }
+                        });
+
+                    }
+
+
+
+                });
+
+
+
             }
         });
 
 
+
         return builder.create();
     }
+
+
+    public  void EmailChecker(String email){
+
+
+        if(email.equals("Email exists as a doctor's email" )){
+
+            Intent intent = new Intent(requireActivity(), ForgotPassword.class);
+            startActivity(intent);
+
+
+        }
+
+
+
+        else if(email.equals("Email exists as a patient's email")){
+            Intent intent = new Intent(getActivity(),ForgotPassword.class);
+            startActivity(intent);
+
+        }
+
+
+
+        else if(email.equals("Email does not exist")){
+
+            Toast.makeText(activity, "THE EMAIL YOU ENTERED IS INVALID", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+    }
+
+
+
 }

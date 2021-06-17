@@ -60,6 +60,8 @@ public class pending_bookings extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_pending_bookings);
 
+
+
     BuildRecyclerView();
 
     Bundle bundle = getIntent().getExtras();
@@ -98,6 +100,7 @@ public class pending_bookings extends AppCompatActivity {
                       public void run() {
                         try {
                           refresh_function(responseData);
+
                         } catch (JSONException e) {
                           e.printStackTrace();
                         }
@@ -127,6 +130,7 @@ public class pending_bookings extends AppCompatActivity {
 
     usersList.remove(position);
     adapter.notifyItemRemoved(position);
+      createNotificationChannel();
   }
 
   public void setAccept(int position) {
@@ -136,6 +140,7 @@ public class pending_bookings extends AppCompatActivity {
 
     usersList.remove(position);
     adapter.notifyItemRemoved(position);
+      createNotificationChannel();
   }
 
   public void refresh_function(String json) throws JSONException {

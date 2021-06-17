@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ForgotPasswordDialog dialog =new ForgotPasswordDialog();
+                ForgotPasswordDialog dialog =new ForgotPasswordDialog(MainActivity.this);
                 dialog.show(getSupportFragmentManager(), "tag");
             }
         });
