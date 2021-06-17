@@ -97,7 +97,7 @@ public class Booking_Patient extends AppCompatActivity {
             String toString = spec_field.getText().toString();
             if (!toString.isEmpty()) {
               FullScreenDialog fullScreenDialog = new FullScreenDialog(toString);
-              DialogFragment dialog = fullScreenDialog.newInstance();
+              DialogFragment dialog = FullScreenDialog.newInstance();
               dialog.show(getSupportFragmentManager(), "tag");
             } else {
               Toast.makeText(Booking_Patient.this, "Select specialization", Toast.LENGTH_SHORT)
@@ -168,6 +168,9 @@ public class Booking_Patient extends AppCompatActivity {
                     month,
                     day);
             datePickerDialog.show();
+              // disabled past date
+              datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+              datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis()-1000 + (1000*60*60*24*7));
           }
         });
   }

@@ -7,6 +7,67 @@
     android:background="@drawable/medical4"
     tools:context=".Booking_Patient">
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="342dp"
+        android:layout_marginEnd="382dp"
+        android:layout_marginRight="382dp"
+        android:layout_marginBottom="298dp"
+        android:text="*"
+        android:textColor="@color/Red"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="294dp"
+        android:layout_marginEnd="383dp"
+        android:layout_marginRight="383dp"
+        android:layout_marginBottom="346dp"
+        android:text="*"
+        android:textColor="@color/Red"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="241dp"
+        android:layout_marginEnd="385dp"
+        android:layout_marginRight="385dp"
+        android:layout_marginBottom="400dp"
+        android:text="*"
+        android:textColor="@color/Red"
+        android:textSize="18sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,22 +91,22 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="362dp"
+        android:layout_height="474dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/margin_32"
         android:layout_marginRight="@dimen/margin_32"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="24dp"
         android:orientation="vertical"
         android:padding="@dimen/height_5">
 
 
         <AutoCompleteTextView
-            android:background="@drawable/edit_reason"
             android:id="@+id/doctor_spec"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/edit_reason"
             android:hint="Select specialization"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
@@ -54,24 +115,24 @@
             android:textStyle="bold" />
 
         <EditText
-            android:background="@drawable/edit_reason"
             android:id="@+id/doctors"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edit_reason"
             android:hint="Choose Doctor"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
-            android:layout_marginBottom="5dp"
             android:textColorHint="@color/purple_500"
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
         <EditText
-            android:background="@drawable/edit_reason"
             android:id="@+id/select_date"
-            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/edit_reason"
             android:hint="Select Date of Appointment"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
@@ -80,10 +141,10 @@
             android:textStyle="bold" />
 
         <EditText
-            android:background="@drawable/edit_reason"
             android:id="@+id/select_time"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_45"
+            android:background="@drawable/edit_reason"
             android:hint="Select time of Appointment"
             android:paddingLeft="@dimen/elevation_10"
             android:paddingRight="@dimen/elevation_10"
@@ -91,20 +152,20 @@
             android:textSize="@dimen/elavation_16"
             android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/Reason"
-                android:textColorHint="@color/purple_700"
-                android:gravity="top"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="3dp"
-                android:textSize="15dp"
-                android:hint="What is the reason of the appointment?"
-                android:layout_marginTop="10dp"
-                android:inputType="textMultiLine"
-                android:background="@drawable/edit_reason"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"/>
+        <EditText
+            android:id="@+id/Reason"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_reason"
+            android:gravity="top"
+            android:hint="What is the reason of the appointment?"
+            android:inputType="textMultiLine"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:paddingRight="5dp"
+            android:textColorHint="@color/purple_700"
+            android:textSize="15dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_show2"
@@ -118,5 +179,44 @@
             android:textColor="@color/white"
             android:textSize="16dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="206dp"
+        android:layout_height="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="199dp"
+        android:layout_marginLeft="199dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="521dp"
+        android:text=" Required fields indicated by (*)"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="193dp"
+        android:layout_marginEnd="385dp"
+        android:layout_marginRight="385dp"
+        android:layout_marginBottom="447dp"
+        android:text="*"
+        android:textColor="@color/Red"
+        android:textSize="18sp" />
 
 </RelativeLayout>

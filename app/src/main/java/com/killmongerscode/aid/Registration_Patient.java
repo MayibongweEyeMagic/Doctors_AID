@@ -115,7 +115,11 @@ public class Registration_Patient extends AppCompatActivity {
                 dateofbirth = dob.getText().toString();
                 PHONENUM = number.getText().toString();
 
-
+                if( PHONENUM.trim().length() != 10)
+                {
+                    number.setError("Please Enter a 10 digit number");
+                    return;
+                }
 
                 RequestBody body = new FormBody.Builder()
                         .add("fullname",FNAME)

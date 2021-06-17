@@ -131,6 +131,11 @@ public class Registration_Doctor extends AppCompatActivity {
 
                     return;
                 }
+                if( PHONENUM.trim().length() != 10)
+                {
+                    phone.setError("Please Enter a 10 digit number");
+                    return;
+                }
                 /*if (surname.getText().toString().trim().equals("")) {
                     surname.setError("Please Enter a surname");
                     return;
