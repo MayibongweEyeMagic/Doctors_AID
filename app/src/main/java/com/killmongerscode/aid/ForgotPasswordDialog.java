@@ -3,6 +3,7 @@ package com.killmongerscode.aid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -97,8 +98,11 @@ public class ForgotPasswordDialog extends AppCompatDialogFragment {
                             @Override
                             public void run() {
 
-
-                               // EmailChecker(responseData);
+                                if(responseData.equals("doctor's email") || responseData.equals("patient's email")){
+                                    Intent intent =new Intent(activity, ForgotPassword.class);
+                                    intent.putExtra("email", email);
+                                    activity.startActivity(intent);
+                                }
 
 
                             }
@@ -106,11 +110,7 @@ public class ForgotPasswordDialog extends AppCompatDialogFragment {
 
                     }
 
-
-
                 });
-
-
 
             }
         });
@@ -119,38 +119,6 @@ public class ForgotPasswordDialog extends AppCompatDialogFragment {
 
         return builder.create();
     }
-
-
-    public  void EmailChecker(String email){
-
-
-        if(email.equals("Email exists as a doctor's email" )){
-
-            Intent intent = new Intent(requireActivity(), ForgotPassword.class);
-            startActivity(intent);
-
-
-        }
-
-
-
-        else if(email.equals("Email exists as a patient's email")){
-            Intent intent = new Intent(getActivity(),ForgotPassword.class);
-            startActivity(intent);
-
-        }
-
-
-
-        else if(email.equals("Email does not exist")){
-
-            Toast.makeText(activity, "THE EMAIL YOU ENTERED IS INVALID", Toast.LENGTH_SHORT).show();
-
-        }
-
-
-    }
-
 
 
 }
