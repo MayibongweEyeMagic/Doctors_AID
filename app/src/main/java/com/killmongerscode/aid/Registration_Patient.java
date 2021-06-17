@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,11 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
 
 import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -36,7 +36,8 @@ import okhttp3.Response;
 public class Registration_Patient extends AppCompatActivity {
 
     String FNAME, LNAME, EMAILADRESS,PASSWORD, CONFIRMPASSWORD, HOMEADDRESS,dateofbirth,PHONENUM,TOKEN;
-    EditText name, surname, email, password, homeadress, dob, confirmpassword;
+    EditText name, surname, email, password, homeadress, dob, confirmpassword,answer;
+    String question;
     Button registration_button;
     String TAG ="pushnotification";
     private static final String CHANNEL_ID = "101";
@@ -51,10 +52,19 @@ public class Registration_Patient extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__patient);
+
+        // a new spinner instance
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Registration_Patient.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.questions));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        //spinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
 
         getToken();
 
@@ -70,7 +80,10 @@ public class Registration_Patient extends AppCompatActivity {
         homeadress =findViewById(R.id.location);
         dob = findViewById(R.id.date_of_birth);
         number =findViewById(R.id.phone_no);
-
+        // answer to security question
+        answer = findViewById(R.id.Edt_DocAnswer);
+        // question selected from the options
+        question = spinner.getSelectedItem().toString();
 
         dob.setInputType(0);
         Calendar calendar = Calendar.getInstance();

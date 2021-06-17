@@ -16,6 +16,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,8 @@ import okhttp3.Response;
 public class Registration_Doctor extends AppCompatActivity {
 
     String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION, TOKEN;
-    private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone;
+    private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone,answer;
+    String question;
     Button registration_button;
     String TAG ="pushnotification";
     private static final String CHANNEL_ID = "101";
@@ -63,6 +65,13 @@ public class Registration_Doctor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__doctor);
 
+        // a new spinner instance
+        Spinner spinner = findViewById(R.id.spinner2);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(Registration_Doctor.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.questions));
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter1);
+
+
         int temp = random.nextInt(500);
         String temp1 = Integer.toString(temp);
 
@@ -79,6 +88,10 @@ public class Registration_Doctor extends AppCompatActivity {
         comfirmpass = findViewById(R.id.doctor_pass_confirm);
         phone = findViewById(R.id.phone_number);
 
+        // answer to security question
+        answer = findViewById(R.id.Edt_DocAnswer);
+        // question selected from the options
+        question = spinner.getSelectedItem().toString();
 
         special = (AutoCompleteTextView) findViewById(R.id.specialization);
         views = (ImageView) findViewById(R.id.drop_down);

@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Appointments</string>
+   <string-array name="questions">
+        <item>what is your dog\'s name?</item>
+        <item>what is your favourite color ?</item>
+        <item>what is your dream car\'s brand name?</item>
+        <item>what is your mother\'s name?</item>
+        <item>what is your favourite shoe brand?</item>
+    </string-array>
     <string name="title_activity_patientprofiles">Patientprofiles</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
