@@ -158,6 +158,58 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/safe1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Security question"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="288dp"
+            android:layout_marginTop="9dp">
+
+            <ImageView
+                android:id="@+id/drop_down2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/outline_arrow_drop_down_black_24dp"
+                android:layout_alignParentRight="true" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Answer to question"
+            android:paddingLeft="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@android:color/holo_blue_dark"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
@@ -174,27 +226,5 @@
 
     </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="373dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="366dp"
-        android:layout_height="wrap_content"
-        android:text="Select and Answer 1 Security Question Above  "
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/Edt_PatientAnswer"
-        android:layout_width="364dp"
-        android:layout_height="56dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Answer..."
-        android:textColor="@color/black"
-        android:textSize="14sp" />
 
 </LinearLayout>

@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,9 +37,9 @@ import okhttp3.Response;
 
 public class Registration_Patient extends AppCompatActivity {
 
-    String FNAME, LNAME, EMAILADRESS,PASSWORD, CONFIRMPASSWORD, HOMEADDRESS,dateofbirth,PHONENUM,TOKEN;
+    String FNAME, LNAME, EMAILADRESS,PASSWORD, CONFIRMPASSWORD, HOMEADDRESS,dateofbirth,PHONENUM,TOKEN, SECurity_question, security_answer;
     EditText name, surname, email, password, homeadress, dob, confirmpassword,answer;
-    String question;
+
     Button registration_button;
     String TAG ="pushnotification";
     private static final String CHANNEL_ID = "101";
@@ -45,6 +47,13 @@ public class Registration_Patient extends AppCompatActivity {
     Random random = new Random();
 
     private EditText number;
+
+
+    String[] predefined ={"what was your first dog's name?", "what is your favourite colour", "what is your dream car's brand name", "what is your favourite shoe brand"};
+    private AutoCompleteTextView special;
+    private ImageView views;
+
+
 
     int t1Hour, t1Minute;
 
@@ -59,10 +68,6 @@ public class Registration_Patient extends AppCompatActivity {
         setContentView(R.layout.activity_registration__patient);
 
         // a new spinner instance
-        Spinner spinner = findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Registration_Patient.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.questions));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
         //spinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
 
@@ -80,10 +85,25 @@ public class Registration_Patient extends AppCompatActivity {
         homeadress =findViewById(R.id.location);
         dob = findViewById(R.id.date_of_birth);
         number =findViewById(R.id.phone_no);
+
+
+        special = (AutoCompleteTextView) findViewById(R.id.specialization);
+        views = (ImageView) findViewById(R.id.drop_down);
+
+        ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.select_dialog_item, predefined);
+        special.setThreshold(1);
+        special.setAdapter(adapter);
+
+        views.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                special.showDropDown();
+            }
+        });
         // answer to security question
 
         // question selected from the options
-        question = spinner.getSelectedItem().toString();
+
 
         dob.setInputType(0);
         Calendar calendar = Calendar.getInstance();
@@ -126,6 +146,7 @@ public class Registration_Patient extends AppCompatActivity {
                 CONFIRMPASSWORD = confirmpassword.getText().toString();
                 HOMEADDRESS = homeadress.getText().toString();
                 dateofbirth = dob.getText().toString();
+                SECurity_question = special.getText().toString();
                 PHONENUM = number.getText().toString();
 
                 if( PHONENUM.trim().length() != 10)
