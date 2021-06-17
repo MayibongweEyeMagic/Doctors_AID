@@ -87,8 +87,8 @@ public class Registration_Patient extends AppCompatActivity {
         number =findViewById(R.id.phone_no);
         answer = findViewById(R.id.work);
 
-        special = (AutoCompleteTextView) findViewById(R.id.specialization);
-        views = (ImageView) findViewById(R.id.drop_down);
+        special = (AutoCompleteTextView) findViewById(R.id.safe1);
+        views = (ImageView) findViewById(R.id.drop_down2);
 
         ArrayAdapter<String> adapter =new ArrayAdapter<>(this, android.R.layout.select_dialog_item, predefined);
         special.setThreshold(1);
@@ -191,8 +191,8 @@ public class Registration_Patient extends AppCompatActivity {
                         Registration_Patient.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                registration_function(responseData);
 
+                                registration_function(responseData);
 
                             }
                         });
@@ -290,6 +290,9 @@ public class Registration_Patient extends AppCompatActivity {
             else if(response.equals("Email already exists")){
                 Toast.makeText(Registration_Patient.this,
                         "Email already exist", Toast.LENGTH_LONG).show();
+            }
+            else if(response.equals("under 18 years of age.")){
+                Toast.makeText(Registration_Patient.this, "User need to be above 18 to register", Toast.LENGTH_SHORT).show();
             }
 
             else {

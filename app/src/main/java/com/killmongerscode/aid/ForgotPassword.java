@@ -51,7 +51,7 @@ public class ForgotPassword extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/home/s2090040/get_answer.php.php")
+                .url("https://lamp.ms.wits.ac.za/home/s2090040/get_answer.php")
                 .post(body)
                 .build();
 
@@ -75,21 +75,24 @@ public class ForgotPassword extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        //  Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
-                            String Security_question ="";
+                        Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
+
                         try {
-                            JSONArray jsonArray = new JSONArray(responseData);
+                         JSONArray jsonArray = new JSONArray(responseData);
+
 
                             for(int i=0; i< jsonArray.length();++i){
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                 Security_question = jsonObject.getString("SECURITY_QUESTION");
+                                String first_name = jsonObject.getString("SECURITY_QUESTION");
+                                question.setText(first_name);
                             }
-                            question.setText(Security_question);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+
 
 
                     }
