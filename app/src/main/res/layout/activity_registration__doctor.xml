@@ -3,20 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignWithParentIfMissing="true"
     android:background="@drawable/medical1"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Registration_Doctor">
-
-    <EditText
-        android:id="@+id/Edt_DocAnswer"
-        android:layout_width="361dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Answer..."
-        android:textColor="@color/black"
-        android:textSize="14sp" />
 
 
     <RelativeLayout
@@ -214,5 +205,15 @@
         android:text="Select and Answer 1 Security Question Above  "
         android:textColor="@color/black"
         android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/Edt_DocAnswer"
+        android:layout_width="361dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Answer..."
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
 </LinearLayout>
