@@ -41,7 +41,7 @@ import okhttp3.Response;
 
 public class Registration_Doctor extends AppCompatActivity {
 
-    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION, TOKEN;
+    String NAME,SURNAME, QUALIFICATION, UNIVERSITY, EMAIL,PASSWORD,COMFIRMPASS,PHONENUM, SPECIALIZATION, TOKEN,ANSWERS,GOD ;
     private EditText name,surname,qualification,unversity,email,password,comfirmpass,phone,answer;
     String question;
     Button registration_button;
@@ -57,6 +57,10 @@ public class Registration_Doctor extends AppCompatActivity {
 
     private EditText number;
 
+    String[] fined ={"what was your first dog's name?", "what is your favourite colour", "what is your dream car's brand name", "what is your favourite shoe brand"};
+
+    private AutoCompleteTextView questionsr;
+    private ImageView views_for_questionsr;
 
 
 
@@ -65,11 +69,8 @@ public class Registration_Doctor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration__doctor);
 
-        // a new spinner instance
-        Spinner spinner = findViewById(R.id.spinner2);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(Registration_Doctor.this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.questions));
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter1);
+
+
 
 
         int temp = random.nextInt(500);
@@ -77,6 +78,14 @@ public class Registration_Doctor extends AppCompatActivity {
 
        // createNotificationChannel();
         getToken();
+
+        questionsr =(AutoCompleteTextView) findViewById(R.id.safe);
+        views_for_questionsr =findViewById(R.id.drop_down1);
+
+        ArrayAdapter<String> tempart =new ArrayAdapter<>(this, android.R.layout.select_dialog_item,fined);
+        questionsr.setThreshold(1);
+        questionsr.setAdapter(tempart);
+
 
         registration_button = findViewById(R.id.doctor_create_account);
         name =  findViewById(R.id.first_name_doctor);
@@ -86,12 +95,9 @@ public class Registration_Doctor extends AppCompatActivity {
         email = findViewById(R.id.doctor_email_address);
         password = findViewById(R.id.doctor_password);
         comfirmpass = findViewById(R.id.doctor_pass_confirm);
+          answer = findViewById(R.id.answer);
         phone = findViewById(R.id.phone_number);
 
-        // answer to security question
-        answer = findViewById(R.id.Edt_DocAnswer);
-        // question selected from the options
-        question = spinner.getSelectedItem().toString();
 
         special = (AutoCompleteTextView) findViewById(R.id.specialization);
         views = (ImageView) findViewById(R.id.drop_down);
@@ -101,6 +107,13 @@ public class Registration_Doctor extends AppCompatActivity {
         special.setAdapter(adapter);
 
         number = (EditText) findViewById(R.id.phone_number);
+
+        views_for_questionsr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionsr.showDropDown();
+            }
+        });
 
         views.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +140,8 @@ public class Registration_Doctor extends AppCompatActivity {
                 COMFIRMPASS = comfirmpass.getText().toString();
                 PHONENUM = phone.getText().toString();
                 SPECIALIZATION = special.getText().toString();
+                ANSWERS = questionsr.getText().toString();
+                GOD = answer.getText().toString();
 
                 if (name.getText().toString().trim().equals("") && surname.getText().toString().trim().equals("") &&
                         qualification.getText().toString().trim().equals("") && unversity.getText().toString().trim().equals("") &&
@@ -190,6 +205,8 @@ public class Registration_Doctor extends AppCompatActivity {
                         .add("password",PASSWORD)
                         .add("grad_at",UNIVERSITY)
                         .add("token",TOKEN)
+                        .add("security_question", ANSWERS)
+                        .add("answer_question",GOD)
                         .build();
 
                 Request request = new Request.Builder()
@@ -216,6 +233,9 @@ public class Registration_Doctor extends AppCompatActivity {
                             public void run() {
 
                                 registration_function(responseData);
+                               // Toast.makeText(Registration_Doctor.this, GOD, Toast.LENGTH_SHORT).show();
+
+
 
                             }
                         });

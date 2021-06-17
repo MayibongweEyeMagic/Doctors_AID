@@ -81,7 +81,7 @@ public class Registration_Patient extends AppCompatActivity {
         dob = findViewById(R.id.date_of_birth);
         number =findViewById(R.id.phone_no);
         // answer to security question
-        answer = findViewById(R.id.Edt_DocAnswer);
+
         // question selected from the options
         question = spinner.getSelectedItem().toString();
 
