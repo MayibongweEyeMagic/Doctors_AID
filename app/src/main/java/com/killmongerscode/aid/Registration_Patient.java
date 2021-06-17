@@ -85,7 +85,7 @@ public class Registration_Patient extends AppCompatActivity {
         homeadress =findViewById(R.id.location);
         dob = findViewById(R.id.date_of_birth);
         number =findViewById(R.id.phone_no);
-
+        answer = findViewById(R.id.work);
 
         special = (AutoCompleteTextView) findViewById(R.id.specialization);
         views = (ImageView) findViewById(R.id.drop_down);
@@ -148,7 +148,7 @@ public class Registration_Patient extends AppCompatActivity {
                 dateofbirth = dob.getText().toString();
                 SECurity_question = special.getText().toString();
                 PHONENUM = number.getText().toString();
-
+                security_answer = answer.getText().toString();
                 if( PHONENUM.trim().length() != 10)
                 {
                     number.setError("Please Enter a 10 digit number");
@@ -164,6 +164,8 @@ public class Registration_Patient extends AppCompatActivity {
                         .add("email",EMAILADRESS)
                         .add("password",PASSWORD)
                         .add("token",TOKEN)
+                        .add("security_question",SECurity_question)
+                        .add("answer_question",security_answer)
                         .build();
 
                 Request request = new Request.Builder()
