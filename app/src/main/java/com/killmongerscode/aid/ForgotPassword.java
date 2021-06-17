@@ -72,7 +72,19 @@ public class ForgotPassword extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
+
+                                if(responseData.equals("Password has been updated")){
+                                    Intent intent = new Intent(ForgotPassword.this, MainActivity.class);
+                                    startActivity(intent);
+
+                                    Toast.makeText(ForgotPassword.this, "your password has been changed", Toast.LENGTH_SHORT).show();
+
+                                }
+                                else{
+                                    Toast.makeText(ForgotPassword.this, "something went wrong please try again later", Toast.LENGTH_SHORT).show();
+
+                                }
                             }
                         });
 
