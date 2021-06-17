@@ -36,6 +36,9 @@ public class DocCompleteFrag extends Fragment {
     private DocCompleteRecyclerView docCompleteRecyclerView;
     private ArrayList<InOrComplete> usersList =new ArrayList<>();
     private TextView textView;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

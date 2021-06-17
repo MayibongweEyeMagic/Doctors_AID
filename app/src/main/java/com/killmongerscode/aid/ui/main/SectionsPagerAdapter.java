@@ -30,6 +30,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         this.mFragmentList = fragments;
     }
 
+
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);

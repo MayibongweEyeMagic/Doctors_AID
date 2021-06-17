@@ -30,7 +30,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView clicks;
+    private TextView clicks, forgot;
     Button patient_login, doctor_login;
     EditText username, password;
     String USERNAME, PASSWORD;
@@ -50,11 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
         username = findViewById(R.id.user);
         password = findViewById(R.id.pass);
+        forgot =findViewById(R.id.forgot_password);
 
         patient_login = findViewById(R.id.log_in_patient);
         //doctor_login = (Button)findViewById(R.id.patient_create_account);
 
         clicks =  findViewById(R.id.register_path);
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ForgotPasswordDialog dialog =new ForgotPasswordDialog();
+                dialog.show(getSupportFragmentManager(), "tag");
+            }
+        });
+
 
 
         clicks.setOnClickListener(new View.OnClickListener() {
