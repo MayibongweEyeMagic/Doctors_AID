@@ -280,11 +280,6 @@ public class Registration_Patient extends AppCompatActivity {
                 Toast.makeText(Registration_Patient.this, "User need to be above 18 to register", Toast.LENGTH_SHORT).show();
             }
 
-            else {
-                Toast.makeText(Registration_Patient.this,
-                        "Failed to register", Toast.LENGTH_LONG).show();
-
-            }
 
         }
         else {
