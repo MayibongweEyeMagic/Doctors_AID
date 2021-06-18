@@ -1,8 +1,7 @@
 package com.killmongerscode.aid;
 
-import androidx.fragment.app.Fragment;
 
-public class DoctorName extends Fragment {
+public class DoctorName{
 
     private String Doctor_name;
 

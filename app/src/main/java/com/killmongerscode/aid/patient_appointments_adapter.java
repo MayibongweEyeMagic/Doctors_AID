@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,10 +33,6 @@ public class patient_appointments_adapter extends RecyclerView.Adapter<patient_a
         holder.Nametext.setText(name);
 
 
-    }
-
-    public Fragment getDoctorname() {
-        return usersList.get(Integer.parseInt("Doctor name"));
     }
 
     @Override

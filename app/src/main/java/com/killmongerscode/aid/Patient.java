@@ -1,10 +1,6 @@
 package com.killmongerscode.aid;
 
-import android.app.Activity;
-
-import androidx.fragment.app.Fragment;
-
-public class Patient extends Activity {
+public class Patient{
     private final String Patient_name, Patient_lname, Patient_email;
     private final String Patient_dob, home_address, patient_phone,reason,outcome,booking_date;
 

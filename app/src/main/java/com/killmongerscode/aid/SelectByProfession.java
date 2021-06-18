@@ -1,8 +1,6 @@
 package com.killmongerscode.aid;
 
-import android.app.Activity;
-
-public class SelectByProfession extends Activity {
+public class SelectByProfession{
 
     private String name;
     private String surname;
