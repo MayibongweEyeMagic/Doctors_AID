@@ -7,67 +7,6 @@
     android:background="@drawable/medical4"
     tools:context=".Booking_Patient">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="342dp"
-        android:layout_marginEnd="382dp"
-        android:layout_marginRight="382dp"
-        android:layout_marginBottom="298dp"
-        android:text="*"
-        android:textColor="@color/Red"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="294dp"
-        android:layout_marginEnd="383dp"
-        android:layout_marginRight="383dp"
-        android:layout_marginBottom="346dp"
-        android:text="*"
-        android:textColor="@color/Red"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="241dp"
-        android:layout_marginEnd="385dp"
-        android:layout_marginRight="385dp"
-        android:layout_marginBottom="400dp"
-        android:text="*"
-        android:textColor="@color/Red"
-        android:textSize="18sp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -179,44 +118,5 @@
             android:textColor="@color/white"
             android:textSize="16dp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="206dp"
-        android:layout_height="22dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="199dp"
-        android:layout_marginLeft="199dp"
-        android:layout_marginTop="117dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="521dp"
-        android:text=" Required fields indicated by (*)"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="193dp"
-        android:layout_marginEnd="385dp"
-        android:layout_marginRight="385dp"
-        android:layout_marginBottom="447dp"
-        android:text="*"
-        android:textColor="@color/Red"
-        android:textSize="18sp" />
 
 </RelativeLayout>
