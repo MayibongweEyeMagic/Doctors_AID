@@ -240,13 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Bundle bundle =getIntent().getExtras();
-        String singout =bundle.toString();
-
-        if(singout.isEmpty()){
-
-            super.onBackPressed();
-        }
-
+       moveTaskToBack(true);
     }
+
 }

@@ -30,9 +30,10 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_marginTop="170dp"
         android:layout_width="362dp"
-        android:layout_height="474dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_marginLeft="@dimen/margin_32"
         android:layout_marginRight="@dimen/margin_32"
         android:layout_marginBottom="24dp"
