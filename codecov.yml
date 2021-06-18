@@ -48,3 +48,7 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/PendingBookingObjects.java"
   - "app/src/main/java/com/killmongerscode/aid/MakeABooking.java"
   - "app/src/main/java/com/killmongerscode/aid/FirebaseMessagingService.java"
+  - "app/src/main/java/com/killmongerscode/aid/SignOutDialog.java"
+  - "app/src/main/java/com/killmongerscode/aid/NotificationListener.java"
+  - "app/src/main/java/com/killmongerscode/aid/PatientBookingInfo.java"
+  - "app/src/main/java/com/killmongerscode/aid/SelectByProfession.java"
