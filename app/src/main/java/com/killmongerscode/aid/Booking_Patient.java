@@ -112,8 +112,9 @@ public class Booking_Patient extends AppCompatActivity {
           public void onClick(View v) {
 
             // Toast.makeText(Booking_Patient.this, emailAddress, Toast.LENGTH_SHORT).show();
-            postTotheLamp(emailAddress);
+
             createNotificationChannel();
+              postTotheLamp(emailAddress);
           }
         });
   }
@@ -252,8 +253,10 @@ public class Booking_Patient extends AppCompatActivity {
                 Booking_Patient.this.runOnUiThread(
                     new Runnable() {
                       @Override
+
                       public void run() {
-                        OnSuccess(thing);
+                        //  Toast.makeText(Booking_Patient.this, responseData, Toast.LENGTH_SHORT).show();
+                          OnSuccess(thing);
                       }
                     });
               }

@@ -111,7 +111,7 @@ public class pending_bookings extends AppCompatActivity {
 
       Date date = new Date();
       Timer timer = new Timer();
-      int period = 10000;
+      int period = 1000;
       timer.schedule( timerTask, date, period );
 
 
@@ -272,7 +272,10 @@ public class pending_bookings extends AppCompatActivity {
                         pending_bookings.this.runOnUiThread(
                             new Runnable() {
                               @Override
-                              public void run() {}
+                              public void run() {
+
+                                  Toast.makeText(pending_bookings.this, responseData, Toast.LENGTH_SHORT).show();
+                              }
                             });
                       }
                     });
