@@ -40,3 +40,8 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/patient_appointments_adapter.java"
   - "app/src/main/java/com/killmongerscode/aid/ViewCompletedForm.java"
   - "app/src/main/java/com/killmongerscode/aid/doctor_appointments_adapter.java"
+  - "app/src/main/java/com/killmongerscode/aid/FullScreenDialog.java"
+  - "app/src/main/java/com/killmongerscode/aid/ViewDetailsOfBooking.java"
+  - "app/src/main/java/com/killmongerscode/aid/ForgotPassword.java"
+  - "app/src/main/java/com/killmongerscode/aid/ForgotPasswordDialog.java"
+  - "app/src/main/java/com/killmongerscode/aid/WhyRejectDialog.java"
