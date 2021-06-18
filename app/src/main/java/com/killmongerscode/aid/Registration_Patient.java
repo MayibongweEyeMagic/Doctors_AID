@@ -188,13 +188,16 @@ public class Registration_Patient extends AppCompatActivity {
                         }
 
                         final String responseData = response.body().string();
+
+                        String [] holder = responseData.split(" ");
+                        String thing = holder[0];
                         Registration_Patient.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
 
 
-                                Toast.makeText(Registration_Patient.this, responseData, Toast.LENGTH_SHORT).show();
-                               registration_function(responseData);
+                              //  Toast.makeText(Registration_Patient.this, responseData, Toast.LENGTH_SHORT).show();
+                               registration_function(thing);
 
                             }
                         });
@@ -247,7 +250,7 @@ public class Registration_Patient extends AppCompatActivity {
 
 
         if (CONFIRMPASSWORD.equals(PASSWORD)){
-            if(response.equals("Successfully Registered")){
+            if(response.equals("SuccessfullyRegistered")){
 
                 Toast.makeText(Registration_Patient.this,
                         response, Toast.LENGTH_LONG).show();
@@ -259,21 +262,21 @@ public class Registration_Patient extends AppCompatActivity {
 
             }
 
-            else if (response.equals("Can't register one of the fields are empty")){
+            else if (response.equals("Can'tregisteroneofthefieldsareempty")){
                 Toast.makeText(Registration_Patient.this,
                         "One of the fields is empty", Toast.LENGTH_LONG).show();
             }
-            else if (response.equals("Invalid email")){
+            else if (response.equals("Invalidemail")){
 
                 Toast.makeText(Registration_Patient.this,
                         "Invalid email", Toast.LENGTH_LONG).show();
 
             }
-            else if(response.equals("Email already exists")){
+            else if(response.equals("Emailalreadyexists")){
                 Toast.makeText(Registration_Patient.this,
                         "Email already exist", Toast.LENGTH_LONG).show();
             }
-            else if(response.equals("under 18 years of age.")){
+            else if(response.equals("under18yearsofage.")){
                 Toast.makeText(Registration_Patient.this, "User need to be above 18 to register", Toast.LENGTH_SHORT).show();
             }
 

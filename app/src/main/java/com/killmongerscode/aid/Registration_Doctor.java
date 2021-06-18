@@ -164,34 +164,6 @@ public class Registration_Doctor extends AppCompatActivity {
                     phone.setError("Please Enter a 10 digit number");
                     return;
                 }
-                /*if (surname.getText().toString().trim().equals("")) {
-                    surname.setError("Please Enter a surname");
-                    return;
-                }
-                if (qualification.getText().toString().trim().equals("")){
-                    qualification.setError("Please Enter your qualification");
-                    return;
-                }
-                if (unversity.getText().toString().trim().equals("")){
-                    unversity.setError("Please Enter your university");
-                    return;
-                }
-                if (email.getText().toString().trim().equals("")){
-                    email.setError("Please Enter your email");
-                    return;
-                }
-                if (password.getText().toString().trim().equals("")){
-                    password.setError("Please Enter password");
-                    return;
-                }
-                if (phone.getText().toString().trim().equals("")){
-                    phone.setError("Please Enter a username");
-                    return;
-                }
-                if (special.getText().toString().trim().equals("")){
-                    special.setError("Please Enter a username");
-                    return;
-                }*/
 
 
 
@@ -228,11 +200,13 @@ public class Registration_Doctor extends AppCompatActivity {
                         }
 
                         final String responseData = response.body().string();
+                        String [] holder = responseData.split(" ");
+                        String thing = holder[0];
                         Registration_Doctor.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
 
-                                registration_function(responseData);
+                                registration_function(thing);
                                // Toast.makeText(Registration_Doctor.this, GOD, Toast.LENGTH_SHORT).show();
 
 
@@ -261,7 +235,7 @@ public class Registration_Doctor extends AppCompatActivity {
     public void registration_function(String response) {
 
         if (COMFIRMPASS.equals(PASSWORD)){
-            if (response.equals("Successfully Registered")) {
+            if (response.equals("SuccessfullyRegistered")) {
 
                 Toast.makeText(Registration_Doctor.this,
                         response, Toast.LENGTH_LONG).show();
@@ -272,16 +246,16 @@ public class Registration_Doctor extends AppCompatActivity {
 
 
             }
-            else if (response.equals("Some of the fields are empty")){
+            else if (response.equals("Someofthefieldsareempty")){
                 Toast.makeText(Registration_Doctor.this,
                         "One of the fields is empty", Toast.LENGTH_LONG).show();
             }
 
-            else if(response.equals("Invalid email")){
+            else if(response.equals("Invalidemail")){
                 Toast.makeText(Registration_Doctor.this,
                         "Invalid email", Toast.LENGTH_LONG).show();
             }
-            else if (response.equals("Email already exist")){
+            else if (response.equals("Emailalreadyexist")){
                 Toast.makeText(Registration_Doctor.this,
                         "Email already exist", Toast.LENGTH_LONG).show();
 
