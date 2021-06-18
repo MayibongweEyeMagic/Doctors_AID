@@ -67,8 +67,8 @@ public class ForgotPasswordDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Check if email exist or not and do something
-
-                String email = confirm.getText().toString();
+                String holder [] = confirm.getText().toString().split(" ");
+                String email = holder[0];
                 RequestBody body = new FormBody.Builder()
                         .add("email",email)
                         .build();
