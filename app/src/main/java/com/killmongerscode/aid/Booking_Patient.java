@@ -119,25 +119,25 @@ public class Booking_Patient extends AppCompatActivity {
   }
 
   private void OnSuccess(String responseData) {
-    if (responseData.equals("Booking was created successfully!")) {
+    if (responseData.equals("Bookingwascreatedsuccessfully!")) {
       Toast.makeText(this, "Booking was created successfully", Toast.LENGTH_SHORT).show();
 
       Intent intent = new Intent(Booking_Patient.this, Patient_Homepage.class);
       intent.putExtra("email", emailAddress);
       startActivity(intent);
 
-    }else if(responseData.equals("Cannot create booking. You already have a booking in progress.")){
+    }else if(responseData.equals("Cannotcreatebooking.Youalreadyhaveabookinginprogress.")){
         Toast.makeText(this, "Cannot create booking. You already have a booking in progress", Toast.LENGTH_SHORT)
                 .show();
     }
-    else if (responseData.equals("Failed to create booking!")) {
+    else if (responseData.equals("Failedtocreatebooking!")) {
       Toast.makeText(this, "Something went wrong please try again later", Toast.LENGTH_SHORT)
           .show();
-    }else if(responseData.equals("There are illegal bookings made")){
+    }else if(responseData.equals("Thereareillegalbookingsmade")){
         Toast.makeText(this, "This booking is illegal until you complete the one still in progress", Toast.LENGTH_SHORT)
                 .show();
     }
-    else if (responseData.equals("There may be empty inputs")) {
+    else if (responseData.equals("Theremaybeemptyinputs")) {
       Toast.makeText(this, "There may be empty fields", Toast.LENGTH_SHORT).show();
     }
   }
@@ -247,11 +247,13 @@ public class Booking_Patient extends AppCompatActivity {
                 }
 
                 final String responseData = response.body().string();
+                String holder[] = responseData.split(" ");
+                String thing = holder[0];
                 Booking_Patient.this.runOnUiThread(
                     new Runnable() {
                       @Override
                       public void run() {
-                        OnSuccess(responseData);
+                        OnSuccess(thing);
                       }
                     });
               }
