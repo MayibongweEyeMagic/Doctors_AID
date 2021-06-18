@@ -45,3 +45,6 @@ ignore:
   - "app/src/main/java/com/killmongerscode/aid/ForgotPassword.java"
   - "app/src/main/java/com/killmongerscode/aid/ForgotPasswordDialog.java"
   - "app/src/main/java/com/killmongerscode/aid/WhyRejectDialog.java"
+  - "app/src/main/java/com/killmongerscode/aid/PendingBookingObjects.java"
+  - "app/src/main/java/com/killmongerscode/aid/MakeABooking.java"
+  - "app/src/main/java/com/killmongerscode/aid/FirebaseMessagingService.java"
