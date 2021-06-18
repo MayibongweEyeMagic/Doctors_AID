@@ -30,6 +30,9 @@ public class ForgotPassword extends AppCompatActivity {
     TextView question;
     EditText security_question;
     Button update_pass;
+    String email;
+    String temp;
+    String new_password;
     OkHttpClient client =new OkHttpClient();
 
     @Override
@@ -44,7 +47,7 @@ public class ForgotPassword extends AppCompatActivity {
 
 
         Bundle bundle =getIntent().getExtras();
-        String email =bundle.getString("email");
+         email =bundle.getString("email");
 
         RequestBody body = new FormBody.Builder()
                 .add("email",email)
@@ -75,22 +78,21 @@ public class ForgotPassword extends AppCompatActivity {
                     @Override
                     public void run() {
 
+                        //  Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
                         try {
-                         JSONArray jsonArray = new JSONArray(responseData);
-
+                            JSONArray jsonArray = new JSONArray(responseData);
 
                             for(int i=0; i< jsonArray.length();++i){
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                String first_name = jsonObject.getString("SECURITY_QUESTION");
-                                question.setText(first_name);
+                               String  Security_question = jsonObject.getString("SECURITY_QUESTION");
+                                question.setText(Security_question);
                             }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
 
 
                     }
@@ -104,11 +106,12 @@ public class ForgotPassword extends AppCompatActivity {
 
 
 
+
         update_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String new_password =new_pass.getText().toString();
-                String temp = security_question.getText().toString();
+                 new_password =new_pass.getText().toString();
+                 temp = security_question.getText().toString();
 
 
                 RequestBody body = new FormBody.Builder()
@@ -142,7 +145,7 @@ public class ForgotPassword extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(ForgotPassword.this, responseData, Toast.LENGTH_SHORT).show();
 
                                 if(responseData.equals("Password has been updated")){
                                     Intent intent = new Intent(ForgotPassword.this, MainActivity.class);

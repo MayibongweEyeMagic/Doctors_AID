@@ -192,7 +192,9 @@ public class Registration_Patient extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                registration_function(responseData);
+
+                                Toast.makeText(Registration_Patient.this, responseData, Toast.LENGTH_SHORT).show();
+                               registration_function(responseData);
 
                             }
                         });
@@ -216,26 +218,6 @@ public class Registration_Patient extends AppCompatActivity {
 
     }
 
-  /*  public void registration_cherker(){
-
-        ArrayList<String>temp = new ArrayList<>();
-        temp.add(FNAME);
-        temp.add(LNAME);
-        temp.add(EMAILADRESS);
-        temp.add(PASSWORD);
-        temp.add(CONFIRMPASSWORD);
-        temp.add(HOMEADDRESS);
-        temp.add(PHONENUM);
-        temp.add(dateofbirth);
-
-        if(temp.contains("")){
-
-            Toast.makeText(Registration_Patient.this,
-                    "SOME FIELDS MIGHT BE EMPTY", Toast.LENGTH_LONG).show();
-        }
-
-
-    }*/
 
     private void getToken(){
 
