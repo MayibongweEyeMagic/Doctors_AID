@@ -104,6 +104,11 @@ public class ForgotPasswordDialog extends AppCompatDialogFragment {
                                     activity.startActivity(intent);
                                 }
 
+                                else{
+                                    Toast.makeText(activity, "INVALID EMAIL", Toast.LENGTH_SHORT).show();
+
+                                }
+
 
                             }
                         });
