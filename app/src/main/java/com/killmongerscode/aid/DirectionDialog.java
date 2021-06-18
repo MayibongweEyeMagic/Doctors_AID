@@ -48,6 +48,7 @@ public class DirectionDialog   extends AppCompatDialogFragment {
 
                 Intent intent = new Intent(v.getContext(), Registration_Patient.class);
                 startActivity(intent);
+                dismiss();
             }
 
         });
@@ -58,6 +59,7 @@ public class DirectionDialog   extends AppCompatDialogFragment {
 
                 Intent intent =new Intent(v.getContext(), Registration_Doctor.class);
                 startActivity(intent);
+                dismiss();
             }
         });
 

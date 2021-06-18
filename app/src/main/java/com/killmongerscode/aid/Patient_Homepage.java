@@ -10,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -163,6 +164,7 @@ public class Patient_Homepage extends AppCompatActivity implements SignOutDialog
 
 
 }
+    @SuppressLint("SetTextI18n")
     public void get_method(String response) throws JSONException {
 
         verification.JSONFUCTION(response);

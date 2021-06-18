@@ -10,12 +10,12 @@
     tools:context=".Registration_Doctor">
 
   <LinearLayout
+      android:layout_marginTop="40dp"
       android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignWithParentIfMissing="true"
-    android:background="@drawable/medical1"
-    android:gravity="center"
-    android:orientation="vertical">
+      android:layout_height="match_parent"
+      android:background="@drawable/medical1"
+      android:gravity="center"
+      android:orientation="vertical">
 
 
       <RelativeLayout

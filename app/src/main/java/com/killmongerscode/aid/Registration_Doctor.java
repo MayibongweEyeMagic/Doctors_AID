@@ -200,17 +200,10 @@ public class Registration_Doctor extends AppCompatActivity {
                         }
 
                         final String responseData = response.body().string();
-                        String [] holder = responseData.split(" ");
-                        String thing = holder[0];
                         Registration_Doctor.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
-                                registration_function(thing);
-                               // Toast.makeText(Registration_Doctor.this, GOD, Toast.LENGTH_SHORT).show();
-
-
-
+                                registration_function(responseData);
                             }
                         });
 
@@ -235,7 +228,7 @@ public class Registration_Doctor extends AppCompatActivity {
     public void registration_function(String response) {
 
         if (COMFIRMPASS.equals(PASSWORD)){
-            if (response.equals("SuccessfullyRegistered")) {
+            if (response.equals("Successfully Registered")) {
 
                 Toast.makeText(Registration_Doctor.this,
                         response, Toast.LENGTH_LONG).show();
@@ -246,31 +239,25 @@ public class Registration_Doctor extends AppCompatActivity {
 
 
             }
-            else if (response.equals("Someofthefieldsareempty")){
+            else if (response.equals("Some of the fields are empty")){
                 Toast.makeText(Registration_Doctor.this,
                         "One of the fields is empty", Toast.LENGTH_LONG).show();
             }
 
-            else if(response.equals("Invalidemail")){
+            else if(response.equals("Invalid email")){
                 Toast.makeText(Registration_Doctor.this,
                         "Invalid email", Toast.LENGTH_LONG).show();
             }
-            else if (response.equals("Emailalreadyexist")){
+
+            else if (response.equals("Email already exist")){
                 Toast.makeText(Registration_Doctor.this,
                         "Email already exist", Toast.LENGTH_LONG).show();
-
-            }
-            else {
-                Toast.makeText(Registration_Doctor.this,
-                        "Failed to register", Toast.LENGTH_LONG).show();
-
             }
 
         }
         else {
             Toast.makeText(Registration_Doctor.this,
                     "Password doesn't match", Toast.LENGTH_LONG).show();
-
         }
 
     }
