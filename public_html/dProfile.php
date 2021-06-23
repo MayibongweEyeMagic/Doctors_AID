@@ -1,22 +1,49 @@
 <?php
+  include "conn.php";
 
-require "conn.php";
+	$mail=$_POST["email"];
+        
+	$pass=$_POST["password"];
 
-$doctor_userid = $_POST["doctor_userid"];
-$d_id = (int)$doctor_userid;
 
-if($conn){
-    $doctor_query = "SELECT * FROM DOCTOR WHERE DOCTOR_NO= '$d_id'";
-
-    $sql_doctorQ = mysqli_query($conn,$doctor_query);
-    $output = array();
-    if($result=$sql_doctorQ){
-        while($row = $result->fetch_assoc()){
-            $output [] = $row;
+        if (empty($mail) || empty($pass)) {
+            echo "Fieldsareempty  ";
         }
-    }
-}
-mysqli_close($conn);
-echo json_encode($output);
+	elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            echo "Invalidemail  ";
+        }
+	else {
+            $doctorEmail ="SELECT * FROM PATIENT WHERE PATIENT_EMAIL LIKE '$mail'";
+            $A ="SELECT * FROM DOCTOR WHERE DOCTOR_EMAIL LIKE '$mail'";
 
+
+            $checkDoctorEmail =mysqli_query($conn, $doctorEmail);
+            $SA = mysqli_query($conn, $A);
+
+	    $resultDoc=mysqli_fetch_assoc($SA);
+
+            if (mysqli_num_rows($checkDoctorEmail) > 0) {
+               if (password_verify($_POST["password"],$result["PATIENT_PASS"])) {
+			  echo"Patient       ";
+                }
+		else {
+                    echo "Passwordisincorrect  ";
+                }
+            }
+            elseif (mysqli_num_rows($SA) > 0) {
+               if (password_verify($_POST["password"],$resultDoc["DOCTOR_PASS"])) {
+		
+                    echo "Doctor  ";
+                }
+		else {
+                    echo "Passwordisincorrect  ";
+                }
+            }
+	    else{
+                echo "Emaildoesnotexistpleaseregister!  ";
+            }
+        }
+
+mysqli_close($conn);
 ?>
+
