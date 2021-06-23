@@ -1,6 +1,6 @@
 <?php
 include "conn.php";
-
+		
 		$FULLNAME =$_POST["fullname"];
 		$LASTNAME =$_POST["lastname"];
 		$ADDRESS =$_POST["address"];
@@ -8,13 +8,24 @@ include "conn.php";
 		$DOB =$_POST["dob"];
 		$EMAIL =$_POST["email"];
 		$PASS =$_POST["password"];
+		$TOKEN = $_POST["token"];
+		$SECURITY_QUESTION=$_POST["security_question"];
+		$ANSWER_QUESTION=$_POST["answer_question"];
 
-		if (empty($FULLNAME) || empty($LASTNAME) || empty($ADDRESS) || empty($PHONE) || empty($DOB) || empty($EMAIL) || empty($PASS)){
-			echo "Can't register one of the fields are empty";
+
+		if (empty($FULLNAME) || empty($LASTNAME) || empty($ADDRESS) || empty($PHONE) || empty($DOB) || empty($EMAIL) || empty($PASS) ||empty($SECURITY_QUESTION) ||empty($ANSWER_QUESTION)){
+			echo "Can'tregisteroneofthefieldsareempty   ";
+		}
+		elseif(strlen($PHONE) !=10){
+			echo "Phonenumbermusthave10digits!  ";
+		}
+		elseif(time() <strtotime("+18 years",strtotime($DOB))){
+			echo "under18yearsofage.  ";
 		}
 
+
 		else if(!filter_var($EMAIL, FILTER_VALIDATE_EMAIL)){
-				echo "Invalid email";
+				echo "Invalidemail ";
 		}
 
 		else {
@@ -22,23 +33,23 @@ include "conn.php";
 			$connectEmail =mysqli_query($conn, $checkEmail);
 
 			if (mysqli_num_rows($connectEmail) > 0){
-				echo "Email already exists";
+				echo "Emailalreadyexists  ";
 			}
 
 			else {
+				$pass = password_hash($PASS,PASSWORD_DEFAULT);
 
-				$sql =mysqli_query($conn, "INSERT INTO PATIENT(PATIENT_FNAME, PATIENT_LNAME,PATIENT_ADDRESS, PATIENT_PHONE, PATIENT_DOB, PATIENT_EMAIL, PATIENT_PASS) VALUES('$FULLNAME','$LASTNAME','$ADDRESS ','$PHONE','$DOB','$EMAIL','$PASS')");
+				$sql =mysqli_query($conn, "INSERT INTO PATIENT(PATIENT_FNAME, PATIENT_LNAME,PATIENT_ADDRESS, PATIENT_PHONE, PATIENT_DOB, PATIENT_EMAIL, PATIENT_PASS,TOKEN,SECURITY_QUESTION,ANSWER_QUESTION) VALUES('$FULLNAME','$LASTNAME','$ADDRESS ','$PHONE','$DOB','$EMAIL','$pass','$TOKEN','$SECURITY_QUESTION','$ANSWER_QUESTION')");
 
 				if($sql){
-					echo "Successfully Registered";
+					echo "SuccessfullyRegistered  ";
 
 				}
 				else{
-					echo "Something went wrong please try again later";
+					echo "Somethingwentwrongpleasetryagainlater  ";
 				}
 			}
 		}
 
-mysqli_close($conn);
 
 ?>
